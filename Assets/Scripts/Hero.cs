@@ -43,9 +43,9 @@ public class Hero : MonoBehaviour
         {
             //move to a new direction (chosen Randomly)
             turningPoint = collision.GetComponent<TurningPoint>();
-            //transform.Translate(turningPoint.directions[(int)(Mathf.Round(Random.Range(1, turningPoint.directions.Capacity)))]);
+            moveDirection = turningPoint.directions[Random.Range(0, turningPoint.directions.Count)]*movSpeed;
             //call public Function newDirection() of TurningPoint
-            moveDirection = turningPoint.newDirection()*movSpeed;
+            //moveDirection = turningPoint.newDirection()*movSpeed;
             Debug.Log("list size = " + turningPoint.directions.Capacity);
         }
 
