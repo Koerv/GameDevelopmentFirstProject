@@ -10,6 +10,9 @@ public class Hero : MonoBehaviour
     int attSpeed;
     float movSpeed;
 
+    //Move direction
+    Vector3 moveDirection;
+
     //access Turning Points
     TurningPoint turningPoint;
 
@@ -25,12 +28,13 @@ public class Hero : MonoBehaviour
         attSpeed = (int)(1 + level + Mathf.Round(Random.Range(0f, level)));
         movSpeed = 0.01f;
         Debug.Log("Hero Stats: Level: " + level + ", HP: " + hp + ", STR: " + strength + ", SPD: " + attSpeed);
+        moveDirection = new Vector3(0, -movSpeed, 0);
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = transform.position + new Vector3(0f, -movSpeed, 0f);
+        transform.Translate(moveDirection);
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
@@ -38,7 +42,10 @@ public class Hero : MonoBehaviour
         if (collision.name.Contains("Floor"))
         {
             //move to a new direction (chosen Randomly)
-            transform.position = turningPoint.directions[(int)(Mathf.Round(Random.Range(1, turningPoint.directions.Capacity)))];
+            turningPoint = collision.GetComponent<TurningPoint>();
+            moveDirection = turningPoint.directions[Random.Range(0, turningPoint.directions.Count)]*movSpeed;
+            //call public Function newDirection() of TurningPoint
+            //moveDirection = turningPoint.newDirection()*movSpeed;
             Debug.Log("list size = " + turningPoint.directions.Capacity);
         }
 

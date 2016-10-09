@@ -6,13 +6,9 @@ public class TurningPoint : MonoBehaviour {
 
     public List<Vector3> directions;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    public Vector3 newDirection()
+    {
+        //return one random Value of List
+        return directions[Random.Range(0, directions.Count)];
+    }
 }

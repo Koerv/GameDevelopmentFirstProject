@@ -106,7 +106,7 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.25, y: 0}
   serializedVersion: 2
   m_Size: {x: 0.2, y: 0.2}
 --- !u!114 &1879947
@@ -121,7 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   directions:
-  - {x: 0, y: -0.01, z: 0}
+  - {x: 0, y: -1, z: 0}
 --- !u!1 &155220699 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1000013442374366, guid: 065b03b2c5f6e0449b6883c3a30ac7fa,
@@ -138,7 +138,7 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.25, y: 0}
   serializedVersion: 2
   m_Size: {x: 0.2, y: 0.2}
 --- !u!114 &155220701
@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   directions:
-  - {x: -0.01, y: 0, z: 0}
+  - {x: -1, y: 0, z: 0}
 --- !u!1001 &169366925
 Prefab:
   m_ObjectHideFlags: 0
@@ -217,7 +217,7 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.25, y: 0}
   serializedVersion: 2
   m_Size: {x: 0.2, y: 0.2}
 --- !u!114 &210633309
@@ -232,7 +232,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   directions:
-  - {x: 0, y: -0.01, z: 0}
+  - {x: 0, y: -1, z: 0}
 --- !u!1001 &238756885
 Prefab:
   m_ObjectHideFlags: 0
@@ -520,8 +520,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   directions:
-  - {x: -0.01, y: 0, z: 0}
-  - {x: -0.01, y: 0, z: 0}
+  - {x: -1, y: 0, z: 0}
+  - {x: 1, y: 0, z: 0}
 --- !u!61 &403368180
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -533,7 +533,7 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.25}
   serializedVersion: 2
   m_Size: {x: 0.2, y: 0.2}
 --- !u!1001 &451753876
@@ -932,7 +932,7 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.25}
   serializedVersion: 2
   m_Size: {x: 0.2, y: 0.2}
 --- !u!114 &602310011
@@ -947,7 +947,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   directions:
-  - {x: 0.01, y: 0, z: 0}
+  - {x: 1, y: 0, z: 0}
 --- !u!1001 &612838952
 Prefab:
   m_ObjectHideFlags: 0
@@ -1612,7 +1612,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   directions:
-  - {x: 0, y: -0.01, z: 0}
+  - {x: 0, y: -1, z: 0}
 --- !u!1001 &958387158
 Prefab:
   m_ObjectHideFlags: 0
@@ -1731,7 +1731,7 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.25, y: 0}
   serializedVersion: 2
   m_Size: {x: 0.2, y: 0.2}
 --- !u!114 &1049461673
@@ -1746,7 +1746,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   directions:
-  - {x: 0, y: -0.01, z: 0}
+  - {x: 0, y: -1, z: 0}
 --- !u!1001 &1067649157
 Prefab:
   m_ObjectHideFlags: 0
@@ -2019,7 +2019,7 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.25, y: 0}
   serializedVersion: 2
   m_Size: {x: 0.2, y: 0.2}
 --- !u!114 &1294961022
@@ -2034,7 +2034,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   directions:
-  - {x: 0, y: -0.01, z: 0}
+  - {x: 0, y: -1, z: 0}
 --- !u!1 &1347875184 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1000013442374366, guid: 065b03b2c5f6e0449b6883c3a30ac7fa,
@@ -2051,7 +2051,7 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.25}
   serializedVersion: 2
   m_Size: {x: 0.2, y: 0.2}
 --- !u!114 &1347875186
@@ -2066,8 +2066,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   directions:
-  - {x: 0.01, y: 0, z: 0}
-  - {x: -0.01, y: 0, z: 0}
+  - {x: 1, y: 0, z: 0}
+  - {x: -1, y: 0, z: 0}
 --- !u!1001 &1380542049
 Prefab:
   m_ObjectHideFlags: 0
@@ -2196,7 +2196,7 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.25}
   serializedVersion: 2
   m_Size: {x: 0.2, y: 0.2}
 --- !u!114 &1638039256
@@ -2211,7 +2211,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   directions:
-  - {x: -0.01, y: 0, z: 0}
+  - {x: -1, y: 0, z: 0}
 --- !u!1 &1658099154
 GameObject:
   m_ObjectHideFlags: 0
@@ -2343,7 +2343,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   directions:
-  - {x: 0, y: -0.01, z: 0}
+  - {x: 0, y: -1, z: 0}
 --- !u!1001 &1732808178
 Prefab:
   m_ObjectHideFlags: 0
@@ -2630,7 +2630,7 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.25, y: 0}
   serializedVersion: 2
   m_Size: {x: 0.2, y: 0.2}
 --- !u!114 &2041225565
@@ -2645,7 +2645,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   directions:
-  - {x: 0.01, y: 0, z: 0}
+  - {x: 1, y: 0, z: 0}
 --- !u!1 &2049352556
 GameObject:
   m_ObjectHideFlags: 0
