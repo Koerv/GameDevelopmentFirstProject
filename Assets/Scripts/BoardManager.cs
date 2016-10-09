@@ -2,12 +2,13 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class BoardManager : MonoBehaviour {
+public class BoardManager : MonoBehaviour
+{
 
     public int columns = 8;                                         //Number of columns in our game board.
     public int rows = 8;                                            //Number of rows in our game board.
     public GameObject[] floorTiles;                                 //Array of floor prefabs.
- 
+
 
     private Transform boardHolder;                                  //A variable to store a reference to the transform of our Board object.
     private List<Vector3> gridPositions = new List<Vector3>();   //A list of possible locations to place tiles.

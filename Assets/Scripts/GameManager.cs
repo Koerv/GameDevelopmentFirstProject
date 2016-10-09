@@ -5,6 +5,7 @@ public class GameManager : MonoBehaviour {
     public static GameManager instance = null;              //Static instance of GameManager which allows it to be accessed by any other script.
     private BoardManager boardScript;
     //Awake is always called before any Start functions
+    
     void Awake()
     {
         //Check if instance already exists
@@ -23,6 +24,7 @@ public class GameManager : MonoBehaviour {
         DontDestroyOnLoad(gameObject);
         //Get a component reference to the attached BoardManager script
         boardScript = GetComponent<BoardManager>();
+      
         //Call the InitGame function to initialize the first level 
         InitGame();
     }
@@ -30,7 +32,7 @@ public class GameManager : MonoBehaviour {
     //Initializes the game for each level.
     void InitGame()
     {
-        boardScript.BoardSetup();
+        //boardScript.BoardSetup();
 
     }
 
