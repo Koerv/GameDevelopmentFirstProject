@@ -14,7 +14,7 @@ public class Boss : MonoBehaviour
 
     public Hero hero;
 
-    bool isFighting = false;
+    public bool isFighting = false;
 
     // Use this for initialization
     void Start()
