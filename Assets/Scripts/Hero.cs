@@ -30,7 +30,7 @@ public class Hero : MonoBehaviour
 
         //initialize stats (semi random), only level 1 for now
         level = 1;
-        hp = (int)(9 + level + Mathf.Round(Random.Range(0f, level)));
+        hp = (int)(15 + level + Mathf.Round(Random.Range(0f, level)));
         strength = (int)(1 + level + Mathf.Round(Random.Range(0f, level)));
         attSpeed = (int)(1 + level + Mathf.Round(Random.Range(0f, level)));
         movSpeed = 0.01f;
@@ -58,9 +58,11 @@ public class Hero : MonoBehaviour
                 if (currentBoss.hp <= 0)
                 {
                     isFighting = false;
+                    currentBoss.isFighting = false;
                     //TODO: Boss should not be destroyed but removed from the dungeon
-                    Destroy(currentBoss.gameObject);
+                    //Destroy(currentBoss.gameObject);
                     //currentBoss.enabled = false;
+                    currentBoss.transform.position = new Vector3(4.5f, 0.8f);
                     Debug.Log("Stirb!");
                 }
                 //reset Attack Time
