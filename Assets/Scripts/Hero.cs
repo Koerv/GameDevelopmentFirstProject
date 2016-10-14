@@ -44,8 +44,10 @@ public class Hero : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(moveDirection);
-
+        if (!GameManager.instance.buyPhase)
+        { 
+            transform.Translate(moveDirection);
+        }
         if (isFighting)
         {
 
@@ -88,7 +90,7 @@ public class Hero : MonoBehaviour
         }
     }
 
-
+    
     public void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.collider.name.Contains("Boss"))
