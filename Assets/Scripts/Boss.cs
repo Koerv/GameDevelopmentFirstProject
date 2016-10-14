@@ -46,7 +46,7 @@ public class Boss : MonoBehaviour
                 {
                   isFighting=false;
                   Destroy(hero.gameObject);
-                    GameManager.instance.StartBuyPhase();
+                  GameManager.instance.StartBuyPhase();
                   Debug.Log("Stirb!");
                 }
                 //reset Attack Time
