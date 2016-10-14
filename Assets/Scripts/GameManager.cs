@@ -3,7 +3,7 @@ using System.Collections;
 
 public class GameManager : MonoBehaviour {
     public static GameManager instance = null;              //Static instance of GameManager which allows it to be accessed by any other script.
-    private BoardManager boardScript;
+
     //Awake is always called before any Start functions
     
     void Awake()

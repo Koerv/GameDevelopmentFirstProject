@@ -17,7 +17,7 @@ public class AddBoss : MonoBehaviour {
             {
                 Vector3 target;
                 target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                
+            
                 //Prefab has to be in Resources folder
                 boss = Instantiate(Resources.Load("Boss_1"), new Vector3(target.x, target.y, 0), Quaternion.identity) as GameObject;
                 buildMode = false;
