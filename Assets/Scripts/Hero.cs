@@ -9,7 +9,7 @@ public class Hero : MonoBehaviour
     public int hp;
     public int strength;
     public int attSpeed;
-    float movSpeed;
+    public float movSpeed;
 
     float hAttackTime;
     float hTimeLeft;
@@ -17,6 +17,9 @@ public class Hero : MonoBehaviour
     Boss currentBoss;
 
     bool isFighting = false;
+
+    bool dirChange = false;
+    float sumTime = 0f;
 
     //Move direction
     Vector3 moveDirection;
@@ -47,6 +50,11 @@ public class Hero : MonoBehaviour
         if (!GameManager.instance.buyPhase)
         { 
             transform.Translate(moveDirection);
+        }
+
+        if (dirChange)
+        {
+            waitAndChangeDir();
         }
         if (isFighting)
         {
@@ -85,8 +93,23 @@ public class Hero : MonoBehaviour
         {
             //move to a new direction (chosen Randomly)
             turningPoint = collision.GetComponent<TurningPoint>();
+            Debug.Log("dirChange starts");
+            dirChange = true;
+
+            //yield return new WaitForSeconds(movSpeed * 5);
+            //moveDirection = turningPoint.newDirection() * movSpeed;
+        }
+    }
+
+    void waitAndChangeDir()
+    {
+        sumTime += Time.deltaTime;
+        if (sumTime >= movSpeed * 40)
+        {
+            sumTime = 0f;
             moveDirection = turningPoint.newDirection() * movSpeed;
- 
+            dirChange = false;
+            Debug.Log("dirChange over");
         }
     }
 
@@ -99,6 +122,11 @@ public class Hero : MonoBehaviour
             isFighting = true;
             currentBoss = collision.collider.GetComponentInParent<Boss>();
             Debug.Log(currentBoss.hp);
+        }
+        if (collision.collider.name.Contains("cage"))
+        {
+            GameManager.instance.wayDown = false;
+            moveDirection = new Vector3(0, movSpeed, 0);
         }
     }
 

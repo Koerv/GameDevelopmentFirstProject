@@ -7,14 +7,14 @@ public class Princess : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        hero = FindObjectOfType<Hero>();
+        hero = GameManager.instance.hero;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if (GameManager.instance.wayDown)
+        if (!GameManager.instance.wayDown)
         {
-            this.transform.position=Vector3.MoveTowards(this.transform.position, hero.transform.position, 2f);
+            this.transform.position = Vector3.MoveTowards(this.transform.position, hero.transform.position, hero.movSpeed*0.9f);
         }
 	}
 }
