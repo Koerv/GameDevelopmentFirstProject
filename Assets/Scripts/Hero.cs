@@ -85,7 +85,7 @@ public class Hero : MonoBehaviour
         {
             //move to a new direction (chosen Randomly)
             turningPoint = collision.GetComponent<TurningPoint>();
-            moveDirection = turningPoint.directions[UnityEngine.Random.Range(0, turningPoint.directions.Count)] * movSpeed;
+            moveDirection = turningPoint.newDirection() * movSpeed;
  
         }
     }

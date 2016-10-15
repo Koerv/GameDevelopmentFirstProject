@@ -120,8 +120,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c30f309775589934db762099b87c54c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  directions:
-  - {x: 0, y: -1, z: 0}
+  down: 1
+  left_downward: 0
+  right_downward: 0
+  up: 0
+  left_upward: 0
+  right_upward: 1
 --- !u!1 &63769325
 GameObject:
   m_ObjectHideFlags: 0
@@ -166,7 +170,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300036, guid: ccf45a2c781b7304d8951354ffd94787, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -347,8 +351,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c30f309775589934db762099b87c54c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  directions:
-  - {x: -1, y: 0, z: 0}
+  down: 0
+  left_downward: 1
+  right_downward: 0
+  up: 1
+  left_upward: 0
+  right_upward: 0
 --- !u!1001 &169366925
 Prefab:
   m_ObjectHideFlags: 0
@@ -426,8 +434,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c30f309775589934db762099b87c54c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  directions:
-  - {x: 0, y: -1, z: 0}
+  down: 1
+  left_downward: 0
+  right_downward: 0
+  up: 0
+  left_upward: 1
+  right_upward: 0
 --- !u!1 &220859304
 GameObject:
   m_ObjectHideFlags: 0
@@ -788,9 +800,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c30f309775589934db762099b87c54c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  directions:
-  - {x: -1, y: 0, z: 0}
-  - {x: 1, y: 0, z: 0}
+  down: 0
+  left_downward: 1
+  right_downward: 1
+  up: 1
+  left_upward: 0
+  right_upward: 0
 --- !u!61 &403368180
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1174,8 +1189,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c30f309775589934db762099b87c54c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  directions:
-  - {x: 1, y: 0, z: 0}
+  down: 0
+  left_downward: 0
+  right_downward: 1
+  up: 1
+  left_upward: 0
+  right_upward: 0
 --- !u!1001 &612838952
 Prefab:
   m_ObjectHideFlags: 0
@@ -1839,8 +1858,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c30f309775589934db762099b87c54c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  directions:
-  - {x: 0, y: -1, z: 0}
+  down: 1
+  left_downward: 0
+  right_downward: 0
+  up: 0
+  left_upward: 1
+  right_upward: 1
 --- !u!1001 &958387158
 Prefab:
   m_ObjectHideFlags: 0
@@ -1973,8 +1996,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c30f309775589934db762099b87c54c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  directions:
-  - {x: 0, y: -1, z: 0}
+  down: 1
+  left_downward: 0
+  right_downward: 0
+  up: 0
+  left_upward: 0
+  right_upward: 1
 --- !u!1001 &1067649157
 Prefab:
   m_ObjectHideFlags: 0
@@ -2335,8 +2362,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c30f309775589934db762099b87c54c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  directions:
-  - {x: 0, y: -1, z: 0}
+  down: 1
+  left_downward: 0
+  right_downward: 0
+  up: 0
+  left_upward: 1
+  right_upward: 0
 --- !u!1 &1347875184 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1000013442374366, guid: 065b03b2c5f6e0449b6883c3a30ac7fa,
@@ -2367,9 +2398,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c30f309775589934db762099b87c54c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  directions:
-  - {x: 1, y: 0, z: 0}
-  - {x: -1, y: 0, z: 0}
+  down: 0
+  left_downward: 1
+  right_downward: 1
+  up: 1
+  left_upward: 0
+  right_upward: 0
 --- !u!1001 &1380542049
 Prefab:
   m_ObjectHideFlags: 0
@@ -2620,8 +2654,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c30f309775589934db762099b87c54c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  directions:
-  - {x: -1, y: 0, z: 0}
+  down: 0
+  left_downward: 1
+  right_downward: 0
+  up: 1
+  left_upward: 0
+  right_upward: 0
 --- !u!1 &1658099154
 GameObject:
   m_ObjectHideFlags: 0
@@ -2752,8 +2790,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c30f309775589934db762099b87c54c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  directions:
-  - {x: 0, y: -1, z: 0}
+  down: 0
+  left_downward: 0
+  right_downward: 0
+  up: 1
+  left_upward: 1
+  right_upward: 1
 --- !u!1001 &1732808178
 Prefab:
   m_ObjectHideFlags: 0
@@ -3084,7 +3126,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300012, guid: f064160e4a618644f8dc3c62310893c8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -3253,8 +3295,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c30f309775589934db762099b87c54c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  directions:
-  - {x: 1, y: 0, z: 0}
+  down: 0
+  left_downward: 0
+  right_downward: 1
+  up: 1
+  left_upward: 0
+  right_upward: 0
 --- !u!1 &2049352556
 GameObject:
   m_ObjectHideFlags: 0
@@ -3285,6 +3331,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coins: 0
   buyPhase: 1
+  wayDown: 1
   uiManager: {fileID: 1462053888}
 --- !u!4 &2049352558
 Transform:
