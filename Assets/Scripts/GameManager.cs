@@ -5,6 +5,7 @@ public class GameManager : MonoBehaviour {
     public static GameManager instance = null;              //Static instance of GameManager which allows it to be accessed by any other script.
     public int coins;
     public bool buyPhase = true;
+    public bool wayDown = true;
     public UIManager uiManager;
     //Awake is always called before any Start functions
     
