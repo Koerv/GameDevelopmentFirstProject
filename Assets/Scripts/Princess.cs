@@ -14,7 +14,7 @@ public class Princess : MonoBehaviour {
 	void Update () {
         if (GameManager.instance.wayDown)
         {
-            this.transform.position=hero.position;
+            this.transform.position=Vector3.MoveTowards(this.transform.position, hero.transform.position, 2f);
         }
 	}
 }
