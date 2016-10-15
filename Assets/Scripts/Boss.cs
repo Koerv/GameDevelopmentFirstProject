@@ -46,6 +46,7 @@ public class Boss : MonoBehaviour
                 {
                   isFighting=false;
                   Destroy(hero.gameObject);
+                  GameManager.instance.StartBuyPhase();
                   Debug.Log("Stirb!");
                 }
                 //reset Attack Time
@@ -57,6 +58,8 @@ public class Boss : MonoBehaviour
     public void OnCollisionEnter2D(Collision2D collision)
     {
         Debug.Log("Kämpf!");
+        //needed to assign Hero to runtime-generated bosses
+        hero = collision.collider.GetComponentInParent<Hero>();
         isFighting = true;
     }
 }

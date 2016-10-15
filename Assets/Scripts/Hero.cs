@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class Hero : MonoBehaviour
 {
@@ -30,9 +31,9 @@ public class Hero : MonoBehaviour
 
         //initialize stats (semi random), only level 1 for now
         level = 1;
-        hp = (int)(15 + level + Mathf.Round(Random.Range(0f, level)));
-        strength = (int)(1 + level + Mathf.Round(Random.Range(0f, level)));
-        attSpeed = (int)(1 + level + Mathf.Round(Random.Range(0f, level)));
+        hp = (int)(15 + level + Mathf.Round(UnityEngine.Random.Range(0f, level)));
+        strength = (int)(1 + level + Mathf.Round(UnityEngine.Random.Range(0f, level)));
+        attSpeed = (int)(1 + level + Mathf.Round(UnityEngine.Random.Range(0f, level)));
         movSpeed = 0.01f;
         Debug.Log("Hero Stats: Level: " + level + ", HP: " + hp + ", STR: " + strength + ", SPD: " + attSpeed);
         moveDirection = new Vector3(0, -movSpeed, 0);
@@ -43,8 +44,10 @@ public class Hero : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(moveDirection);
-
+        if (!GameManager.instance.buyPhase)
+        { 
+            transform.Translate(moveDirection);
+        }
         if (isFighting)
         {
 
@@ -71,20 +74,23 @@ public class Hero : MonoBehaviour
         }
     }
 
+    public static explicit operator Hero(GameObject v)
+    {
+        throw new NotImplementedException();
+    }
+
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.name.Contains("Floor"))
         {
             //move to a new direction (chosen Randomly)
             turningPoint = collision.GetComponent<TurningPoint>();
-            moveDirection = turningPoint.directions[Random.Range(0, turningPoint.directions.Count)] * movSpeed;
-            //call public Function newDirection() of TurningPoint
-            //moveDirection = turningPoint.newDirection()*movSpeed;
-            Debug.Log("list size = " + turningPoint.directions.Capacity);
+            moveDirection = turningPoint.directions[UnityEngine.Random.Range(0, turningPoint.directions.Count)] * movSpeed;
+ 
         }
     }
 
-
+    
     public void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.collider.name.Contains("Boss"))

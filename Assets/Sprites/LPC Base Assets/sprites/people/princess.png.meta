@@ -1,0 +1,563 @@
+fileFormatVersion: 2
+guid: ccf45a2c781b7304d8951354ffd94787
+timeCreated: 1476534923
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: princess_0
+    21300002: princess_1
+    21300004: princess_2
+    21300006: princess_3
+    21300008: princess_4
+    21300010: princess_5
+    21300012: princess_6
+    21300014: princess_7
+    21300016: princess_8
+    21300018: princess_9
+    21300020: princess_10
+    21300022: princess_11
+    21300024: princess_12
+    21300026: princess_13
+    21300028: princess_14
+    21300030: princess_15
+    21300032: princess_16
+    21300034: princess_17
+    21300036: princess_18
+    21300038: princess_19
+    21300040: princess_20
+    21300042: princess_21
+    21300044: princess_22
+    21300046: princess_23
+    21300048: princess_24
+    21300050: princess_25
+    21300052: princess_26
+    21300054: princess_27
+    21300056: princess_28
+    21300058: princess_29
+    21300060: princess_30
+    21300062: princess_31
+    21300064: princess_32
+    21300066: princess_33
+    21300068: princess_34
+    21300070: princess_35
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: princess_0
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 194
+        width: 29
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: princess_1
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 194
+        width: 29
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: princess_2
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 194
+        width: 28
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: princess_3
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 193
+        width: 28
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: princess_4
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 194
+        width: 29
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: princess_5
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 194
+        width: 29
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: princess_6
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 194
+        width: 28
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: princess_7
+      rect:
+        serializedVersion: 2
+        x: 465
+        y: 193
+        width: 28
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: princess_8
+      rect:
+        serializedVersion: 2
+        x: 529
+        y: 194
+        width: 29
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: princess_9
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 129
+        width: 26
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: princess_10
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 129
+        width: 25
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: princess_11
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 129
+        width: 25
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: princess_12
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 130
+        width: 25
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: princess_13
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 129
+        width: 26
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: princess_14
+      rect:
+        serializedVersion: 2
+        x: 341
+        y: 128
+        width: 27
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: princess_15
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 128
+        width: 26
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: princess_16
+      rect:
+        serializedVersion: 2
+        x: 469
+        y: 129
+        width: 25
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: princess_17
+      rect:
+        serializedVersion: 2
+        x: 533
+        y: 129
+        width: 25
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: princess_18
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 65
+        width: 28
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: princess_19
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 65
+        width: 28
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: princess_20
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 65
+        width: 27
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: princess_21
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 64
+        width: 26
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: princess_22
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 65
+        width: 28
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: princess_23
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 65
+        width: 28
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: princess_24
+      rect:
+        serializedVersion: 2
+        x: 402
+        y: 65
+        width: 27
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: princess_25
+      rect:
+        serializedVersion: 2
+        x: 467
+        y: 64
+        width: 26
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: princess_26
+      rect:
+        serializedVersion: 2
+        x: 530
+        y: 65
+        width: 28
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: princess_27
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 1
+        width: 26
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: princess_28
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 1
+        width: 25
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: princess_29
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 1
+        width: 25
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: princess_30
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 2
+        width: 25
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: princess_31
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 1
+        width: 26
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: princess_32
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 0
+        width: 27
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: princess_33
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 0
+        width: 26
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: princess_34
+      rect:
+        serializedVersion: 2
+        x: 466
+        y: 1
+        width: 25
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: princess_35
+      rect:
+        serializedVersion: 2
+        x: 530
+        y: 1
+        width: 25
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
