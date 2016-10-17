@@ -99,6 +99,13 @@ public class Hero : MonoBehaviour
             //yield return new WaitForSeconds(movSpeed * 5);
             //moveDirection = turningPoint.newDirection() * movSpeed;
         }
+        if (collision.name.Contains("Entrance") && !GameManager.instance.wayDown)
+        {
+            this.movSpeed = 0.0f;
+            moveDirection = new Vector3(0, -movSpeed, 0);
+            GameManager.instance.loseScreen.enabled = true;
+        }
+
     }
 
     void waitAndChangeDir()
@@ -126,6 +133,7 @@ public class Hero : MonoBehaviour
         if (collision.collider.name.Contains("cage"))
         {
             GameManager.instance.wayDown = false;
+            GameManager.instance.StartBuyPhase();
             moveDirection = new Vector3(0, movSpeed, 0);
         }
     }

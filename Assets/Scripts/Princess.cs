@@ -12,7 +12,7 @@ public class Princess : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (!GameManager.instance.wayDown)
+        if (!GameManager.instance.wayDown && !GameManager.instance.buyPhase)
         {
             this.transform.position = Vector3.MoveTowards(this.transform.position, hero.transform.position, hero.movSpeed*0.9f);
         }
