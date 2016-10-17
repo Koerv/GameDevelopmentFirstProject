@@ -45,7 +45,9 @@ public class Boss : MonoBehaviour
                 if (hero.hp <= 0)
                 {
                   isFighting=false;
-                  Destroy(hero.gameObject);
+                  hero.transform.position= new Vector3(-4.5f, 0.8f);
+                  hero.movSpeed = 0.0f;
+                  //Destroy(hero.gameObject);
                   GameManager.instance.StartBuyPhase();
                   Debug.Log("Stirb!");
                 }

@@ -7,8 +7,9 @@ public class GameManager : MonoBehaviour {
     public bool buyPhase = true;
     public bool wayDown = true;
     public UIManager uiManager;
+    public Hero hero;
     //Awake is always called before any Start functions
-    
+
     void Awake()
     {
         //Check if instance already exists
@@ -41,9 +42,11 @@ public class GameManager : MonoBehaviour {
 
     public void EndBuyPhase()
     {
-        GameObject hero;
+        
         buyPhase = false;
-        hero = Instantiate(Resources.Load("Hero"), new Vector3(0.48f, 1.47f, 0), Quaternion.identity) as GameObject;
+        //hero (Resources.Load("Hero"), new Vector3(0.48f, 1.47f, 0), Quaternion.identity) as GameObject;
+        hero.transform.position = new Vector3(0.48f, 1.47f, 0);
+        hero.movSpeed = 0.01f;
     }
 
     public void StartBuyPhase()
