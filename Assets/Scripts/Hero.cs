@@ -103,7 +103,7 @@ public class Hero : MonoBehaviour
         {
             this.movSpeed = 0.0f;
             moveDirection = new Vector3(0, -movSpeed, 0);
-            GameManager.instance.loseScreen.enabled = true;
+            GameManager.instance.gameOver();
         }
 
     }

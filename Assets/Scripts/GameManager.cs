@@ -31,8 +31,6 @@ public class GameManager : MonoBehaviour {
         DontDestroyOnLoad(gameObject);
         //Get a component reference to the attached BoardManager script
         //boardScript = GetComponent<BoardManager>();
-        loseScreen = FindObjectOfType<Text>();
-        loseScreen.enabled = false;
         //Call the InitGame function to initialize the first level 
         InitGame();
     }
@@ -42,6 +40,11 @@ public class GameManager : MonoBehaviour {
     {
         //boardScript.BoardSetup();
 
+    }
+
+    public void gameOver()
+    {
+        uiManager.showLoseScreen();
     }
 
     public void EndBuyPhase()
