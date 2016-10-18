@@ -8,7 +8,7 @@ public class Hero : MonoBehaviour
     public int level;
     public int hp;
     public int strength;
-    public int attSpeed;
+    public float attSpeed;
     public float movSpeed;
 
     float hAttackTime;
@@ -16,13 +16,14 @@ public class Hero : MonoBehaviour
 
     Boss currentBoss;
 
-    bool isFighting = false;
+    public bool isFighting = false;
 
     bool dirChange = false;
     float sumTime = 0f;
 
     //Move direction
     Vector3 moveDirection;
+    Vector3 preFightPosition;
 
     //access Turning Points
     TurningPoint turningPoint;
@@ -34,12 +35,7 @@ public class Hero : MonoBehaviour
 
         //initialize stats (semi random), only level 1 for now
         level = 1;
-        hp = (int)(15 + level + Mathf.Round(UnityEngine.Random.Range(0f, level)));
-        strength = (int)(1 + level + Mathf.Round(UnityEngine.Random.Range(0f, level)));
-        attSpeed = (int)(1 + level + Mathf.Round(UnityEngine.Random.Range(0f, level)));
-        movSpeed = 0.01f;
-        Debug.Log("Hero Stats: Level: " + level + ", HP: " + hp + ", STR: " + strength + ", SPD: " + attSpeed);
-        moveDirection = new Vector3(0, -movSpeed, 0);
+        RerollStats();
 
         hAttackTime = 1 - this.attSpeed * 0.1f;
     }
@@ -47,7 +43,7 @@ public class Hero : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!GameManager.instance.buyPhase)
+        if (!GameManager.instance.buyPhase && !isFighting)
         { 
             transform.Translate(moveDirection);
         }
@@ -60,18 +56,18 @@ public class Hero : MonoBehaviour
         {
 
             hTimeLeft -= Time.deltaTime;
+            transform.position = (transform.position - moveDirection * hTimeLeft);
 
             if (hTimeLeft <= 0)
             {
-
+                //set position back to where hero was before the fight
+                transform.position = preFightPosition;
                 currentBoss.hp -= strength;
                 Debug.Log("Boss HP: " + currentBoss.hp);
                 if (currentBoss.hp <= 0)
                 {
                     isFighting = false;
                     currentBoss.isFighting = false;
-                    //TODO: Boss should not be destroyed but removed from the dungeon
-                    //Destroy(currentBoss.gameObject);
                     //currentBoss.enabled = false;
                     currentBoss.transform.position = new Vector3(4.5f, 0.8f);
                     Debug.Log("Stirb!");
@@ -111,13 +107,39 @@ public class Hero : MonoBehaviour
     void waitAndChangeDir()
     {
         sumTime += Time.deltaTime;
-        if (sumTime >= movSpeed * 40)
+        if (sumTime >= movSpeed * 22)
         {
             sumTime = 0f;
             moveDirection = turningPoint.newDirection() * movSpeed;
             dirChange = false;
             Debug.Log("dirChange over");
         }
+    }
+
+    public void Defeated()
+    {
+        isFighting = false;
+        transform.position = new Vector3(-4.5f, 0.8f);
+        movSpeed = 0.0f;
+        level++;
+        RerollStats();
+        GameManager.instance.wayDown = true;
+        
+    }
+
+    private void RerollStats()
+    {
+        hp = (int)(15 + level + Mathf.Round(UnityEngine.Random.Range(0f, level)));
+        strength = (int)(1 + level + Mathf.Round(UnityEngine.Random.Range(0f, level)));
+        attSpeed = (1.0f + level + Mathf.Round(UnityEngine.Random.Range(0f, level)))*0.8f;
+        movSpeed = 0.015f;
+        Debug.Log("New Heros Stats: Level: " + level + ", HP: " + hp + ", STR: " + strength + ", SPD: " + attSpeed);
+        moveDirection = new Vector3(0, -movSpeed, 0);
+    }
+
+    public Vector3 getMoveDirection()
+    {
+        return moveDirection;
     }
 
     
@@ -127,6 +149,8 @@ public class Hero : MonoBehaviour
         {
             //add boss interaction here
             isFighting = true;
+            //store position so that after attacking the hero is at the same place he used to be before
+            preFightPosition = transform.position;
             currentBoss = collision.collider.GetComponentInParent<Boss>();
             Debug.Log(currentBoss.hp);
         }

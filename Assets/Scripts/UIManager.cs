@@ -7,10 +7,14 @@ public class UIManager : MonoBehaviour {
     public GameObject button1;
     public GameObject button2;
     public Text loseScreen;
+    public Text winScreen;
+    public Text stageNr;
 
     void Awake()
     {
         loseScreen.enabled = false;
+        winScreen.enabled = false;
+        stageNr.text = ("Stage 1");
     }
     public void hideBuyMenu()
     {
@@ -22,6 +26,15 @@ public class UIManager : MonoBehaviour {
     public void showLoseScreen()
     {
         loseScreen.enabled = true;
+    }
+
+
+
+    public IEnumerator showWinScreen()
+    {
+        winScreen.enabled = true;
+        yield return new WaitForSeconds(5.0f);
+        winScreen.enabled = false;
     }
 
     public void showBuyMenu()

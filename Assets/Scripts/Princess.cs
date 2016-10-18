@@ -16,5 +16,9 @@ public class Princess : MonoBehaviour {
         {
             this.transform.position = Vector3.MoveTowards(this.transform.position, hero.transform.position, hero.movSpeed*0.9f);
         }
+        else
+        {
+            this.transform.position= new Vector3(1.272019f, -7.2379f);
+        }
 	}
 }
