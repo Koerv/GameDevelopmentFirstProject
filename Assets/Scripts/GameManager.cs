@@ -9,7 +9,6 @@ public class GameManager : MonoBehaviour {
     public bool wayDown = true;
     public UIManager uiManager;
     public Hero hero;
-    public Text loseScreen;
 
     //Awake is always called before any Start functions
 
@@ -31,8 +30,6 @@ public class GameManager : MonoBehaviour {
         DontDestroyOnLoad(gameObject);
         //Get a component reference to the attached BoardManager script
         //boardScript = GetComponent<BoardManager>();
-        loseScreen = FindObjectOfType<Text>();
-        loseScreen.enabled = false;
         //Call the InitGame function to initialize the first level 
         InitGame();
     }
@@ -44,6 +41,17 @@ public class GameManager : MonoBehaviour {
 
     }
 
+    public void gameOver()
+    {
+        uiManager.showLoseScreen();
+    }
+
+    public void stageClear()
+    {
+        StartCoroutine(uiManager.showWinScreen());
+        uiManager.stageNr.text = ("Stage " + hero.level);
+    }
+
     public void EndBuyPhase()
     {
         
@@ -53,7 +61,7 @@ public class GameManager : MonoBehaviour {
         {
             hero.transform.position = new Vector3(0.48f, 1.47f, 0);
         }   
-        hero.movSpeed = 0.01f;
+        hero.movSpeed = 0.015f;
     }
 
     public void StartBuyPhase()
