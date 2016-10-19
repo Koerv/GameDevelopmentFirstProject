@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
     public static GameManager instance = null;              //Static instance of GameManager which allows it to be accessed by any other script.
@@ -8,6 +9,7 @@ public class GameManager : MonoBehaviour {
     public bool wayDown = true;
     public UIManager uiManager;
     public Hero hero;
+
     //Awake is always called before any Start functions
 
     void Awake()
@@ -28,7 +30,6 @@ public class GameManager : MonoBehaviour {
         DontDestroyOnLoad(gameObject);
         //Get a component reference to the attached BoardManager script
         //boardScript = GetComponent<BoardManager>();
-      
         //Call the InitGame function to initialize the first level 
         InitGame();
     }
@@ -40,13 +41,27 @@ public class GameManager : MonoBehaviour {
 
     }
 
+    public void gameOver()
+    {
+        uiManager.showLoseScreen();
+    }
+
+    public void stageClear()
+    {
+        StartCoroutine(uiManager.showWinScreen());
+        uiManager.stageNr.text = ("Stage " + hero.level);
+    }
+
     public void EndBuyPhase()
     {
         
         buyPhase = false;
         //hero (Resources.Load("Hero"), new Vector3(0.48f, 1.47f, 0), Quaternion.identity) as GameObject;
-        hero.transform.position = new Vector3(0.48f, 1.47f, 0);
-        hero.movSpeed = 0.01f;
+        if (wayDown)
+        {
+            hero.transform.position = new Vector3(0.48f, 1.47f, 0);
+        }   
+        hero.movSpeed = 0.015f;
     }
 
     public void StartBuyPhase()
