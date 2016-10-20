@@ -45,16 +45,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\AddBoss.cs" />
      <Compile Include="Assets\Scripts\BoardManager.cs" />
-     <Compile Include="Assets\Scripts\Boss.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\Hero.cs" />
      <Compile Include="Assets\Scripts\Loader.cs" />
-     <Compile Include="Assets\Scripts\Princess.cs" />
      <Compile Include="Assets\Scripts\TurningPoint.cs" />
-     <Compile Include="Assets\Scripts\UIManager.cs" />
-     <Compile Include="Assets\Scripts\UgradeBoss.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>F:/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
