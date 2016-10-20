@@ -1,14 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEditor;
 
-public class GameManager : MonoBehaviour {
+public class GameManager : MonoBehaviour
+{
     public static GameManager instance = null;              //Static instance of GameManager which allows it to be accessed by any other script.
     public int coins;
     public bool buyPhase = true;
     public bool wayDown = true;
     public UIManager uiManager;
     public Hero hero;
+    public Boss selectedBoss;
+    public int bossCosts;
 
     //Awake is always called before any Start functions
 
@@ -37,6 +41,9 @@ public class GameManager : MonoBehaviour {
     //Initializes the game for each level.
     void InitGame()
     {
+        coins = 300;
+        bossCosts = 100;
+        uiManager.updateCoins();
         //boardScript.BoardSetup();
 
     }
@@ -50,18 +57,23 @@ public class GameManager : MonoBehaviour {
     {
         StartCoroutine(uiManager.showWinScreen());
         uiManager.stageNr.text = ("Stage " + hero.level);
+        //player gets coins for defeating the hero! yeah
+        coins += (int)(hero.level * 100 + hero.hp * 5 + hero.strength * 10 + hero.attSpeed * 10);
+        uiManager.updateCoins();
     }
+  
 
     public void EndBuyPhase()
     {
-        
+
         buyPhase = false;
         //hero (Resources.Load("Hero"), new Vector3(0.48f, 1.47f, 0), Quaternion.identity) as GameObject;
         if (wayDown)
         {
             hero.transform.position = new Vector3(0.48f, 1.47f, 0);
-        }   
+        }
         hero.movSpeed = 0.015f;
+
     }
 
     public void StartBuyPhase()
@@ -69,5 +81,12 @@ public class GameManager : MonoBehaviour {
         buyPhase = true;
         uiManager.showBuyMenu();
     }
+
+    public void upgradeBoss(Boss boss)
+    {
+        uiManager.showUpgradeMenu();
+        selectedBoss = boss;
+    }
+    
 
 }
