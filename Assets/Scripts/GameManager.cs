@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public UIManager uiManager;
     public Hero hero;
     public Boss selectedBoss;
+    public int bossCosts;
 
     //Awake is always called before any Start functions
 
@@ -40,6 +41,9 @@ public class GameManager : MonoBehaviour
     //Initializes the game for each level.
     void InitGame()
     {
+        coins = 300;
+        bossCosts = 100;
+        uiManager.updateCoins();
         //boardScript.BoardSetup();
 
     }
@@ -53,7 +57,11 @@ public class GameManager : MonoBehaviour
     {
         StartCoroutine(uiManager.showWinScreen());
         uiManager.stageNr.text = ("Stage " + hero.level);
+        //player gets coins for defeating the hero! yeah
+        coins += (int)(hero.level * 100 + hero.hp * 5 + hero.strength * 10 + hero.attSpeed * 10);
+        uiManager.updateCoins();
     }
+  
 
     public void EndBuyPhase()
     {
@@ -78,7 +86,6 @@ public class GameManager : MonoBehaviour
     {
         uiManager.showUpgradeMenu();
         selectedBoss = boss;
-        Debug.Log("Upgrades noch nicht möglich...");
     }
     
 
