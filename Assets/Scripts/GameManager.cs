@@ -1,14 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEditor;
 
-public class GameManager : MonoBehaviour {
+public class GameManager : MonoBehaviour
+{
     public static GameManager instance = null;              //Static instance of GameManager which allows it to be accessed by any other script.
     public int coins;
     public bool buyPhase = true;
     public bool wayDown = true;
     public UIManager uiManager;
     public Hero hero;
+    public Boss selectedBoss;
 
     //Awake is always called before any Start functions
 
@@ -54,14 +57,15 @@ public class GameManager : MonoBehaviour {
 
     public void EndBuyPhase()
     {
-        
+
         buyPhase = false;
         //hero (Resources.Load("Hero"), new Vector3(0.48f, 1.47f, 0), Quaternion.identity) as GameObject;
         if (wayDown)
         {
             hero.transform.position = new Vector3(0.48f, 1.47f, 0);
-        }   
+        }
         hero.movSpeed = 0.015f;
+
     }
 
     public void StartBuyPhase()
@@ -69,5 +73,13 @@ public class GameManager : MonoBehaviour {
         buyPhase = true;
         uiManager.showBuyMenu();
     }
+
+    public void upgradeBoss(Boss boss)
+    {
+        uiManager.showUpgradeMenu();
+        selectedBoss = boss;
+        Debug.Log("Upgrades noch nicht möglich...");
+    }
+    
 
 }

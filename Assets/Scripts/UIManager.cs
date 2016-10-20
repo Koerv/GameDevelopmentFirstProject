@@ -6,6 +6,7 @@ public class UIManager : MonoBehaviour {
 
     public GameObject button1;
     public GameObject button2;
+    public GameObject button3;
     public Text loseScreen;
     public Text winScreen;
     public Text stageNr;
@@ -14,6 +15,7 @@ public class UIManager : MonoBehaviour {
     {
         loseScreen.enabled = false;
         winScreen.enabled = false;
+
         stageNr.text = ("Stage 1");
     }
     public void hideBuyMenu()
@@ -28,8 +30,6 @@ public class UIManager : MonoBehaviour {
         loseScreen.enabled = true;
     }
 
-
-
     public IEnumerator showWinScreen()
     {
         winScreen.enabled = true;
@@ -42,5 +42,10 @@ public class UIManager : MonoBehaviour {
         button1.SetActive(true);
         button2.SetActive(true);
 
+    }
+
+    public void showUpgradeMenu()
+    {
+        button3.SetActive(true);
     }
 }

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEditor;
 
 public class Boss : MonoBehaviour
 {
@@ -70,4 +71,21 @@ public class Boss : MonoBehaviour
         isFighting = true;
         preFightPosition = transform.position;
     }
+
+    void OnMouseDown()
+    {
+        //test purpose only
+        //upgradeBoss();
+        GameManager.instance.upgradeBoss(this);
+    }
+
+    public void upgradeBoss()
+    {
+        level += 1;
+        hp = (int)(9 + level + Mathf.Round(Random.Range(0f, level)));
+        strength = (int)(strength + Mathf.Round(Random.Range(0f, level)));
+        attSpeed= (int)(attSpeed + Mathf.Round(Random.Range(0f, level)));
+        Debug.Log("Boss Stats: Level: " + level + ", HP: " + hp + ", STR: " + strength + ", SPD: " + attSpeed);
+    }
+    
 }
