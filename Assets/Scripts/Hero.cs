@@ -20,6 +20,7 @@ public class Hero : MonoBehaviour
 
     bool dirChange = false;
     float sumTime = 0f;
+    AudioSource deathSound;
 
     //Move direction
     Vector3 moveDirection;
@@ -38,6 +39,7 @@ public class Hero : MonoBehaviour
         RerollStats();
 
         hAttackTime = 1 - this.attSpeed * 0.1f;
+        deathSound = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -133,6 +135,7 @@ public class Hero : MonoBehaviour
         isFighting = false;
         transform.position = new Vector3(-4.5f, 0.8f);
         movSpeed = 0.0f;
+        deathSound.Play();
         level++;
         RerollStats();
         GameManager.instance.wayDown = true;
