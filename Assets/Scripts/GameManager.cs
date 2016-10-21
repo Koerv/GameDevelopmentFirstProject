@@ -85,8 +85,14 @@ public class GameManager : MonoBehaviour
 
     public void upgradeBoss(Boss boss)
     {
+        if (selectedBoss != null)
+        {
+            selectedBoss.GetComponent<SpriteRenderer>().sprite = selectedBoss.standardSprite;
+        }
+
         uiManager.showUpgradeMenu();
         selectedBoss = boss;
+        selectedBoss.GetComponent<SpriteRenderer>().sprite = selectedBoss.selectedSprite;
     }
 
     public int getBossCosts()

@@ -4,6 +4,7 @@ using UnityEngine.EventSystems;
 
 public class AddBossButton : MonoBehaviour {
 
+    /*
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -13,7 +14,7 @@ public class AddBossButton : MonoBehaviour {
         }
 
     }
-
+    */
     public void OnPointerDown(PointerEventData eventData)
     {
         Debug.Log("Button Mouse Down");

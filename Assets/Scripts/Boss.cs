@@ -9,6 +9,8 @@ public class Boss : MonoBehaviour
     public int hp;
     public int strength;
     public float attSpeed;
+    public Sprite standardSprite;
+    public Sprite selectedSprite;
 
     float bAttackTime;
     float bTimeLeft;
@@ -86,6 +88,7 @@ public class Boss : MonoBehaviour
         //test purpose only
         //upgradeBoss();
         GameManager.instance.upgradeBoss(this);
+
     }
 
     public void upgradeBoss()

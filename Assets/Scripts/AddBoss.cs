@@ -20,16 +20,10 @@ public class AddBoss : MonoBehaviour {
         {
 
             Vector3 target;
-            target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            
+            target = Camera.main.ScreenToWorldPoint(Input.mousePosition);      
             boss.transform.position = new Vector3(target.x,target.y,0);
-            Debug.Log(boss.transform.position);
-            if (Input.GetMouseButtonUp(0))
+            if (Input.GetMouseButtonDown(0))
                 {
-
-                     
-
- 
                     buildMode = false;
                     GameManager.instance.coins -= GameManager.instance.getBossCosts();
                     GameManager.instance.bossCount += 1;
