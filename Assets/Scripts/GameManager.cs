@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public Hero hero;
     public Boss selectedBoss;
     public int bossCosts;
+    public int bossCount;
 
     //Awake is always called before any Start functions
 
@@ -41,9 +42,9 @@ public class GameManager : MonoBehaviour
     //Initializes the game for each level.
     void InitGame()
     {
-        coins = 300;
         bossCosts = 100;
         uiManager.updateCoins();
+        bossCount = 0;
         //boardScript.BoardSetup();
 
     }
@@ -86,6 +87,16 @@ public class GameManager : MonoBehaviour
     {
         uiManager.showUpgradeMenu();
         selectedBoss = boss;
+    }
+
+    public int getBossCosts()
+    {
+        return bossCount * 50 + 100;
+    }
+
+    public int getUpgradeCosts()
+    {
+        return (int)(Mathf.Pow(selectedBoss.level, 1.2f) * 20);
     }
     
 

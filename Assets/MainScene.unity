@@ -138,7 +138,7 @@ GameObject:
   - 114: {fileID: 12233648}
   - 114: {fileID: 12233647}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: Button_UpgradeBoss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -334,7 +334,7 @@ GameObject:
   - 114: {fileID: 70305560}
   - 114: {fileID: 70305559}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Button_EndPhase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3253,7 +3253,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.47794116, g: 0.37248713, b: 0.20734212, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -3499,8 +3499,9 @@ GameObject:
   - 222: {fileID: 1824387517}
   - 114: {fileID: 1824387516}
   - 114: {fileID: 1824387515}
+  - 114: {fileID: 1824387518}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Button_AddBoss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3563,18 +3564,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1824387516}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2049352559}
-        m_MethodName: CreateBoss
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 1
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1824387516
@@ -3610,6 +3600,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1824387513}
+--- !u!114 &1824387518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1824387513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5f9ee8d16ce25c4fa5dc9b16677884b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1840191987
 Prefab:
   m_ObjectHideFlags: 0
@@ -3995,13 +3996,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3e257a49e061fa4e97fc470d0b51e9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coins: 0
+  coins: 10000
   buyPhase: 1
   wayDown: 1
   uiManager: {fileID: 1462053888}
   hero: {fileID: 1959895730}
   selectedBoss: {fileID: 0}
   bossCosts: 0
+  bossCount: 0
 --- !u!4 &2049352558
 Transform:
   m_ObjectHideFlags: 0
@@ -4046,6 +4048,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 2054660466}
+  - 114: {fileID: 2054660467}
   m_Layer: 0
   m_Name: Level1
   m_TagString: Untagged
@@ -4105,6 +4108,17 @@ Transform:
   - {fileID: 1079644362}
   m_Father: {fileID: 0}
   m_RootOrder: 2
+--- !u!114 &2054660467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2054660465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a9e1d6487f606045b7d5c0aa1361eb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2074677951
 Prefab:
   m_ObjectHideFlags: 0

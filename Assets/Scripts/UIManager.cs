@@ -41,6 +41,11 @@ public class UIManager : MonoBehaviour {
 
     void Update()
     {
+        button2.GetComponentInChildren<Text>().text = "ADD Boss (" + GameManager.instance.getBossCosts() + ")";
+        if (GameManager.instance.selectedBoss != null)
+        {
+            button3.GetComponentInChildren<Text>().text = "Upgrade Boss (" + GameManager.instance.getUpgradeCosts() + ")";
+        }
         updateCoins();
     }
     public void updateCoins()

@@ -14,9 +14,9 @@ public class AddBoss : MonoBehaviour {
     {
         if (buildMode == true)
         {
-            if (GameManager.instance.coins >= GameManager.instance.bossCosts)
+            if (GameManager.instance.coins >= GameManager.instance.getBossCosts())
             {
-                if (Input.GetMouseButtonDown(0))
+                if (Input.GetMouseButtonUp(0))
                 {
                     Vector3 target;
                     target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -24,8 +24,8 @@ public class AddBoss : MonoBehaviour {
                     //Prefab has to be in Resources folder
                     boss = Instantiate(Resources.Load("Boss_1"), new Vector3(target.x, target.y, 0), Quaternion.identity) as GameObject;
                     buildMode = false;
-                    GameManager.instance.coins -= GameManager.instance.bossCosts;
-                    GameManager.instance.bossCosts += 50;
+                    GameManager.instance.coins -= GameManager.instance.getBossCosts();
+                    GameManager.instance.bossCount += 1;
                 }
             }
         }

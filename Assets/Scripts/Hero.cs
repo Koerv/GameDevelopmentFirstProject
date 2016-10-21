@@ -82,8 +82,9 @@ public class Hero : MonoBehaviour
                 {
                     isFighting = false;
                     currentBoss.isFighting = false;
-                    //currentBoss.enabled = false;
-                    currentBoss.transform.position = new Vector3(4.5f, 0.8f);
+                    Destroy(currentBoss.gameObject);
+                    GameManager.instance.bossCount -= 1;
+                    //currentBoss.transform.position = new Vector3(4.5f, 0.8f);
                     Debug.Log("Stirb!");
                 }
                 //reset Attack Time

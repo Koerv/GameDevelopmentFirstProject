@@ -6,9 +6,9 @@ public class UgradeBoss : MonoBehaviour {
     public void executeUpgrade()
     {
         boss = GameManager.instance.selectedBoss;
-        if (GameManager.instance.coins >= boss.level * 20)
+        if (GameManager.instance.coins >= GameManager.instance.getUpgradeCosts())
         {
-            GameManager.instance.coins -= boss.level * 20;
+            GameManager.instance.coins -= GameManager.instance.getUpgradeCosts();
             GameManager.instance.selectedBoss.upgradeBoss();
         }
     }
