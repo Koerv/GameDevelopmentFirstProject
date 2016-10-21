@@ -56,12 +56,24 @@ public class Hero : MonoBehaviour
         {
 
             hTimeLeft -= Time.deltaTime;
-            transform.position = (transform.position - moveDirection * hTimeLeft);
+
+            //animation for smoother movement
+            if (hTimeLeft <= (hAttackTime / 2))
+            {
+                Debug.Log("hTimeLeft: " + hTimeLeft);
+                Vector3.MoveTowards(this.transform.position, preFightPosition, 5f);
+            }
+            //for moving back
+            else
+            {
+                transform.position = (transform.position - moveDirection * hTimeLeft);
+            }
 
             if (hTimeLeft <= 0)
             {
                 //set position back to where hero was before the fight
                 transform.position = preFightPosition;
+             
                 currentBoss.hp -= strength;
                 Debug.Log("Boss HP: " + currentBoss.hp);
                 if (currentBoss.hp <= 0)
@@ -129,7 +141,7 @@ public class Hero : MonoBehaviour
 
     private void RerollStats()
     {
-        hp = (int)(15 + level + Mathf.Round(UnityEngine.Random.Range(0f, level)));
+        hp = (int)(15 + level*3 + Mathf.Round(UnityEngine.Random.Range(0f, level)));
         strength = (int)(1 + level + Mathf.Round(UnityEngine.Random.Range(0f, level)));
         attSpeed = (1.0f + level + Mathf.Round(UnityEngine.Random.Range(0f, level)))*0.8f;
         movSpeed = 0.015f;

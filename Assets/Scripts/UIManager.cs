@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour {
     public Text loseScreen;
     public Text winScreen;
     public Text stageNr;
+    public Text coins;
 
     void Awake()
     {
@@ -17,6 +18,7 @@ public class UIManager : MonoBehaviour {
         winScreen.enabled = false;
 
         stageNr.text = ("Stage 1");
+        coins.text = ("Coins: " + coins);
     }
     public void hideBuyMenu()
     {
@@ -35,6 +37,15 @@ public class UIManager : MonoBehaviour {
         winScreen.enabled = true;
         yield return new WaitForSeconds(5.0f);
         winScreen.enabled = false;
+    }
+
+    void Update()
+    {
+        updateCoins();
+    }
+    public void updateCoins()
+    {
+        coins.text = "Coins: " + GameManager.instance.coins;
     }
 
     public void showBuyMenu()

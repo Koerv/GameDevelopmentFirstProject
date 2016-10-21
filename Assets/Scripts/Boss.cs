@@ -40,7 +40,16 @@ public class Boss : MonoBehaviour
         {
             bTimeLeft -= Time.deltaTime;
             //also make the boss move towards the hero, but not as strongly since bosses are HUGE and MIGHTY!
-            transform.position = (transform.position + hero.getMoveDirection() * 0.4f * bTimeLeft);
+            //animation for smoother movement
+            if (bTimeLeft <= (bAttackTime / 2))
+            {
+                Vector3.MoveTowards(transform.position, preFightPosition, 1f);
+            }
+            //for moving back
+            else
+            {
+                transform.position = (transform.position + hero.getMoveDirection() * 0.4f * bTimeLeft);
+            }
 
             if (bTimeLeft <= 0)
             {
@@ -82,9 +91,9 @@ public class Boss : MonoBehaviour
     public void upgradeBoss()
     {
         level += 1;
-        hp = (int)(9 + level + Mathf.Round(Random.Range(0f, level)));
+        hp = (int)(hp + level + Mathf.Round(Random.Range(0f, level)));
         strength = (int)(strength + Mathf.Round(Random.Range(0f, level)));
-        attSpeed= (int)(attSpeed + Mathf.Round(Random.Range(0f, level)));
+        attSpeed= attSpeed + Mathf.Round(Random.Range(0f, level));
         Debug.Log("Boss Stats: Level: " + level + ", HP: " + hp + ", STR: " + strength + ", SPD: " + attSpeed);
     }
     
