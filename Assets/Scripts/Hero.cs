@@ -82,8 +82,15 @@ public class Hero : MonoBehaviour
                 {
                     isFighting = false;
                     currentBoss.isFighting = false;
+                    //sonst gibts ne Null-Reference
+                    if (GameManager.instance.selectedBoss = currentBoss)
+                    {
+                        GameManager.instance.selectedBoss = null;
+                    }
                     Destroy(currentBoss.gameObject);
                     GameManager.instance.bossCount -= 1;
+
+
                     //currentBoss.transform.position = new Vector3(4.5f, 0.8f);
                     Debug.Log("Stirb!");
                 }
