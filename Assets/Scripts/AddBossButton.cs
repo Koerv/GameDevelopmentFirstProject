@@ -14,10 +14,11 @@ public class AddBossButton : MonoBehaviour {
         }
 
     }
-    */
+    
     public void OnPointerDown(PointerEventData eventData)
     {
         Debug.Log("Button Mouse Down");
         GameManager.instance.GetComponent<AddBoss>().CreateBoss();
     }
+    */
 }

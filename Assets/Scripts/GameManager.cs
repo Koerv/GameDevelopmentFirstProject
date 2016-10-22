@@ -90,7 +90,6 @@ public class GameManager : MonoBehaviour
             selectedBoss.GetComponent<SpriteRenderer>().sprite = selectedBoss.standardSprite;
         }
 
-        uiManager.showUpgradeMenu();
         selectedBoss = boss;
         selectedBoss.GetComponent<SpriteRenderer>().sprite = selectedBoss.selectedSprite;
     }

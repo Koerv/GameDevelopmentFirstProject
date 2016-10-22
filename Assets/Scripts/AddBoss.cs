@@ -28,7 +28,14 @@ public class AddBoss : MonoBehaviour {
                     GameManager.instance.coins -= GameManager.instance.getBossCosts();
                     GameManager.instance.bossCount += 1;
                 }
+            if (Input.GetMouseButtonDown(1))
+            {
+                buildMode = false;
+                Destroy(boss.gameObject);
             }
+        }
+            
+
         
     }
 

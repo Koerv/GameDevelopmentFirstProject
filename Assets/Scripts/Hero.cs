@@ -83,7 +83,7 @@ public class Hero : MonoBehaviour
                     isFighting = false;
                     currentBoss.isFighting = false;
                     //sonst gibts ne Null-Reference
-                    if (GameManager.instance.selectedBoss = currentBoss)
+                    if (GameManager.instance.selectedBoss == currentBoss)
                     {
                         GameManager.instance.selectedBoss = null;
                     }
