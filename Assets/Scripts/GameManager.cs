@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public Boss selectedBoss;
     public int bossCosts;
     public int bossCount;
+    public int stages;
 
     //Awake is always called before any Start functions
 
@@ -102,6 +103,16 @@ public class GameManager : MonoBehaviour
     public int getUpgradeCosts()
     {
         return (int)(Mathf.Pow(selectedBoss.level, 1.2f) * 20);
+    }
+
+    public void checkEnd()
+    {
+        if(hero.level > stages)
+        {
+            buyPhase = false;
+            selectedBoss = null;
+            uiManager.showFinalWinScreen();
+        }
     }
     
 

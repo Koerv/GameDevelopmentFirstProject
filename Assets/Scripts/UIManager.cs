@@ -13,11 +13,13 @@ public class UIManager : MonoBehaviour {
     public Text coins;
     public Text bossInfo;
     public Text heroInfo;
+    public Text finalWinScreen;
 
     void Awake()
     {
         loseScreen.enabled = false;
         winScreen.enabled = false;
+        finalWinScreen.enabled = false;
 
         stageNr.text = ("Stage 1");
         coins.text = ("Coins: " + coins);
@@ -39,6 +41,19 @@ public class UIManager : MonoBehaviour {
         winScreen.enabled = true;
         yield return new WaitForSeconds(5.0f);
         winScreen.enabled = false;
+    }
+
+    public void showFinalWinScreen()
+    {
+        //hide everything
+        foreach (Text text in GetComponentsInChildren<Text>())
+        {
+            text.enabled = false;
+        }
+        button1.SetActive(false);
+        button2.SetActive(false);
+
+        finalWinScreen.enabled = true;
     }
 
     void Update()

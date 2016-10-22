@@ -140,6 +140,7 @@ public class Hero : MonoBehaviour
 
     public void Defeated()
     {
+
         isFighting = false;
         transform.position = new Vector3(-4.5f, 0.8f);
         movSpeed = 0.0f;
@@ -147,7 +148,12 @@ public class Hero : MonoBehaviour
         level++;
         RerollStats();
         GameManager.instance.wayDown = true;
-        
+        if (level > GameManager.instance.stages)
+        {
+            GameManager.instance.checkEnd();
+            Destroy(gameObject);
+        }
+
     }
 
     private void RerollStats()
