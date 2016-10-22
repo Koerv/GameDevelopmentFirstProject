@@ -28,6 +28,7 @@ public class UIManager : MonoBehaviour {
     {
         button1.SetActive(false);
         button2.SetActive(false);
+        button3.SetActive(false);
 
     }
 

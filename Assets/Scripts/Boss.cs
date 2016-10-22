@@ -55,6 +55,7 @@ public class Boss : MonoBehaviour
 
             if (bTimeLeft <= 0)
             {
+                GetComponent<AudioSource>().Play();
                 transform.position = preFightPosition;
                 hero.hp -= strength;
                 Debug.Log("Hero HP: " + hero.hp);

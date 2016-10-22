@@ -10,6 +10,7 @@ public class Hero : MonoBehaviour
     public int strength;
     public float attSpeed;
     public float movSpeed;
+    public AudioClip fightingSound;
 
     float hAttackTime;
     float hTimeLeft;
