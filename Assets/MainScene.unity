@@ -4260,6 +4260,7 @@ MonoBehaviour:
   bossCosts: 100
   bossCount: 0
   stages: 20
+  updateCosts: 40
 --- !u!4 &2049352558
 Transform:
   m_ObjectHideFlags: 0
