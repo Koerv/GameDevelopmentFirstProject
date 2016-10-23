@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 public class UgradeBoss : MonoBehaviour {
     private Boss boss;
