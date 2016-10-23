@@ -1809,8 +1809,8 @@ RectTransform:
   m_RootOrder: 8
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -243.75, y: 39}
-  m_SizeDelta: {x: 378.5, y: 27}
+  m_AnchoredPosition: {x: -400, y: 20}
+  m_SizeDelta: {x: 300, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &681667834
 Prefab:
@@ -2752,8 +2752,8 @@ RectTransform:
   m_RootOrder: 7
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -244, y: 79}
-  m_SizeDelta: {x: 379, y: 30}
+  m_AnchoredPosition: {x: -400, y: 60}
+  m_SizeDelta: {x: 300, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1128741182
 MonoBehaviour:
@@ -3373,8 +3373,8 @@ MonoBehaviour:
 
     There is no hero left who is brave enough to enter your dungeon.
 
-    The princess realizes that all these "heroes" are just wimps and the live as wife
-    of an evil dungeon master is not the worst. (Or maybe it''s just stockholm syndrome,
+    The princess realizes that all these "heroes" are just wimps and the life as wife
+    of an evil dungeon master is not the worst. (Or maybe it''s just Stockholm Syndrome,
     who knows...)'
 --- !u!222 &1519601121
 CanvasRenderer:
