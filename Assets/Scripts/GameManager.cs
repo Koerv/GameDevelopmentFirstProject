@@ -46,7 +46,6 @@ public class GameManager : MonoBehaviour
     //Initializes the game for each level.
     void InitGame()
     {
-        bossCosts = 100;
         uiManager.updateCoins();
         bossCount = 0;
         //boardScript.BoardSetup();
