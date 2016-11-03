@@ -2417,6 +2417,16 @@ Prefab:
       propertyPath: m_Name
       value: Floor (27)
       objectReference: {fileID: 0}
+    - target: {fileID: 212000012918126840, guid: 065b03b2c5f6e0449b6883c3a30ac7fa,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 0.9607843
+      objectReference: {fileID: 0}
+    - target: {fileID: 212000012918126840, guid: 065b03b2c5f6e0449b6883c3a30ac7fa,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 0.29803923
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 065b03b2c5f6e0449b6883c3a30ac7fa, type: 2}
   m_IsPrefabParent: 0
@@ -2985,6 +2995,16 @@ Prefab:
     - target: {fileID: 1000013442374366, guid: 065b03b2c5f6e0449b6883c3a30ac7fa, type: 2}
       propertyPath: m_Name
       value: Floor (31)
+      objectReference: {fileID: 0}
+    - target: {fileID: 212000012918126840, guid: 065b03b2c5f6e0449b6883c3a30ac7fa,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 0.9607843
+      objectReference: {fileID: 0}
+    - target: {fileID: 212000012918126840, guid: 065b03b2c5f6e0449b6883c3a30ac7fa,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 0.29803923
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 065b03b2c5f6e0449b6883c3a30ac7fa, type: 2}
@@ -3914,6 +3934,21 @@ Prefab:
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212000012918126840, guid: 065b03b2c5f6e0449b6883c3a30ac7fa,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 0.9614604
+      objectReference: {fileID: 0}
+    - target: {fileID: 212000012918126840, guid: 065b03b2c5f6e0449b6883c3a30ac7fa,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212000012918126840, guid: 065b03b2c5f6e0449b6883c3a30ac7fa,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 0.30147058
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 065b03b2c5f6e0449b6883c3a30ac7fa, type: 2}
   m_IsPrefabParent: 0
@@ -4259,7 +4294,7 @@ MonoBehaviour:
   selectedBoss: {fileID: 0}
   bossCosts: 100
   bossCount: 0
-  stages: 20
+  stages: 5
   updateCosts: 40
 --- !u!4 &2049352558
 Transform:
