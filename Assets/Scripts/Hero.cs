@@ -10,6 +10,7 @@ public class Hero : MonoBehaviour
     public int strength;
     public float attSpeed;
     public float movSpeed;
+    public AudioClip fightingSound;
 
     float hAttackTime;
     float hTimeLeft;
@@ -20,6 +21,7 @@ public class Hero : MonoBehaviour
 
     bool dirChange = false;
     float sumTime = 0f;
+    AudioSource deathSound;
 
     //Move direction
     Vector3 moveDirection;
@@ -38,6 +40,7 @@ public class Hero : MonoBehaviour
         RerollStats();
 
         hAttackTime = 1 - this.attSpeed * 0.1f;
+        deathSound = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -80,8 +83,16 @@ public class Hero : MonoBehaviour
                 {
                     isFighting = false;
                     currentBoss.isFighting = false;
-                    //currentBoss.enabled = false;
-                    currentBoss.transform.position = new Vector3(4.5f, 0.8f);
+                    //sonst gibts ne Null-Reference
+                    if (GameManager.instance.selectedBoss == currentBoss)
+                    {
+                        GameManager.instance.selectedBoss = null;
+                    }
+                    Destroy(currentBoss.gameObject);
+                    GameManager.instance.bossCount -= 1;
+
+
+                    //currentBoss.transform.position = new Vector3(4.5f, 0.8f);
                     Debug.Log("Stirb!");
                 }
                 //reset Attack Time
@@ -130,13 +141,20 @@ public class Hero : MonoBehaviour
 
     public void Defeated()
     {
+
         isFighting = false;
         transform.position = new Vector3(-4.5f, 0.8f);
         movSpeed = 0.0f;
+        deathSound.Play();
         level++;
         RerollStats();
         GameManager.instance.wayDown = true;
-        
+        if (level > GameManager.instance.stages)
+        {
+            GameManager.instance.checkEnd();
+            Destroy(gameObject);
+        }
+
     }
 
     private void RerollStats()

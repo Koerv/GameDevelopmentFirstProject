@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 
 public class GameManager : MonoBehaviour
 {
@@ -13,6 +15,9 @@ public class GameManager : MonoBehaviour
     public Hero hero;
     public Boss selectedBoss;
     public int bossCosts;
+    public int bossCount;
+    public int stages;
+    public int updateCosts;
 
     //Awake is always called before any Start functions
 
@@ -41,9 +46,8 @@ public class GameManager : MonoBehaviour
     //Initializes the game for each level.
     void InitGame()
     {
-        coins = 300;
-        bossCosts = 100;
         uiManager.updateCoins();
+        bossCount = 0;
         //boardScript.BoardSetup();
 
     }
@@ -84,8 +88,33 @@ public class GameManager : MonoBehaviour
 
     public void upgradeBoss(Boss boss)
     {
-        uiManager.showUpgradeMenu();
+        if (selectedBoss != null)
+        {
+            selectedBoss.GetComponent<SpriteRenderer>().sprite = selectedBoss.standardSprite;
+        }
+
         selectedBoss = boss;
+        selectedBoss.GetComponent<SpriteRenderer>().sprite = selectedBoss.selectedSprite;
+    }
+
+    public int getBossCosts()
+    {
+        return bossCount * 50 + 100;
+    }
+
+    public int getUpgradeCosts()
+    {
+        return (int)(Mathf.Pow(selectedBoss.level, 1.2f) * updateCosts);
+    }
+
+    public void checkEnd()
+    {
+        if(hero.level > stages)
+        {
+            buyPhase = false;
+            selectedBoss = null;
+            uiManager.showFinalWinScreen();
+        }
     }
     
 

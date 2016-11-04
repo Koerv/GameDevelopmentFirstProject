@@ -7,28 +7,37 @@ public class AddBoss : MonoBehaviour {
 	// Use this for initialization
 	public void CreateBoss (){
         //wait for mouse click
-        buildMode = true;
-	}
+        
+        if (GameManager.instance.coins >= GameManager.instance.getBossCosts())
+        {
+            buildMode = true;
+            boss = Instantiate(Resources.Load("Boss_1"), new Vector3(transform.position.x, transform.position.y,0), Quaternion.identity) as GameObject;
+        }
+    }
 
     void Update()
     {
         if (buildMode == true)
         {
-            if (GameManager.instance.coins >= GameManager.instance.bossCosts)
-            {
-                if (Input.GetMouseButtonDown(0))
-                {
-                    Vector3 target;
-                    target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-                    //Prefab has to be in Resources folder
-                    boss = Instantiate(Resources.Load("Boss_1"), new Vector3(target.x, target.y, 0), Quaternion.identity) as GameObject;
+            Vector3 target;
+            target = Camera.main.ScreenToWorldPoint(Input.mousePosition);      
+            boss.transform.position = new Vector3(target.x,target.y,0);
+            if (Input.GetMouseButtonDown(0))
+                {
                     buildMode = false;
-                    GameManager.instance.coins -= GameManager.instance.bossCosts;
-                    GameManager.instance.bossCosts += 50;
+                    GameManager.instance.coins -= GameManager.instance.getBossCosts();
+                    GameManager.instance.bossCount += 1;
                 }
+            if (Input.GetMouseButtonDown(1))
+            {
+                buildMode = false;
+                Destroy(boss.gameObject);
             }
         }
+            
+
+        
     }
 
 
