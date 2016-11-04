@@ -7,9 +7,10 @@ public class AddBoss : MonoBehaviour {
 	// Use this for initialization
 	public void CreateBoss (){
         //wait for mouse click
-        buildMode = true;
+        
         if (GameManager.instance.coins >= GameManager.instance.getBossCosts())
         {
+            buildMode = true;
             boss = Instantiate(Resources.Load("Boss_1"), new Vector3(transform.position.x, transform.position.y,0), Quaternion.identity) as GameObject;
         }
     }
