@@ -18,6 +18,10 @@ public class GameManager : MonoBehaviour
     public int bossCount;
     public int stages;
     public int updateCosts;
+    public BoardManager bm;
+    public Grid grid;
+    public bool bossGrabbed;
+    public GameObject newBoss;
 
     //Awake is always called before any Start functions
 
@@ -46,10 +50,11 @@ public class GameManager : MonoBehaviour
     //Initializes the game for each level.
     void InitGame()
     {
+      //  bm.BoardSetup();
         uiManager.updateCoins();
         bossCount = 0;
         //boardScript.BoardSetup();
-
+        grid.startInstantiation();
     }
 
     public void gameOver()
