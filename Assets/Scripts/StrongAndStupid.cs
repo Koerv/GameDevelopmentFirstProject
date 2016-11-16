@@ -16,4 +16,7 @@ public class StrongAndStupid : Hero
     {
   
     }
+
+    public void lookForNewDirection(Grid grid) {
+    }
 }

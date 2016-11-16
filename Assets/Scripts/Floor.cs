@@ -4,6 +4,10 @@ using System.Collections;
 public class Floor : MonoBehaviour {
 
     public int type;
+    public int sumOfStatsEast;
+    public int sumOfStatsWest;
+    public int layoutPosX;
+    public int layoutPosY;
 
     void OnMouseDown()
     {

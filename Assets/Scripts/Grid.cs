@@ -6,10 +6,13 @@ public class Grid : MonoBehaviour {
     public int[,] layout = new int[15,10];
     public GameObject[] tiles ;
 
-    //floor Tiles are only places where a boss can be put on
+    //floor tiles contain more information about the objects on and around it
     public Floor[,] floorTiles = new Floor[15,10];
     public Princess princess;
     public Hero hero;
+
+    public int gridSizeX;
+    public int gridSizeY;
 
     public void startInstantiation()
     {
@@ -19,6 +22,8 @@ public class Grid : MonoBehaviour {
 
     public void setupLayout()
     {
+        gridSizeX =15;
+        gridSizeY =10;
 
         layout[0, 0] = 0;
         layout[0, 1] = 0;
@@ -178,10 +183,10 @@ public class Grid : MonoBehaviour {
 
     void placeTiles()
     {
-        for (int i = 0; i< 14; i++)
+        for (int i = 0; i< gridSizeX-1; i++)
         {
  
-            for(int j = 0; j <= 9; j++)
+            for(int j = 0; j <= gridSizeY-1; j++)
             {
                 
                 if (layout[i, j] != 0)
@@ -193,9 +198,10 @@ public class Grid : MonoBehaviour {
 
                     //initialize tiles and give them a type(entrance, safe space, regular tile or cage)
                     floorTiles[i,j] =  instance.GetComponent<Floor>();
-                    Debug.Log(layout[i, j] + ", " + i + ", " + j);
                     floorTiles[i,j].type = layout[i, j];
-                    
+                    floorTiles[i,j].layoutPosX = i;
+                    floorTiles[i,j].layoutPosY = j;
+
                     instance.transform.SetParent(this.transform, false);
                     //Prevent overlapping of tiles
                     instance.GetComponent<SpriteRenderer>().sortingOrder = i;
@@ -209,7 +215,7 @@ public class Grid : MonoBehaviour {
                     if (layout[i, j] == 2)
                     {
                         hero.transform.position = instance.transform.position;
-                        hero.GetComponent<SpriteRenderer>().sortingOrder = 15;
+                        hero.GetComponent<SpriteRenderer>().sortingOrder = gridSizeX;
                         hero.startPosition = new Vector2(i, j);
                         hero.layoutPosition = hero.startPosition;
                     }
@@ -220,6 +226,31 @@ public class Grid : MonoBehaviour {
         }
     }
 
+    //for every tile in the grid, see what is left and right
+    public void calcSumOfStats()
+    {
+        foreach (Floor floorTile in floorTiles)
+        {
+            if(floorTile != null)
+            {
+                int eastTileXCoord = floorTile.layoutPosX;
+                int eastTileYCoord = floorTile.layoutPosY + 1;
+                Debug.Log("X: " + eastTileXCoord + ", Y: " + eastTileYCoord + ", layout type:" + layout[eastTileXCoord, eastTileYCoord]);
+                while (layout[eastTileXCoord, eastTileYCoord] != 0 && eastTileYCoord < gridSizeY)
+                {
+                    floorTile.sumOfStatsEast += 1;
+                    eastTileYCoord++;
+                }
+                int westTileXCoord = floorTile.layoutPosX;
+                int westTileYCoord = floorTile.layoutPosY - 1;
+                while (layout[westTileXCoord, westTileYCoord] != 0 && westTileYCoord >= 0)
+                {
+                    floorTile.sumOfStatsWest += 1;
+                    westTileYCoord--;
+                }
 
-
+            }
+        }
+    }
+   
 }

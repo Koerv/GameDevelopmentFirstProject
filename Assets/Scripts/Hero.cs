@@ -177,6 +177,8 @@ public class Hero : MonoBehaviour
         return moveDirection;
     }
 
+    public void lookForNewDirection(Grid grid) { }
+
     
     public void OnCollisionEnter2D(Collision2D collision)
     {

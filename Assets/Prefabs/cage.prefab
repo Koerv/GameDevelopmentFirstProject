@@ -68,6 +68,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
+  sumOfStatsEast: 0
+  sumOfStatsWest: 0
+  layoutPosX: 0
+  layoutPosY: 0
 --- !u!212 &212000010934287088
 SpriteRenderer:
   m_ObjectHideFlags: 1
