@@ -77,10 +77,6 @@ public class GameManager : MonoBehaviour
 
         buyPhase = false;
         //hero (Resources.Load("Hero"), new Vector3(0.48f, 1.47f, 0), Quaternion.identity) as GameObject;
-        if (wayDown)
-        {
-            hero.transform.position = new Vector3(0.48f, 1.47f, 0);
-        }
         hero.movSpeed = 0.015f;
 
     }
@@ -121,6 +117,32 @@ public class GameManager : MonoBehaviour
             uiManager.showFinalWinScreen();
         }
     }
-    
+
+    void Update()
+    {
+        if (!buyPhase)
+        {
+            letTheHeroWalk();
+        }
+    }
+
+    void letTheHeroWalk()
+    {
+        
+        if (wayDown)
+        {
+            int southTileXCoord = (int)hero.layoutPosition.x+1;
+            int southTileYCoord = (int)hero.layoutPosition.y;
+
+            if (grid.layout[southTileXCoord, southTileYCoord] != 0)
+            {
+                Debug.Log(southTileXCoord+ ", "+ southTileYCoord);
+                hero.transform.position = Vector3.MoveTowards(hero.transform.position, grid.floorTiles[southTileXCoord, southTileYCoord].transform.position, hero.movSpeed);
+            }
+        }
+    }
+
+
+
 
 }

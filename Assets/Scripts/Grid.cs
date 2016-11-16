@@ -5,11 +5,14 @@ public class Grid : MonoBehaviour {
 
     public int[,] layout = new int[15,10];
     public GameObject[] tiles ;
+
+    //floor Tiles are only places where a boss can be put on
     public Floor[,] floorTiles = new Floor[15,10];
+    public Princess princess;
+    public Hero hero;
 
     public void startInstantiation()
     {
-
         setupLayout();
         placeTiles();
     }
@@ -180,27 +183,43 @@ public class Grid : MonoBehaviour {
  
             for(int j = 0; j <= 9; j++)
             {
-                Debug.Log("i: " + i + " j: " + j);
+                
                 if (layout[i, j] != 0)
                 {
 
                     GameObject toInstantiate = tiles[layout[i,j]];
                     GameObject instance =
                         Instantiate(toInstantiate) as GameObject;
-                    if (layout[i, j] == 1)
-                    {
-                        floorTiles[i,j] =  instance.GetComponent<Floor>();
-                        Debug.Log(floorTiles[i, j]);
-                    }
+
+                    //initialize tiles and give them a type(entrance, safe space, regular tile or cage)
+                    floorTiles[i,j] =  instance.GetComponent<Floor>();
+                    Debug.Log(layout[i, j] + ", " + i + ", " + j);
+                    floorTiles[i,j].type = layout[i, j];
+                    
                     instance.transform.SetParent(this.transform, false);
                     //Prevent overlapping of tiles
                     instance.GetComponent<SpriteRenderer>().sortingOrder = i;
+                    //without the numbers the grid would be upside down
                     instance.transform.localPosition = new Vector2(j-5, -i + 8);
+                    if(layout[i,j] == 4)
+                    {
+                        princess.transform.position = instance.transform.position;
+                        princess.GetComponent<SpriteRenderer>().sortingOrder = i-1;
+                    }
+                    if (layout[i, j] == 2)
+                    {
+                        hero.transform.position = instance.transform.position;
+                        hero.GetComponent<SpriteRenderer>().sortingOrder = 15;
+                        hero.startPosition = new Vector2(i, j);
+                        hero.layoutPosition = hero.startPosition;
+                    }
+
 
                 }
             }
         }
     }
+
 
 
 }

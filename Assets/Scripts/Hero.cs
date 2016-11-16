@@ -15,6 +15,10 @@ public class Hero : MonoBehaviour
     float hAttackTime;
     float hTimeLeft;
 
+    //position of hero on the tile layout
+    public Vector2 layoutPosition;
+    public Vector2 startPosition;
+
     Boss currentBoss;
 
     public bool isFighting = false;
@@ -41,6 +45,7 @@ public class Hero : MonoBehaviour
 
         hAttackTime = 1 - this.attSpeed * 0.1f;
         deathSound = GetComponent<AudioSource>();
+
     }
 
     // Update is called once per frame

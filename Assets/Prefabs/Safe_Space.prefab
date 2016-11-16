@@ -20,8 +20,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000013995077436}
   - 212: {fileID: 212000011178001936}
+  - 114: {fileID: 114000013133486640}
   m_Layer: 0
-  m_Name: Princess Room
+  m_Name: Safe_Space
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40,6 +41,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &114000013133486640
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011797251660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18d75c0c6f82442478b64e3ed9150ca7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
 --- !u!212 &212000011178001936
 SpriteRenderer:
   m_ObjectHideFlags: 1
