@@ -28,7 +28,7 @@ public class Hero : MonoBehaviour
     AudioSource deathSound;
 
     //Move direction
-    Vector3 moveDirection;
+    public Vector3 moveDirection;
     Vector3 preFightPosition;
 
     //access Turning Points
@@ -51,15 +51,15 @@ public class Hero : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!GameManager.instance.buyPhase && !isFighting)
-        { 
-            transform.Translate(moveDirection);
-        }
+        //if (!GameManager.instance.buyPhase && !isFighting)
+        //{ 
+        //    transform.Translate(moveDirection);
+        //}
 
-        if (dirChange)
-        {
-            waitAndChangeDir();
-        }
+        //if (dirChange)
+        //{
+        //    waitAndChangeDir();
+        //}
         if (isFighting)
         {
 
@@ -132,6 +132,7 @@ public class Hero : MonoBehaviour
 
     }
 
+    //TODO delete
     void waitAndChangeDir()
     {
         sumTime += Time.deltaTime;

@@ -121,7 +121,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (!buyPhase)
+        if (!buyPhase && !hero.isFighting)
         {
             letTheHeroWalk();
         }
@@ -156,6 +156,7 @@ public class GameManager : MonoBehaviour
                 //walk east if more stats on east
                 if (grid.floorTiles[(int)hero.layoutPosition.x, (int)hero.layoutPosition.y].sumOfStatsEast > grid.floorTiles[(int)hero.layoutPosition.x, (int)hero.layoutPosition.y].sumOfStatsWest)
                 {
+                    hero.moveDirection = new Vector3(hero.movSpeed, 0f, 0f);
                     int EastTileXCoord = (int)hero.layoutPosition.x;
                     int EastTileYCoord = (int)hero.layoutPosition.y + 1;
                     hero.transform.position = Vector3.MoveTowards(hero.transform.position, grid.floorTiles[(int)hero.layoutPosition.x, (int)hero.layoutPosition.y + 1].transform.position, hero.movSpeed);
@@ -168,6 +169,7 @@ public class GameManager : MonoBehaviour
                 }
                 else
                 {
+                    hero.moveDirection = new Vector3(-hero.movSpeed, 0f, 0f);
                     int WestTileXCoord = (int)hero.layoutPosition.x;
                     int WestTileYCoord = (int)hero.layoutPosition.y-1;
                     hero.transform.position = Vector3.MoveTowards(hero.transform.position, grid.floorTiles[(int)hero.layoutPosition.x, (int)hero.layoutPosition.y - 1].transform.position, hero.movSpeed);

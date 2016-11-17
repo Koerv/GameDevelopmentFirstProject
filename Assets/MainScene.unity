@@ -1046,6 +1046,8 @@ MonoBehaviour:
   - {fileID: 1000011153407440, guid: b1497727d39033247bf56cf3c4b2a8a9, type: 2}
   princess: {fileID: 63769328}
   hero: {fileID: 1959895730}
+  gridSizeX: 0
+  gridSizeY: 0
 --- !u!114 &326012424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1344,6 +1346,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae761b4e30ee89e45b717319a8a72e86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  level: 0
+  hp: 0
+  strength: 0
+  attSpeed: 0
+  movSpeed: 0
+  fightingSound: {fileID: 0}
+  layoutPosition: {x: 0, y: 0}
+  startPosition: {x: 0, y: 0}
+  isFighting: 0
 --- !u!1001 &451753876
 Prefab:
   m_ObjectHideFlags: 0
@@ -3844,7 +3855,7 @@ Prefab:
     - target: {fileID: 114000013919128122, guid: d9fc40b69c9fe1244a87a9d07134d736,
         type: 2}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d9fc40b69c9fe1244a87a9d07134d736, type: 2}
