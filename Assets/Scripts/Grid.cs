@@ -214,10 +214,12 @@ public class Grid : MonoBehaviour {
                     }
                     if (layout[i, j] == 2)
                     {
-                        hero.transform.position = instance.transform.position;
+                        //set initial position and sprite order of the hero
+                        hero.initialPosition = instance.transform.position;
+                        hero.transform.position = hero.initialPosition;
                         hero.GetComponent<SpriteRenderer>().sortingOrder = gridSizeX;
-                        hero.startPosition = new Vector2(i, j);
-                        hero.layoutPosition = hero.startPosition;
+                        hero.layoutStartPosition = new Vector2(i, j);
+                        hero.layoutPosition = hero.layoutStartPosition;
                     }
 
 

@@ -4,10 +4,23 @@ using System.Collections;
 public class Floor : MonoBehaviour {
 
     public int type;
+
+    //#of stats of bosses along each direction
     public int sumOfStatsEast;
     public int sumOfStatsWest;
+
+    //#of tiles along each direction
+    //public int tilesEast;
+    //public int tilesWest;
+
+    //position of the tile on layout
     public int layoutPosX;
     public int layoutPosY;
+
+    //boss that is occupying this tile
+    public GameObject bossOnTile;
+
+    //TODO potion that is on this tile
 
     void OnMouseDown()
     {
@@ -17,7 +30,7 @@ public class Floor : MonoBehaviour {
             GameManager.instance.bossGrabbed = false;
             GameManager.instance.coins -= GameManager.instance.getBossCosts();
             GameManager.instance.bossCount += 1;
-            
+            bossOnTile=GameManager.instance.newBoss;
         }
     }
 }

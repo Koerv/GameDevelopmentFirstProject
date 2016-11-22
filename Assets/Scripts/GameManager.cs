@@ -11,6 +11,9 @@ public class GameManager : MonoBehaviour
     public int coins;
     public bool buyPhase = true;
     public bool wayDown = true;
+    public bool wayEast = false;
+    public bool wayWest = false;
+    bool stopMovement = false;
     public UIManager uiManager;
     public Hero hero;
     public Boss selectedBoss;
@@ -59,6 +62,7 @@ public class GameManager : MonoBehaviour
 
     public void gameOver()
     {
+        stopMovement = true;
         uiManager.showLoseScreen();
     }
 
@@ -69,6 +73,10 @@ public class GameManager : MonoBehaviour
         //player gets coins for defeating the hero! yeah
         coins += (int)(hero.level * 100 + hero.hp * 5 + hero.strength * 10 + hero.attSpeed * 10);
         uiManager.updateCoins();
+
+        ///reset posisiton of the hero to the entrance
+        hero.layoutPosition = hero.layoutStartPosition;
+        hero.transform.position = hero.initialPosition;
     }
   
 
@@ -121,7 +129,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (!buyPhase && !hero.isFighting)
+        if (!buyPhase && !hero.isFighting && !stopMovement)
         {
             letTheHeroWalk();
         }
@@ -138,6 +146,8 @@ public class GameManager : MonoBehaviour
             //default way: walk south
             if (grid.layout[southTileXCoord, southTileYCoord] != 0)
             {
+                wayEast = wayWest = false;
+                hero.moveDirection = new Vector3(0f, hero.movSpeed, 0f);
                 hero.transform.position = Vector3.MoveTowards(hero.transform.position, grid.floorTiles[southTileXCoord, southTileYCoord].transform.position, hero.movSpeed);
                 if (hero.transform.position == grid.floorTiles[southTileXCoord, southTileYCoord].transform.position)
                 {
@@ -148,39 +158,117 @@ public class GameManager : MonoBehaviour
             }
             else
             {
-                Debug.Log(grid.floorTiles[(int)hero.layoutPosition.x, (int)hero.layoutPosition.y].sumOfStatsEast);
-                Debug.Log(grid.floorTiles[(int)hero.layoutPosition.x, (int)hero.layoutPosition.y].sumOfStatsWest);
                 int statsEast = grid.floorTiles[(int)hero.layoutPosition.x, (int)hero.layoutPosition.y].sumOfStatsEast;
                 int statsWest = grid.floorTiles[(int)hero.layoutPosition.x, (int)hero.layoutPosition.y].sumOfStatsWest;
 
-                //walk east if more stats on east
-                if (grid.floorTiles[(int)hero.layoutPosition.x, (int)hero.layoutPosition.y].sumOfStatsEast > grid.floorTiles[(int)hero.layoutPosition.x, (int)hero.layoutPosition.y].sumOfStatsWest)
-                {
-                    hero.moveDirection = new Vector3(hero.movSpeed, 0f, 0f);
-                    int EastTileXCoord = (int)hero.layoutPosition.x;
-                    int EastTileYCoord = (int)hero.layoutPosition.y + 1;
-                    hero.transform.position = Vector3.MoveTowards(hero.transform.position, grid.floorTiles[(int)hero.layoutPosition.x, (int)hero.layoutPosition.y + 1].transform.position, hero.movSpeed);
+                //int tilesEast = grid.floorTiles[(int)hero.layoutPosition.x, (int)hero.layoutPosition.y].tilesEast;
+                //int tilesWest = grid.floorTiles[(int)hero.layoutPosition.x, (int)hero.layoutPosition.y].tilesWest;
 
-                    if (hero.transform.position == grid.floorTiles[EastTileXCoord, EastTileYCoord].transform.position)
+                //walk east if more stats on east
+                if (!(wayEast || wayWest))
+                {
+                    if (grid.floorTiles[(int)hero.layoutPosition.x, (int)hero.layoutPosition.y].sumOfStatsEast > grid.floorTiles[(int)hero.layoutPosition.x, (int)hero.layoutPosition.y].sumOfStatsWest)
                     {
-                        hero.layoutPosition = new Vector2(EastTileXCoord, EastTileYCoord);
-                        Debug.Log("Hero layout position: " + hero.layoutPosition);
+                        wayEast = true;          
+                        hero.moveDirection = new Vector3(hero.movSpeed, 0f, 0f);
+                    }
+                    else
+                    {
+                        wayWest = true;                      
+                        hero.moveDirection = new Vector3(-hero.movSpeed, 0f, 0f);
                     }
                 }
-                else
+                if (wayEast)
                 {
-                    hero.moveDirection = new Vector3(-hero.movSpeed, 0f, 0f);
-                    int WestTileXCoord = (int)hero.layoutPosition.x;
-                    int WestTileYCoord = (int)hero.layoutPosition.y-1;
-                    hero.transform.position = Vector3.MoveTowards(hero.transform.position, grid.floorTiles[(int)hero.layoutPosition.x, (int)hero.layoutPosition.y - 1].transform.position, hero.movSpeed);
-
-                    if (hero.transform.position == grid.floorTiles[WestTileXCoord, WestTileYCoord].transform.position)
-                    {
-                        hero.layoutPosition = new Vector2(WestTileXCoord, WestTileYCoord);
-                        Debug.Log("Hero layout position: " + hero.layoutPosition);
-                    }
+                    walkEast();
+                }
+                if(wayWest)
+                {
+                    walkWest();
                 }
             }
+        }
+        else
+        {
+            //walk north
+            int northTileXCoord = (int)hero.layoutPosition.x - 1;
+            int northTileYCoord = (int)hero.layoutPosition.y;
+            if (grid.layout[northTileXCoord, northTileYCoord] != 0)
+            {
+                wayEast = wayWest = false;
+                hero.moveDirection = new Vector3(0f, hero.movSpeed, 0f);
+                hero.transform.position = Vector3.MoveTowards(hero.transform.position, grid.floorTiles[northTileXCoord, northTileYCoord].transform.position, hero.movSpeed);
+                if (hero.transform.position == grid.floorTiles[northTileXCoord, northTileYCoord].transform.position)
+                {
+                    hero.layoutPosition = new Vector2(northTileXCoord, northTileYCoord);
+                    if (hero.layoutPosition == hero.layoutStartPosition)
+                    {
+                        gameOver();
+                    }
+                    Debug.Log("Hero layout position: " + hero.layoutPosition);
+                }
+
+            }
+            else
+            {
+                int statsEast = grid.floorTiles[(int)hero.layoutPosition.x, (int)hero.layoutPosition.y].sumOfStatsEast;
+                int statsWest = grid.floorTiles[(int)hero.layoutPosition.x, (int)hero.layoutPosition.y].sumOfStatsWest;
+
+                //int tilesEast = grid.floorTiles[(int)hero.layoutPosition.x, (int)hero.layoutPosition.y].tilesEast;
+                //int tilesWest = grid.floorTiles[(int)hero.layoutPosition.x, (int)hero.layoutPosition.y].tilesWest;
+
+                //walk east if more stats on east
+                if (!(wayEast || wayWest))
+                {
+                    if (grid.floorTiles[(int)hero.layoutPosition.x, (int)hero.layoutPosition.y].sumOfStatsEast > grid.floorTiles[(int)hero.layoutPosition.x, (int)hero.layoutPosition.y].sumOfStatsWest)
+                    {
+                        wayEast = true;
+                        hero.moveDirection = new Vector3(hero.movSpeed, 0f, 0f);
+                    }
+                    else
+                    {
+                        wayWest = true;
+                        hero.moveDirection = new Vector3(-hero.movSpeed, 0f, 0f);
+                    }
+                }
+                if (wayEast)
+                {
+                    walkEast();
+                }
+                if (wayWest)
+                {
+                    walkWest();
+                }
+            }
+        }
+
+    }
+
+    void walkEast(){
+
+        int EastTileXCoord = (int)hero.layoutPosition.x;
+        int EastTileYCoord = (int)hero.layoutPosition.y + 1;
+
+        hero.transform.position = Vector3.MoveTowards(hero.transform.position, grid.floorTiles[EastTileXCoord, EastTileYCoord].transform.position, hero.movSpeed);
+
+        if (hero.transform.position == grid.floorTiles[EastTileXCoord, EastTileYCoord].transform.position)
+        {
+            hero.layoutPosition = new Vector2(EastTileXCoord, EastTileYCoord);
+            Debug.Log("Hero layout position: " + hero.layoutPosition);
+        }
+    }
+
+    void walkWest()
+    {
+        int WestTileYCoord = (int)hero.layoutPosition.y - 1;
+        int WestTileXCoord = (int)hero.layoutPosition.x;
+
+        hero.transform.position = Vector3.MoveTowards(hero.transform.position, grid.floorTiles[WestTileXCoord, WestTileYCoord].transform.position, hero.movSpeed);
+
+        if (hero.transform.position == grid.floorTiles[WestTileXCoord, WestTileYCoord].transform.position)
+        {
+            hero.layoutPosition = new Vector2(WestTileXCoord, WestTileYCoord);
+            Debug.Log("Hero layout position: " + hero.layoutPosition);
         }
     }
 

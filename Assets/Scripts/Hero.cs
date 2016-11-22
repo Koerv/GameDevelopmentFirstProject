@@ -17,7 +17,10 @@ public class Hero : MonoBehaviour
 
     //position of hero on the tile layout
     public Vector2 layoutPosition;
-    public Vector2 startPosition;
+    public Vector2 layoutStartPosition;
+
+    //world position from which a new hero should start
+    public Vector3 initialPosition;
 
     Boss currentBoss;
 
