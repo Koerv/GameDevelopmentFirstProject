@@ -137,7 +137,6 @@ public class GameManager : MonoBehaviour
 
     void letTheHeroWalk()
     {
-        
         if (wayDown)
         {
             int southTileXCoord = (int)hero.layoutPosition.x+1;
@@ -158,34 +157,7 @@ public class GameManager : MonoBehaviour
             }
             else
             {
-                int statsEast = grid.floorTiles[(int)hero.layoutPosition.x, (int)hero.layoutPosition.y].sumOfStatsEast;
-                int statsWest = grid.floorTiles[(int)hero.layoutPosition.x, (int)hero.layoutPosition.y].sumOfStatsWest;
-
-                //int tilesEast = grid.floorTiles[(int)hero.layoutPosition.x, (int)hero.layoutPosition.y].tilesEast;
-                //int tilesWest = grid.floorTiles[(int)hero.layoutPosition.x, (int)hero.layoutPosition.y].tilesWest;
-
-                //walk east if more stats on east
-                if (!(wayEast || wayWest))
-                {
-                    if (grid.floorTiles[(int)hero.layoutPosition.x, (int)hero.layoutPosition.y].sumOfStatsEast > grid.floorTiles[(int)hero.layoutPosition.x, (int)hero.layoutPosition.y].sumOfStatsWest)
-                    {
-                        wayEast = true;          
-                        hero.moveDirection = new Vector3(hero.movSpeed, 0f, 0f);
-                    }
-                    else
-                    {
-                        wayWest = true;                      
-                        hero.moveDirection = new Vector3(-hero.movSpeed, 0f, 0f);
-                    }
-                }
-                if (wayEast)
-                {
-                    walkEast();
-                }
-                if(wayWest)
-                {
-                    walkWest();
-                }
+                westOrEast();
             }
         }
         else
@@ -211,37 +183,64 @@ public class GameManager : MonoBehaviour
             }
             else
             {
-                int statsEast = grid.floorTiles[(int)hero.layoutPosition.x, (int)hero.layoutPosition.y].sumOfStatsEast;
-                int statsWest = grid.floorTiles[(int)hero.layoutPosition.x, (int)hero.layoutPosition.y].sumOfStatsWest;
-
-                //int tilesEast = grid.floorTiles[(int)hero.layoutPosition.x, (int)hero.layoutPosition.y].tilesEast;
-                //int tilesWest = grid.floorTiles[(int)hero.layoutPosition.x, (int)hero.layoutPosition.y].tilesWest;
-
-                //walk east if more stats on east
-                if (!(wayEast || wayWest))
-                {
-                    if (grid.floorTiles[(int)hero.layoutPosition.x, (int)hero.layoutPosition.y].sumOfStatsEast > grid.floorTiles[(int)hero.layoutPosition.x, (int)hero.layoutPosition.y].sumOfStatsWest)
-                    {
-                        wayEast = true;
-                        hero.moveDirection = new Vector3(hero.movSpeed, 0f, 0f);
-                    }
-                    else
-                    {
-                        wayWest = true;
-                        hero.moveDirection = new Vector3(-hero.movSpeed, 0f, 0f);
-                    }
-                }
-                if (wayEast)
-                {
-                    walkEast();
-                }
-                if (wayWest)
-                {
-                    walkWest();
-                }
+                westOrEast();
             }
         }
 
+    }
+
+    //makes decision if hero should move to the left or to the right
+    void westOrEast()
+    {
+        int statsEast = grid.floorTiles[(int)hero.layoutPosition.x, (int)hero.layoutPosition.y].sumOfStatsEast;
+        int statsWest = grid.floorTiles[(int)hero.layoutPosition.x, (int)hero.layoutPosition.y].sumOfStatsWest;
+
+        //walk east if more stats on east
+        int EastTileXCoord = (int)hero.layoutPosition.x;
+        int EastTileYCoord = (int)hero.layoutPosition.y + 1;
+        int WestTileYCoord = (int)hero.layoutPosition.y - 1;
+        int WestTileXCoord = (int)hero.layoutPosition.x;
+
+        if (EastTileYCoord > grid.gridSizeY)
+        {
+            wayWest = true;
+        }
+        else if (WestTileYCoord < 0)
+        {
+            wayEast = true;
+        }
+        //if no tiles on one side, walk to the opposite side
+        else if (grid.floorTiles[EastTileXCoord, EastTileYCoord].type == 0)
+        {
+            wayWest = true;
+        }
+        else if (grid.floorTiles[WestTileXCoord, WestTileYCoord].type == 0)
+        {
+            wayEast = true;
+        }
+        //walk east if more stats on east
+        if (!(wayEast || wayWest))
+        {
+            if (grid.floorTiles[(int)hero.layoutPosition.x, (int)hero.layoutPosition.y].sumOfStatsEast > grid.floorTiles[(int)hero.layoutPosition.x, (int)hero.layoutPosition.y].sumOfStatsWest)
+            {
+                wayEast = true;
+                hero.moveDirection = new Vector3(hero.movSpeed, 0f, 0f);
+            }
+            else
+            {
+                Debug.Log("nach Westen");
+                wayWest = true;
+                hero.moveDirection = new Vector3(-hero.movSpeed, 0f, 0f);
+            }
+        }
+        if (wayEast)
+        {
+            walkEast();
+        }
+        if (wayWest)
+        {
+            walkWest();
+        }
     }
 
     void walkEast(){
@@ -263,6 +262,7 @@ public class GameManager : MonoBehaviour
         int WestTileYCoord = (int)hero.layoutPosition.y - 1;
         int WestTileXCoord = (int)hero.layoutPosition.x;
 
+        Debug.Log("WestX: " + WestTileXCoord + ", WestY: " + WestTileYCoord);
         hero.transform.position = Vector3.MoveTowards(hero.transform.position, grid.floorTiles[WestTileXCoord, WestTileYCoord].transform.position, hero.movSpeed);
 
         if (hero.transform.position == grid.floorTiles[WestTileXCoord, WestTileYCoord].transform.position)

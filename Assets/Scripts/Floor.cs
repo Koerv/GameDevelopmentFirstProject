@@ -9,10 +9,6 @@ public class Floor : MonoBehaviour {
     public int sumOfStatsEast;
     public int sumOfStatsWest;
 
-    //#of tiles along each direction
-    //public int tilesEast;
-    //public int tilesWest;
-
     //position of the tile on layout
     public int layoutPosX;
     public int layoutPosY;

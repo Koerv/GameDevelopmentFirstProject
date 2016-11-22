@@ -240,14 +240,21 @@ public class Grid : MonoBehaviour {
                 Debug.Log("X: " + eastTileXCoord + ", Y: " + eastTileYCoord + ", layout type:" + layout[eastTileXCoord, eastTileYCoord]);
                 while (layout[eastTileXCoord, eastTileYCoord] != 0 && eastTileYCoord < gridSizeY)
                 {
-                    floorTile.sumOfStatsEast += 1;
+                    if(floorTile.bossOnTile !=null) {
+                        Boss tileBoss = floorTile.bossOnTile.GetComponent<Boss>();
+                        floorTile.sumOfStatsEast += 1;
+                    }
                     eastTileYCoord++;
                 }
                 int westTileXCoord = floorTile.layoutPosX;
                 int westTileYCoord = floorTile.layoutPosY - 1;
                 while (layout[westTileXCoord, westTileYCoord] != 0 && westTileYCoord >= 0)
                 {
-                    floorTile.sumOfStatsWest += 1;
+                    if (floorTile.bossOnTile != null)
+                    {
+                        Boss tileBoss = floorTile.bossOnTile.GetComponent<Boss>();
+                        floorTile.sumOfStatsWest += 1;
+                    }
                     westTileYCoord--;
                 }
 
