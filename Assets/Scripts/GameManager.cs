@@ -210,14 +210,15 @@ public class GameManager : MonoBehaviour
             wayEast = true;
         }
         //if no tiles on one side, walk to the opposite side
-        else if (grid.floorTiles[EastTileXCoord, EastTileYCoord].type == 0)
+        else if (grid.floorTiles[EastTileXCoord, EastTileYCoord] == null)
         {
             wayWest = true;
         }
-        else if (grid.floorTiles[WestTileXCoord, WestTileYCoord].type == 0)
+        else if (grid.floorTiles[WestTileXCoord, WestTileYCoord] == null)
         {
             wayEast = true;
         }
+        
         //walk east if more stats on east
         if (!(wayEast || wayWest))
         {
