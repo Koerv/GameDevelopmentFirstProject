@@ -137,6 +137,7 @@ public class GameManager : MonoBehaviour
 
     void letTheHeroWalk()
     {
+
         if (wayDown)
         {
             int southTileXCoord = (int)hero.layoutPosition.x+1;
@@ -151,7 +152,6 @@ public class GameManager : MonoBehaviour
                 if (hero.transform.position == grid.floorTiles[southTileXCoord, southTileYCoord].transform.position)
                 {
                     hero.layoutPosition = new Vector2(southTileXCoord, southTileYCoord);
-                    Debug.Log("Hero layout position: " + hero.layoutPosition);
                 }
 
             }
@@ -177,7 +177,6 @@ public class GameManager : MonoBehaviour
                     {
                         gameOver();
                     }
-                    Debug.Log("Hero layout position: " + hero.layoutPosition);
                 }
 
             }
@@ -205,7 +204,7 @@ public class GameManager : MonoBehaviour
         {
             wayWest = true;
         }
-        else if (WestTileYCoord < 0)
+        else if (WestTileYCoord == 0)
         {
             wayEast = true;
         }
@@ -222,16 +221,29 @@ public class GameManager : MonoBehaviour
         //walk east if more stats on east
         if (!(wayEast || wayWest))
         {
+            Debug.Log("Sum of stats east: " +grid.floorTiles[(int)hero.layoutPosition.x, (int)hero.layoutPosition.y].sumOfStatsEast + " Sum of stats west: " + grid.floorTiles[(int)hero.layoutPosition.x, (int)hero.layoutPosition.y].sumOfStatsEast);
             if (grid.floorTiles[(int)hero.layoutPosition.x, (int)hero.layoutPosition.y].sumOfStatsEast > grid.floorTiles[(int)hero.layoutPosition.x, (int)hero.layoutPosition.y].sumOfStatsWest)
             {
                 wayEast = true;
                 hero.moveDirection = new Vector3(hero.movSpeed, 0f, 0f);
             }
-            else
+            else if(grid.floorTiles[(int)hero.layoutPosition.x, (int)hero.layoutPosition.y].sumOfStatsEast < grid.floorTiles[(int)hero.layoutPosition.x, (int)hero.layoutPosition.y].sumOfStatsWest)
             {
-                Debug.Log("nach Westen");
                 wayWest = true;
                 hero.moveDirection = new Vector3(-hero.movSpeed, 0f, 0f);
+            }
+            //if both values are equal
+            else
+            {
+
+
+                if (Random.Range(0,2) == 1)
+                {
+                    wayWest = true;
+                }else
+                {
+                    wayEast = true;
+                }
             }
         }
         if (wayEast)
@@ -240,6 +252,7 @@ public class GameManager : MonoBehaviour
         }
         if (wayWest)
         {
+
             walkWest();
         }
     }
@@ -254,7 +267,7 @@ public class GameManager : MonoBehaviour
         if (hero.transform.position == grid.floorTiles[EastTileXCoord, EastTileYCoord].transform.position)
         {
             hero.layoutPosition = new Vector2(EastTileXCoord, EastTileYCoord);
-            Debug.Log("Hero layout position: " + hero.layoutPosition);
+
         }
     }
 
@@ -263,13 +276,12 @@ public class GameManager : MonoBehaviour
         int WestTileYCoord = (int)hero.layoutPosition.y - 1;
         int WestTileXCoord = (int)hero.layoutPosition.x;
 
-        Debug.Log("WestX: " + WestTileXCoord + ", WestY: " + WestTileYCoord);
+      
         hero.transform.position = Vector3.MoveTowards(hero.transform.position, grid.floorTiles[WestTileXCoord, WestTileYCoord].transform.position, hero.movSpeed);
 
         if (hero.transform.position == grid.floorTiles[WestTileXCoord, WestTileYCoord].transform.position)
         {
             hero.layoutPosition = new Vector2(WestTileXCoord, WestTileYCoord);
-            Debug.Log("Hero layout position: " + hero.layoutPosition);
         }
     }
 
