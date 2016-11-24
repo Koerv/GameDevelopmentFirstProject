@@ -5,6 +5,8 @@ public class Princess : MonoBehaviour {
 
     Hero hero;
 
+    public Vector3 initialPosition;
+
 	// Use this for initialization
 	void Start () {
         hero = GameManager.instance.hero;

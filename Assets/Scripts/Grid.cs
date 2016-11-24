@@ -210,6 +210,7 @@ public class Grid : MonoBehaviour {
                     if(layout[i,j] == 4)
                     {
                         princess.transform.position = instance.transform.position;
+                        princess.initialPosition = princess.transform.position;
                         princess.GetComponent<SpriteRenderer>().sortingOrder = i-1;
                     }
                     if (layout[i, j] == 2)

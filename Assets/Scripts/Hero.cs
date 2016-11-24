@@ -186,7 +186,7 @@ public class Hero : MonoBehaviour
     
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.collider.name.Contains("Boss"))
+        if(collision.collider.name.Contains("Boss") && !GameManager.instance.buyPhase)
         {
             //add boss interaction here
             isFighting = true;

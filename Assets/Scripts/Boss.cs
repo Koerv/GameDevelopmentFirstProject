@@ -79,11 +79,15 @@ public class Boss : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("Kämpf!");
-        //needed to assign Hero to runtime-generated bosses
-        hero = collision.collider.GetComponentInParent<Hero>();
-        isFighting = true;
-        preFightPosition = transform.position;
+        if (!GameManager.instance.buyPhase)
+        {
+            Debug.Log("Kämpf!");
+            //needed to assign Hero to runtime-generated bosses
+            hero = collision.collider.GetComponentInParent<Hero>();
+
+            isFighting = true;
+            preFightPosition = transform.position;
+        }
     }
 
     void OnMouseDown()

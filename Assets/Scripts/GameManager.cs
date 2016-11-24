@@ -77,6 +77,9 @@ public class GameManager : MonoBehaviour
         ///reset posisiton of the hero to the entrance
         hero.layoutPosition = hero.layoutStartPosition;
         hero.transform.position = hero.initialPosition;
+
+        //reset princess back into her cage
+        grid.princess.transform.position = grid.princess.initialPosition;
     }
   
 
