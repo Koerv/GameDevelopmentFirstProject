@@ -5,7 +5,7 @@ public class AddBoss : MonoBehaviour {
     public GameObject boss;
     bool buildMode = false;
 	// Use this for initialization
-	public void CreateBoss (){
+	public void CreateBoss (int attribute){
         //wait for mouse click
         
         if (GameManager.instance.coins >= GameManager.instance.getBossCosts())
@@ -13,10 +13,11 @@ public class AddBoss : MonoBehaviour {
             buildMode = true;
             GameManager.instance.bossGrabbed = true;
             boss = Instantiate(Resources.Load("Boss_1"), new Vector3(transform.position.x, transform.position.y,0), Quaternion.identity) as GameObject;
+            boss.GetComponent<Boss>().attribute = attribute; 
             GameManager.instance.newBoss = boss;
         }
     }
-    
+
     void Update()
     {
         if (GameManager.instance.bossGrabbed == true)
