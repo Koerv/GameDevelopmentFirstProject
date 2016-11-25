@@ -71,7 +71,6 @@ public class Hero : MonoBehaviour
             //animation for smoother movement
             if (hTimeLeft <= (hAttackTime / 2))
             {
-                Debug.Log("hTimeLeft: " + hTimeLeft);
                 Vector3.MoveTowards(this.transform.position, preFightPosition, 5f);
             }
             //for moving back
@@ -193,7 +192,7 @@ public class Hero : MonoBehaviour
             //store position so that after attacking the hero is at the same place he used to be before
             preFightPosition = transform.position;
             currentBoss = collision.collider.GetComponentInParent<Boss>();
-            Debug.Log(currentBoss.hp);
+           
         }
         if (collision.collider.name.Contains("cage"))
         {

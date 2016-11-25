@@ -6,8 +6,8 @@ public class Floor : MonoBehaviour {
     public int type;
 
     //#of stats of bosses along each direction
-    public int sumOfStatsEast;
-    public int sumOfStatsWest;
+    public float sumOfStatsEast = 0f;
+    public float sumOfStatsWest = 0f;
 
     //position of the tile on layout
     public int layoutPosX;

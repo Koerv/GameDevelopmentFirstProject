@@ -194,8 +194,8 @@ public class GameManager : MonoBehaviour
     //makes decision if hero should move to the left or to the right
     void westOrEast()
     {
-        int statsEast = grid.floorTiles[(int)hero.layoutPosition.x, (int)hero.layoutPosition.y].sumOfStatsEast;
-        int statsWest = grid.floorTiles[(int)hero.layoutPosition.x, (int)hero.layoutPosition.y].sumOfStatsWest;
+        float statsEast = grid.floorTiles[(int)hero.layoutPosition.x, (int)hero.layoutPosition.y].sumOfStatsEast;
+        float statsWest = grid.floorTiles[(int)hero.layoutPosition.x, (int)hero.layoutPosition.y].sumOfStatsWest;
 
         //walk east if more stats on east
         int EastTileXCoord = (int)hero.layoutPosition.x;
@@ -224,13 +224,13 @@ public class GameManager : MonoBehaviour
         //walk east if more stats on east
         if (!(wayEast || wayWest))
         {
-            Debug.Log("Sum of stats east: " +grid.floorTiles[(int)hero.layoutPosition.x, (int)hero.layoutPosition.y].sumOfStatsEast + " Sum of stats west: " + grid.floorTiles[(int)hero.layoutPosition.x, (int)hero.layoutPosition.y].sumOfStatsEast);
-            if (grid.floorTiles[(int)hero.layoutPosition.x, (int)hero.layoutPosition.y].sumOfStatsEast > grid.floorTiles[(int)hero.layoutPosition.x, (int)hero.layoutPosition.y].sumOfStatsWest)
+            Debug.Log("Sum of stats east: " +grid.floorTiles[(int)hero.layoutPosition.x, (int)hero.layoutPosition.y].sumOfStatsEast + " Sum of stats west: " + grid.floorTiles[(int)hero.layoutPosition.x, (int)hero.layoutPosition.y].sumOfStatsWest);
+            if (statsEast > statsWest)
             {
                 wayEast = true;
                 hero.moveDirection = new Vector3(hero.movSpeed, 0f, 0f);
             }
-            else if(grid.floorTiles[(int)hero.layoutPosition.x, (int)hero.layoutPosition.y].sumOfStatsEast < grid.floorTiles[(int)hero.layoutPosition.x, (int)hero.layoutPosition.y].sumOfStatsWest)
+            else if(statsEast < statsWest)
             {
                 wayWest = true;
                 hero.moveDirection = new Vector3(-hero.movSpeed, 0f, 0f);
@@ -243,9 +243,12 @@ public class GameManager : MonoBehaviour
                 if (Random.Range(0,2) == 1)
                 {
                     wayWest = true;
-                }else
+                    hero.moveDirection = new Vector3(hero.movSpeed, 0f, 0f);
+                }
+                else
                 {
                     wayEast = true;
+                    hero.moveDirection = new Vector3(-hero.movSpeed, 0f, 0f);
                 }
             }
         }
