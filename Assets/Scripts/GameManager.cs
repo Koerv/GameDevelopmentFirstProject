@@ -7,6 +7,11 @@ using UnityEditor;
 
 public class GameManager : MonoBehaviour
 {
+    //attributes for strength/weaknesses
+    public const int ROCK = 0;
+    public const int PAPER = 1;
+    public const int SCISSORS = 2;
+    
     public static GameManager instance = null;              //Static instance of GameManager which allows it to be accessed by any other script.
     public int coins;
     public bool buyPhase = true;
@@ -25,6 +30,8 @@ public class GameManager : MonoBehaviour
     public Grid grid;
     public bool bossGrabbed;
     public GameObject newBoss;
+
+    public float attributeModifier = 1.5f;
 
     //Awake is always called before any Start functions
 
@@ -87,7 +94,6 @@ public class GameManager : MonoBehaviour
     {
 
         buyPhase = false;
-        //hero (Resources.Load("Hero"), new Vector3(0.48f, 1.47f, 0), Quaternion.identity) as GameObject;
         hero.movSpeed = 0.015f;
         grid.calcSumOfStats();
 
@@ -110,6 +116,62 @@ public class GameManager : MonoBehaviour
         selectedBoss.GetComponent<SpriteRenderer>().sprite = selectedBoss.selectedSprite;
     }
 
+    public string attrToString(int attribute)
+    {
+        switch (attribute)
+        {
+            case 0:
+                return "Rock";
+            case 1:
+                return "Paper";
+            case 2:
+                return "Scissors";
+            default:
+                return "No attribute";
+        }
+    }
+
+    public float checkWeaknesses(Boss boss, Hero hero)
+    {
+        if (boss.attribute == ROCK)
+        {
+            if(hero.attribute == PAPER)
+            {
+                return 1/attributeModifier;
+            }
+            else if (hero.attribute == SCISSORS)
+            {
+                return attributeModifier;
+            }
+        }
+        else if (boss.attribute == PAPER)
+        {
+            
+            if (hero.attribute == SCISSORS)
+            {
+                return 1 / attributeModifier;
+            }
+          
+            else if (hero.attribute == ROCK)
+            {
+                return attributeModifier;
+            }
+        }
+        else
+        {
+            if (hero.attribute == ROCK)
+            {
+                return 1 / attributeModifier;
+            }
+
+            else if (hero.attribute == PAPER)
+            {
+                return attributeModifier;
+            }
+        }
+        return 1f;
+    }
+
     public int getBossCosts()
     {
         return bossCount * 50 + 100;
@@ -117,7 +179,7 @@ public class GameManager : MonoBehaviour
 
     public int getUpgradeCosts()
     {
-        return (int)(Mathf.Pow(selectedBoss.level, 1.2f) * updateCosts);
+        return (int)(Mathf.Pow(selectedBoss.level, 1.3f) * updateCosts);
     }
 
     public void checkEnd()

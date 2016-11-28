@@ -13,6 +13,10 @@ public class Boss : MonoBehaviour
     public float attSpeed;
     public Sprite standardSprite;
     public Sprite selectedSprite;
+    public float attributeModifier;
+
+    //TODO add buttons for Bosses with different attributes
+    public int attribute;
 
     float bAttackTime;
     float bTimeLeft;
@@ -31,7 +35,7 @@ public class Boss : MonoBehaviour
         hp = (int)(9 + level + Mathf.Round(Random.Range(0f, level)));
         strength = (int)(1 + level + Mathf.Round(Random.Range(0f, level)));
         attSpeed = (1 + level + Mathf.Round(Random.Range(0f, level)))*0.9f;
-        Debug.Log("Boss Stats: Level: " + level + ", HP: " + hp + ", STR: " + strength + ", SPD: " + attSpeed);
+        Debug.Log("Boss Stats: Level: " + level + ", HP: " + hp + ", STR: " + strength + ", SPD: " + attSpeed + ", attribute: " + GameManager.instance.attrToString(attribute));
 
         bAttackTime = 1 - this.attSpeed * 0.1f;
 
@@ -59,7 +63,7 @@ public class Boss : MonoBehaviour
             {
                 GetComponent<AudioSource>().Play();
                 transform.position = preFightPosition;
-                hero.hp -= strength;
+                hero.hp -= (int)(Mathf.Round(strength*attributeModifier));
                 Debug.Log("Hero HP: " + hero.hp);
                 if (hero.hp <= 0)
                 {
@@ -86,6 +90,8 @@ public class Boss : MonoBehaviour
             hero = collision.collider.GetComponentInParent<Hero>();
 
             isFighting = true;
+            attributeModifier = GameManager.instance.checkWeaknesses(this, hero);
+            Debug.Log("attribute Modifier: " + attributeModifier);
             preFightPosition = transform.position;
         }
     }
@@ -104,7 +110,7 @@ public class Boss : MonoBehaviour
         hp = (int)(hp + level + Mathf.Round(Random.Range(0f, level)));
         strength = (int)(strength + Mathf.Round(Random.Range(0f, level)));
         attSpeed= attSpeed + Mathf.Round(Random.Range(0f, level));
-        Debug.Log("Boss Stats: Level: " + level + ", HP: " + hp + ", STR: " + strength + ", SPD: " + attSpeed);
+        Debug.Log("Boss Stats: Level: " + level + ", HP: " + hp + ", STR: " + strength + ", SPD: " + attSpeed + ", attribute: " + GameManager.instance.attrToString(attribute));
     }
     
 }

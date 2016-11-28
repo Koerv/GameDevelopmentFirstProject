@@ -111,7 +111,7 @@ public class UIManager : MonoBehaviour {
 
     public void showUpgradeMenu()
     {
-        if (GameManager.instance.selectedBoss != null)
+        if (GameManager.instance.selectedBoss != null && GameManager.instance.buyPhase)
         {
             upgradeBossButton.SetActive(true);
 
