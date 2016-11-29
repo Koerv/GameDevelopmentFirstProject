@@ -16,17 +16,25 @@ public class Floor : MonoBehaviour {
     //boss that is occupying this tile
     public GameObject bossOnTile;
 
-    //TODO potion that is on this tile
+    //potion that is on this tile
+    public GameObject potionOnTile;
 
     void OnMouseDown()
     {
         Debug.Log(this.transform.localPosition);
-        if (GameManager.instance.bossGrabbed && type==1) { 
+        if (GameManager.instance.bossGrabbed && type==1 && bossOnTile == null && potionOnTile == null) { 
             GameManager.instance.newBoss.transform.position = this.transform.position;
             GameManager.instance.bossGrabbed = false;
             GameManager.instance.coins -= GameManager.instance.getBossCosts();
             GameManager.instance.bossCount += 1;
             bossOnTile=GameManager.instance.newBoss;
+        }
+
+        else if (GameManager.instance.potionGrabbed && bossOnTile == null && potionOnTile == null)
+        {
+            GameManager.instance.newPotion.transform.position = this.transform.position;
+            GameManager.instance.potionGrabbed = false;
+            potionOnTile = GameManager.instance.newPotion;
         }
     }
 }

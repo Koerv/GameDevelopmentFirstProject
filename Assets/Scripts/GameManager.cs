@@ -28,8 +28,12 @@ public class GameManager : MonoBehaviour
     public int updateCosts;
     public BoardManager bm;
     public Grid grid;
+
     public bool bossGrabbed;
     public GameObject newBoss;
+
+    public bool potionGrabbed=false;
+    public GameObject newPotion;
 
     public float attributeModifier = 1.5f;
 
@@ -87,6 +91,13 @@ public class GameManager : MonoBehaviour
 
         //reset princess back into her cage
         grid.princess.transform.position = grid.princess.initialPosition;
+
+        //every second stage: add potion to place in the dungeon
+        if(hero.level %2 == 0)
+        {
+            potionGrabbed = true;
+            GetComponent<AddPotion>().addPotion(Random.Range(0,4));
+        }
     }
   
 
