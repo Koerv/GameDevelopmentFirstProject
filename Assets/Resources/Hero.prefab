@@ -89,6 +89,14 @@ MonoBehaviour:
   hp: 0
   strength: 0
   attSpeed: 0
+  movSpeed: 0
+  fightingSound: {fileID: 0}
+  attribute: 0
+  layoutPosition: {x: 0, y: 0}
+  layoutStartPosition: {x: 0, y: 0}
+  initialPosition: {x: 0, y: 0, z: 0}
+  isFighting: 0
+  moveDirection: {x: 0, y: 0, z: 0}
 --- !u!212 &212000010453316656
 SpriteRenderer:
   m_ObjectHideFlags: 1

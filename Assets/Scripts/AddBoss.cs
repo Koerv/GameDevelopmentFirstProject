@@ -14,6 +14,7 @@ public class AddBoss : MonoBehaviour {
             boss = Instantiate(Resources.Load("Boss_1"), new Vector3(transform.position.x, transform.position.y,0), Quaternion.identity) as GameObject;
             boss.GetComponent<Boss>().attribute = attribute; 
             GameManager.instance.newBoss = boss;
+            Physics2D.IgnoreCollision(boss.GetComponent<Collider2D>(), GameManager.instance.hero.GetComponent<Collider2D>());
         }
     }
 
@@ -25,7 +26,7 @@ public class AddBoss : MonoBehaviour {
             Vector3 target;
             target = Camera.main.ScreenToWorldPoint(Input.mousePosition);      
             boss.transform.position = new Vector3(target.x,target.y,0);
-            
+
         }
                    
     }

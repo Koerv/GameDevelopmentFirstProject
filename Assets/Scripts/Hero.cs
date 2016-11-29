@@ -27,6 +27,9 @@ public class Hero : MonoBehaviour
 
     public bool isFighting = false;
 
+    public bool isStealthed = false;
+    public bool isPoisoned = false;
+
     bool dirChange = false;
     float sumTime = 0f;
     AudioSource deathSound;
@@ -194,8 +197,14 @@ public class Hero : MonoBehaviour
             isFighting = true;
             //store position so that after attacking the hero is at the same place he used to be before
             preFightPosition = transform.position;
-            currentBoss = collision.collider.GetComponentInParent<Boss>();
-           
+            currentBoss = collision.collider.GetComponentInParent<Boss>();          
+        }
+        if (collision.collider.name.Contains("Potion"))
+        {
+            Potion currentPotion = collision.collider.GetComponentInParent<Potion>();
+            currentPotion.activate(this);
+            Debug.Log("Hero HP: " + hp);
+            Destroy(currentPotion.gameObject);
         }
         if (collision.collider.name.Contains("cage"))
         {

@@ -28,6 +28,7 @@ public class Floor : MonoBehaviour {
             GameManager.instance.coins -= GameManager.instance.getBossCosts();
             GameManager.instance.bossCount += 1;
             bossOnTile=GameManager.instance.newBoss;
+            Physics2D.IgnoreCollision(bossOnTile.GetComponent<Collider2D>(), GameManager.instance.hero.GetComponent<Collider2D>(), false);
         }
 
         else if (GameManager.instance.potionGrabbed && bossOnTile == null && potionOnTile == null)
@@ -35,6 +36,7 @@ public class Floor : MonoBehaviour {
             GameManager.instance.newPotion.transform.position = this.transform.position;
             GameManager.instance.potionGrabbed = false;
             potionOnTile = GameManager.instance.newPotion;
+            Physics2D.IgnoreCollision(potionOnTile.GetComponent<Collider2D>(), GameManager.instance.hero.GetComponent<Collider2D>(), false);
         }
     }
 }

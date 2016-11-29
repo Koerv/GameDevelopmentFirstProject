@@ -55,8 +55,6 @@ public class GameManager : MonoBehaviour
 
         //Sets this to not be destroyed when reloading scene
         DontDestroyOnLoad(gameObject);
-        //Get a component reference to the attached BoardManager script
-        //boardScript = GetComponent<BoardManager>();
         //Call the InitGame function to initialize the first level 
         InitGame();
     }
@@ -64,11 +62,10 @@ public class GameManager : MonoBehaviour
     //Initializes the game for each level.
     void InitGame()
     {
-      //  bm.BoardSetup();
         uiManager.updateCoins();
         bossCount = 0;
-        //boardScript.BoardSetup();
         grid.startInstantiation();
+        StartBuyPhase();
     }
 
     public void gameOver()
@@ -113,6 +110,7 @@ public class GameManager : MonoBehaviour
     public void StartBuyPhase()
     {
         buyPhase = true;
+        //hero.GetComponent<Rigidbody2D>().isKinematic = false;
         uiManager.showBuyMenu();
     }
 
