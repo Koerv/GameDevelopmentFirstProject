@@ -1432,6 +1432,8 @@ MonoBehaviour:
   layoutStartPosition: {x: 0, y: 0}
   initialPosition: {x: 0, y: 0, z: 0}
   isFighting: 0
+  isStealthed: 0
+  isPoisoned: 0
   moveDirection: {x: 0, y: 0, z: 0}
 --- !u!1001 &451753876
 Prefab:
@@ -4799,8 +4801,8 @@ MonoBehaviour:
   selectedBoss: {fileID: 0}
   bossCosts: 100
   bossCount: 0
-  stages: 5
-  updateCosts: 40
+  stages: 10
+  updateCosts: 50
   bm: {fileID: 0}
   grid: {fileID: 326012423}
   bossGrabbed: 0

@@ -210,6 +210,10 @@ public class Hero : MonoBehaviour
         {
             GameManager.instance.wayDown = false;
             GameManager.instance.StartBuyPhase();
+            //if(GameManager.instance.coins < GameManager.instance.getBossCosts())
+            //{
+            //    GameManager.instance.coins += GameManager.instance.getBossCosts();
+            //}
             moveDirection = new Vector3(0, movSpeed, 0);
         }
     }

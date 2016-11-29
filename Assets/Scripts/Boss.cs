@@ -34,7 +34,7 @@ public class Boss : MonoBehaviour
         level = 1;
         hp = (int)(9 + level + Mathf.Round(Random.Range(0f, level)));
         strength = (int)(1 + level + Mathf.Round(Random.Range(0f, level)));
-        attSpeed = (1 + level + Mathf.Round(Random.Range(0f, level)))*0.9f;
+        attSpeed = (1 + level + Mathf.Round(Random.Range(0f, level)))*0.8f;
         Debug.Log("Boss Stats: Level: " + level + ", HP: " + hp + ", STR: " + strength + ", SPD: " + attSpeed + ", attribute: " + GameManager.instance.attrToString(attribute));
 
         bAttackTime = 1 - this.attSpeed * 0.1f;
@@ -109,7 +109,7 @@ public class Boss : MonoBehaviour
         level += 1;
         hp = (int)(hp + level + Mathf.Round(Random.Range(0f, level)));
         strength = (int)(strength + Mathf.Round(Random.Range(0f, level)));
-        attSpeed= attSpeed + Mathf.Round(Random.Range(0f, level));
+        attSpeed= attSpeed + Mathf.Round(Random.Range(0f, level))*0.8f;
         Debug.Log("Boss Stats: Level: " + level + ", HP: " + hp + ", STR: " + strength + ", SPD: " + attSpeed + ", attribute: " + GameManager.instance.attrToString(attribute));
     }
     
