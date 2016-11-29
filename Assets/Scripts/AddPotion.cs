@@ -8,8 +8,8 @@ public class AddPotion : MonoBehaviour {
     // Use this for initialization
     public void addPotion(int type)
     {
-        potion = Instantiate(Resources.Load("pt1"), new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity) as GameObject;
-        potion.GetComponent<Potion>().type = type;
+        potion = Instantiate(Resources.Load("Potion"), new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity) as GameObject;
+        //potion.GetComponent<Potion>().type = type;
         GameManager.instance.newPotion = potion;
     }
 	
