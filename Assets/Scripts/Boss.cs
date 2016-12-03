@@ -83,6 +83,7 @@ public class Boss : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
+        
         if (!GameManager.instance.buyPhase)
         {
             Debug.Log("Kämpf!");

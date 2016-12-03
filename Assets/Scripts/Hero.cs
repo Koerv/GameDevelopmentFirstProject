@@ -30,6 +30,8 @@ public class Hero : MonoBehaviour
     public bool isStealthed = false;
     public bool isPoisoned = false;
 
+    int poisonCounter = 0;
+
     bool dirChange = false;
     float sumTime = 0f;
     AudioSource deathSound;
@@ -138,19 +140,6 @@ public class Hero : MonoBehaviour
 
     }
 
-    //TODO delete
-    void waitAndChangeDir()
-    {
-        sumTime += Time.deltaTime;
-        if (sumTime >= movSpeed * 22)
-        {
-            sumTime = 0f;
-            moveDirection = turningPoint.newDirection() * movSpeed;
-            dirChange = false;
-            Debug.Log("dirChange over");
-        }
-    }
-
     public void Defeated()
     {
 
@@ -187,6 +176,22 @@ public class Hero : MonoBehaviour
     }
 
     public void lookForNewDirection(Grid grid) { }
+
+    public void applyPoison()
+    {
+        poisonCounter++;
+        if (poisonCounter >= 4)
+        {
+            hp--;
+            poisonCounter = 0;
+        }
+    }
+
+    public void undoPotionEffects()
+    {
+        isStealthed = false;
+        isPoisoned = false;
+    }
 
     
     public void OnCollisionEnter2D(Collision2D collision)

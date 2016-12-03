@@ -15,6 +15,7 @@ public class UIManager : MonoBehaviour {
     public Text coins;
     public Text bossInfo;
     public Text heroInfo;
+    public Text potionInfo;
     public Text finalWinScreen;
 
     void Awake()
@@ -75,6 +76,7 @@ public class UIManager : MonoBehaviour {
         }
         updateCoins();
         updateBossInfo();
+        updatePotionInfo();
         showUpgradeMenu();
         updateHeroInfo();
     }
@@ -99,6 +101,18 @@ public class UIManager : MonoBehaviour {
     {
         Hero hero = GameManager.instance.hero;
         heroInfo.text = "Hero Stats: HP: " + hero.hp + " Strength: " + hero.strength + " AttackSpeed: " + hero.attSpeed + " Attribute: " + GameManager.instance.attrToString(hero.attribute);
+    }
+    public void updatePotionInfo()
+    {
+        if (GameManager.instance.newPotion != null)
+        {
+            Potion potion = GameManager.instance.newPotion.GetComponent<Potion>();
+            potionInfo.text = "Current potion: " + potion.typeToString();
+        }
+        else
+        {
+            potionInfo.text = "Current potion: None";
+        }
     }
 
     public void showBuyMenu()

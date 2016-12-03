@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
     public Grid grid;
 
     public bool bossGrabbed;
+    GameObject evadedBoss;
     public GameObject newBoss;
 
     public bool potionGrabbed=false;
@@ -86,6 +87,9 @@ public class GameManager : MonoBehaviour
         hero.layoutPosition = hero.layoutStartPosition;
         hero.transform.position = hero.initialPosition;
 
+        //clear hero from potion effects
+        hero.undoPotionEffects();
+
         //reset princess back into her cage
         grid.princess.transform.position = grid.princess.initialPosition;
 
@@ -94,6 +98,10 @@ public class GameManager : MonoBehaviour
         {
             potionGrabbed = true;
             GetComponent<AddPotion>().addPotion(Random.Range(0,4));
+        }
+        else
+        {
+            newPotion = null;
         }
     }
   
@@ -110,7 +118,12 @@ public class GameManager : MonoBehaviour
     public void StartBuyPhase()
     {
         buyPhase = true;
-        //hero.GetComponent<Rigidbody2D>().isKinematic = false;
+
+        //if a boss was evaded, he should be made visible again to the hero
+        if (evadedBoss != null)
+        {
+            makeBossVisibleAgain();
+        }
         uiManager.showBuyMenu();
     }
 
@@ -207,6 +220,7 @@ public class GameManager : MonoBehaviour
         {
             letTheHeroWalk();
         }
+        
     }
 
     void letTheHeroWalk()
@@ -226,8 +240,16 @@ public class GameManager : MonoBehaviour
                 if (hero.transform.position == grid.floorTiles[southTileXCoord, southTileYCoord].transform.position)
                 {
                     hero.layoutPosition = new Vector2(southTileXCoord, southTileYCoord);
+                    //after every tile the hero walked, apply the poison effect
+                    if (hero.isPoisoned)
+                    {
+                        hero.applyPoison();
+                    }
                 }
 
+                //ignore next boss if hero is stealthed
+                ignoreBossIfStealthed(southTileXCoord, southTileYCoord);
+                
             }
             else
             {
@@ -277,19 +299,23 @@ public class GameManager : MonoBehaviour
         if (EastTileYCoord > grid.gridSizeY)
         {
             wayWest = true;
+            hero.moveDirection = new Vector3(-hero.movSpeed, 0f, 0f);
         }
         else if (WestTileYCoord == 0)
         {
             wayEast = true;
+            hero.moveDirection = new Vector3(hero.movSpeed, 0f, 0f);
         }
         //if no tiles on one side, walk to the opposite side
         else if (grid.floorTiles[EastTileXCoord, EastTileYCoord] == null)
         {
             wayWest = true;
+            hero.moveDirection = new Vector3(-hero.movSpeed, 0f, 0f);
         }
         else if (grid.floorTiles[WestTileXCoord, WestTileYCoord] == null)
         {
             wayEast = true;
+            hero.moveDirection = new Vector3(hero.movSpeed, 0f, 0f);
         }
         
         //walk east if more stats on east
@@ -314,12 +340,12 @@ public class GameManager : MonoBehaviour
                 if (Random.Range(0,2) == 1)
                 {
                     wayWest = true;
-                    hero.moveDirection = new Vector3(hero.movSpeed, 0f, 0f);
+                    hero.moveDirection = new Vector3(-hero.movSpeed, 0f, 0f);
                 }
                 else
                 {
                     wayEast = true;
-                    hero.moveDirection = new Vector3(-hero.movSpeed, 0f, 0f);
+                    hero.moveDirection = new Vector3(hero.movSpeed, 0f, 0f);
                 }
             }
         }
@@ -344,8 +370,18 @@ public class GameManager : MonoBehaviour
         if (hero.transform.position == grid.floorTiles[EastTileXCoord, EastTileYCoord].transform.position)
         {
             hero.layoutPosition = new Vector2(EastTileXCoord, EastTileYCoord);
-
+            //after every tile the hero walked, apply the poison effect
+            if (hero.isPoisoned)
+            {
+                hero.applyPoison();
+            }
         }
+
+        //ignore next boss if hero is stealthed
+        ignoreBossIfStealthed(EastTileXCoord, EastTileYCoord);
+
+
+
     }
 
     void walkWest()
@@ -359,7 +395,34 @@ public class GameManager : MonoBehaviour
         if (hero.transform.position == grid.floorTiles[WestTileXCoord, WestTileYCoord].transform.position)
         {
             hero.layoutPosition = new Vector2(WestTileXCoord, WestTileYCoord);
+            
+            //after every tile the hero walked, apply the poison effect
+            if (hero.isPoisoned)
+            {
+                hero.applyPoison();
+            }
         }
+        //ignore next boss if hero is stealthed
+        ignoreBossIfStealthed(WestTileXCoord, WestTileYCoord);
+    }
+
+    public void ignoreBossIfStealthed(int nextTileX, int nextTileY)
+    {
+        GameObject bossOnNextTile = grid.floorTiles[nextTileX, nextTileY].bossOnTile;
+
+        if (hero.isStealthed && bossOnNextTile != null)
+        {
+            Physics2D.IgnoreCollision(bossOnNextTile.GetComponent<Collider2D>(), hero.GetComponent<Collider2D>());
+            evadedBoss = bossOnNextTile;
+            hero.isStealthed = false;
+        }
+    }
+
+    public void makeBossVisibleAgain()
+    {
+            Physics2D.IgnoreCollision(evadedBoss.GetComponent<Collider2D>(), hero.GetComponent<Collider2D>(), false);
+            evadedBoss = null;
+        
     }
 
 
