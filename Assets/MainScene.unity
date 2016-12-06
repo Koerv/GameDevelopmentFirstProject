@@ -310,7 +310,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
 --- !u!114 &63769328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1120,7 +1120,7 @@ MonoBehaviour:
   - {fileID: 1000011797251660, guid: 31328d7d0b115844fb6facceb9dc196d, type: 2}
   - {fileID: 1000011153407440, guid: b1497727d39033247bf56cf3c4b2a8a9, type: 2}
   princess: {fileID: 63769328}
-  hero: {fileID: 1959895730}
+  hero: {fileID: 0}
   gridSizeX: 0
   gridSizeY: 0
 --- !u!114 &326012424
@@ -1158,7 +1158,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 1.49, y: -4.6}
@@ -1707,7 +1707,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000014145431810, guid: 96ce611b62500eb4eaf9cf53bdf9435a, type: 2}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 96ce611b62500eb4eaf9cf53bdf9435a, type: 2}
@@ -4110,48 +4110,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4000013810708246, guid: 065b03b2c5f6e0449b6883c3a30ac7fa,
     type: 2}
   m_PrefabInternal: {fileID: 1769441566}
---- !u!1001 &1774509244
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4000013705165640, guid: 46c92989ac244bb46a64b98483757171, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -7.51
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013705165640, guid: 46c92989ac244bb46a64b98483757171, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 1.38
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013705165640, guid: 46c92989ac244bb46a64b98483757171, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013705165640, guid: 46c92989ac244bb46a64b98483757171, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013705165640, guid: 46c92989ac244bb46a64b98483757171, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013705165640, guid: 46c92989ac244bb46a64b98483757171, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013705165640, guid: 46c92989ac244bb46a64b98483757171, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013705165640, guid: 46c92989ac244bb46a64b98483757171, type: 2}
-      propertyPath: m_RootOrder
-      value: 5
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 46c92989ac244bb46a64b98483757171, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &1810924673
 GameObject:
   m_ObjectHideFlags: 0
@@ -4565,12 +4523,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1845834567}
---- !u!114 &1959895730 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114000013225877060, guid: 46c92989ac244bb46a64b98483757171,
-    type: 2}
-  m_PrefabInternal: {fileID: 1774509244}
-  m_Script: {fileID: 11500000, guid: b4e41df3b4e96d94895de0fc240160de, type: 3}
 --- !u!1001 &2024805033
 Prefab:
   m_ObjectHideFlags: 0
@@ -4750,10 +4702,11 @@ MonoBehaviour:
   wayEast: 0
   wayWest: 0
   uiManager: {fileID: 1462053888}
-  hero: {fileID: 1959895730}
+  hero: {fileID: 0}
   selectedBoss: {fileID: 0}
   bossCosts: 100
   bossCount: 0
+  stage: 1
   stages: 10
   updateCosts: 50
   bm: {fileID: 0}

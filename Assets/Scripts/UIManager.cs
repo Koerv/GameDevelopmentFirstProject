@@ -99,9 +99,13 @@ public class UIManager : MonoBehaviour {
 
     public void updateHeroInfo()
     {
-        Hero hero = GameManager.instance.hero;
-        heroInfo.text = "Hero Stats: HP: " + hero.hp + " Strength: " + hero.strength + " AttackSpeed: " + hero.attSpeed + " Attribute: " + GameManager.instance.attrToString(hero.attribute);
+        if (GameManager.instance.hero != null)
+        {
+            Hero hero = GameManager.instance.hero;
+            heroInfo.text = "Hero Stats: HP: " + hero.hp + " Strength: " + hero.strength + " AttackSpeed: " + hero.attSpeed + " Attribute: " + GameManager.instance.attrToString(hero.attribute);
+        }
     }
+
     public void updatePotionInfo()
     {
         if (GameManager.instance.newPotion != null)

@@ -13,8 +13,8 @@ public class Hero : MonoBehaviour
     public AudioClip fightingSound;
     public int attribute;
 
-    float hAttackTime;
-    float hTimeLeft;
+    protected float hAttackTime;
+    protected float hTimeLeft;
 
     //position of hero on the tile layout
     public Vector2 layoutPosition;
@@ -34,7 +34,7 @@ public class Hero : MonoBehaviour
 
     bool dirChange = false;
     float sumTime = 0f;
-    AudioSource deathSound;
+    protected AudioSource deathSound;
 
     //Move direction
     public Vector3 moveDirection;
@@ -47,15 +47,17 @@ public class Hero : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
-        //initialize stats (semi random), only level 1 for now
-        level = 1;
-        RerollStats();
+        Debug.Log("Start wird aufgerufen");
+        /*
+        level = GameManager.instance.stage;
+        //RerollStats();
 
         hAttackTime = 1 - this.attSpeed * 0.1f;
         deathSound = GetComponent<AudioSource>();
-
+        */
     }
+
+
 
     // Update is called once per frame
     void Update()
@@ -142,13 +144,14 @@ public class Hero : MonoBehaviour
 
     public void Defeated()
     {
-
+        Debug.Log("Our noble hero has fallen");
         isFighting = false;
-        transform.position = new Vector3(-4.5f, 0.8f);
+        //transform.position = new Vector3(-4.5f, 0.8f);
         movSpeed = 0.0f;
         deathSound.Play();
+        Debug.Log("Arrrgh");
         level++;
-        RerollStats();
+        
         GameManager.instance.wayDown = true;
         if (level > GameManager.instance.stages)
         {
@@ -158,17 +161,6 @@ public class Hero : MonoBehaviour
 
     }
 
-    private void RerollStats()
-    {
-        attribute = UnityEngine.Random.Range(0, 3);
-
-        hp = (int)(15 + level*3 + Mathf.Round(UnityEngine.Random.Range(0f, level)));
-        strength = (int)(1 + level + Mathf.Round(UnityEngine.Random.Range(0f, level)));
-        attSpeed = (1.0f + level + Mathf.Round(UnityEngine.Random.Range(0f, level)))*0.8f;
-        movSpeed = 0.015f;
-        Debug.Log("New Heros Stats: Level: " + level + ", HP: " + hp + ", STR: " + strength + ", SPD: " + attSpeed + ", attribute: " + GameManager.instance.attrToString(attribute));
-        moveDirection = new Vector3(0, -movSpeed, 0);
-    }
 
     public Vector3 getMoveDirection()
     {

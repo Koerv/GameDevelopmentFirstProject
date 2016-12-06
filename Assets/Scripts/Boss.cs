@@ -67,13 +67,13 @@ public class Boss : MonoBehaviour
                 Debug.Log("Hero HP: " + hero.hp);
                 if (hero.hp <= 0)
                 {
+
                     transform.position = preFightPosition;
                     isFighting=false;
                     hero.Defeated();
                     //Destroy(hero.gameObject);
                     GameManager.instance.stageClear();
                     GameManager.instance.StartBuyPhase();
-                    Debug.Log("Stirb!");
                 }
                 //reset Attack Time
                 bTimeLeft = bAttackTime;
@@ -111,6 +111,7 @@ public class Boss : MonoBehaviour
         hp = (int)(hp + level + Mathf.Round(Random.Range(0f, level)));
         strength = (int)(strength + Mathf.Round(Random.Range(0f, level)));
         attSpeed= attSpeed + Mathf.Round(Random.Range(0f, level))*0.8f;
+        bAttackTime = 1 - this.attSpeed * 0.1f;
         Debug.Log("Boss Stats: Level: " + level + ", HP: " + hp + ", STR: " + strength + ", SPD: " + attSpeed + ", attribute: " + GameManager.instance.attrToString(attribute));
     }
     

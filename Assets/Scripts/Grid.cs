@@ -219,8 +219,8 @@ public class Grid : MonoBehaviour {
                         //set initial position and sprite order of the hero
                         GameManager.instance.heroInitialPosition = instance.transform.position;
                         //hero.transform.position = hero.initialPosition;
-                        hero.GetComponent<SpriteRenderer>().sortingOrder = gridSizeX;
-                        hero.layoutStartPosition = new Vector2(i, j);
+                        //hero.GetComponent<SpriteRenderer>().sortingOrder = gridSizeX;
+                        //hero.layoutStartPosition = new Vector2(i, j);
                         //hero.layoutPosition = hero.layoutStartPosition;
                         GameManager.instance.heroInitialLayoutPosition = new Vector2(i, j);
                     }
