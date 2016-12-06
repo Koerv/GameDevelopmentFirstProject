@@ -24,10 +24,13 @@ public class GameManager : MonoBehaviour
     public Boss selectedBoss;
     public int bossCosts;
     public int bossCount;
+    public int stage = 1;
     public int stages;
     public int updateCosts;
     public BoardManager bm;
     public Grid grid;
+    public Vector3 heroInitialPosition;
+    public Vector2 heroInitialLayoutPosition;
 
     public bool bossGrabbed;
     GameObject evadedBoss;
@@ -66,6 +69,10 @@ public class GameManager : MonoBehaviour
         uiManager.updateCoins();
         bossCount = 0;
         grid.startInstantiation();
+        hero = (Instantiate(Resources.Load("Hero"), heroInitialPosition, Quaternion.identity) as GameObject).GetComponent<Hero>();
+        //hero = heroI.GetComponent<Hero>();
+        hero.transform.position = heroInitialPosition;
+        hero.layoutPosition = heroInitialLayoutPosition; 
         StartBuyPhase();
     }
 
@@ -78,14 +85,18 @@ public class GameManager : MonoBehaviour
     public void stageClear()
     {
         StartCoroutine(uiManager.showWinScreen());
-        uiManager.stageNr.text = ("Stage " + hero.level);
+        stage += 1;
+        uiManager.stageNr.text = ("Stage " + stage);
         //player gets coins for defeating the hero! yeah
         coins += (int)(hero.level * 100 + hero.hp * 5 + hero.strength * 10 + hero.attSpeed * 10);
         uiManager.updateCoins();
 
-        ///reset posisiton of the hero to the entrance
-        hero.layoutPosition = hero.layoutStartPosition;
-        hero.transform.position = hero.initialPosition;
+        hero = (Instantiate(Resources.Load("Hero"), new Vector3(0.4899998f, 3.4f, 0), Quaternion.identity) as GameObject).GetComponent<Hero>();
+        //reset posisiton of the hero to the entrance
+        hero.layoutPosition = heroInitialLayoutPosition;
+        hero.transform.position = heroInitialPosition;
+
+        //instanciate hero
 
         //clear hero from potion effects
         hero.undoPotionEffects();

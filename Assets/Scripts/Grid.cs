@@ -17,6 +17,7 @@ public class Grid : MonoBehaviour {
     public void startInstantiation()
     {
         setupLayout();
+        hero = GameManager.instance.hero;
         placeTiles();
     }
 
@@ -216,11 +217,12 @@ public class Grid : MonoBehaviour {
                     if (layout[i, j] == 2)
                     {
                         //set initial position and sprite order of the hero
-                        hero.initialPosition = instance.transform.position;
-                        hero.transform.position = hero.initialPosition;
+                        GameManager.instance.heroInitialPosition = instance.transform.position;
+                        //hero.transform.position = hero.initialPosition;
                         hero.GetComponent<SpriteRenderer>().sortingOrder = gridSizeX;
                         hero.layoutStartPosition = new Vector2(i, j);
-                        hero.layoutPosition = hero.layoutStartPosition;
+                        //hero.layoutPosition = hero.layoutStartPosition;
+                        GameManager.instance.heroInitialLayoutPosition = new Vector2(i, j);
                     }
 
 
