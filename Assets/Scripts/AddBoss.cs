@@ -2,43 +2,34 @@
 using System.Collections;
 
 public class AddBoss : MonoBehaviour {
+
     public GameObject boss;
-    bool buildMode = false;
 	// Use this for initialization
-	public void CreateBoss (){
+	public void CreateBoss (int attribute){
         //wait for mouse click
         
         if (GameManager.instance.coins >= GameManager.instance.getBossCosts())
         {
-            buildMode = true;
+            GameManager.instance.bossGrabbed = true;
             boss = Instantiate(Resources.Load("Boss_1"), new Vector3(transform.position.x, transform.position.y,0), Quaternion.identity) as GameObject;
+            boss.GetComponent<Boss>().attribute = attribute; 
+            GameManager.instance.newBoss = boss;
+            Physics2D.IgnoreCollision(boss.GetComponent<Collider2D>(), GameManager.instance.hero.GetComponent<Collider2D>());
         }
     }
 
     void Update()
     {
-        if (buildMode == true)
+        if (GameManager.instance.bossGrabbed == true)
         {
 
             Vector3 target;
             target = Camera.main.ScreenToWorldPoint(Input.mousePosition);      
             boss.transform.position = new Vector3(target.x,target.y,0);
-            if (Input.GetMouseButtonDown(0))
-                {
-                    buildMode = false;
-                    GameManager.instance.coins -= GameManager.instance.getBossCosts();
-                    GameManager.instance.bossCount += 1;
-                }
-            if (Input.GetMouseButtonDown(1))
-            {
-                buildMode = false;
-                Destroy(boss.gameObject);
-            }
+
         }
-            
-
-        
+                   
     }
-
+     
 
 }

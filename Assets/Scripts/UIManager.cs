@@ -4,15 +4,18 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour {
 
-    public GameObject button1;
-    public GameObject button2;
-    public GameObject button3;
+    public GameObject buyPhaseButton;
+    public GameObject rockBossButton;
+    public GameObject paperBossButton;
+    public GameObject scissorsBossButton;
+    public GameObject upgradeBossButton;
     public Text loseScreen;
     public Text winScreen;
     public Text stageNr;
     public Text coins;
     public Text bossInfo;
     public Text heroInfo;
+    public Text potionInfo;
     public Text finalWinScreen;
 
     void Awake()
@@ -26,9 +29,11 @@ public class UIManager : MonoBehaviour {
     }
     public void hideBuyMenu()
     {
-        button1.SetActive(false);
-        button2.SetActive(false);
-        button3.SetActive(false);
+        buyPhaseButton.SetActive(false);
+        rockBossButton.SetActive(false);
+        paperBossButton.SetActive(false);
+        scissorsBossButton.SetActive(false);
+        upgradeBossButton.SetActive(false);
 
     }
 
@@ -40,7 +45,7 @@ public class UIManager : MonoBehaviour {
     public IEnumerator showWinScreen()
     {
         winScreen.enabled = true;
-        yield return new WaitForSeconds(5.0f);
+        yield return new WaitForSeconds(10.0f);
         winScreen.enabled = false;
     }
 
@@ -51,21 +56,27 @@ public class UIManager : MonoBehaviour {
         {
             text.enabled = false;
         }
-        button1.SetActive(false);
-        button2.SetActive(false);
+        buyPhaseButton.SetActive(false);
+        rockBossButton.SetActive(false);
+        paperBossButton.SetActive(false);
+        scissorsBossButton.SetActive(false);
 
         finalWinScreen.enabled = true;
     }
 
     void Update()
     {
-        button2.GetComponentInChildren<Text>().text = "ADD Boss (" + GameManager.instance.getBossCosts() + ")";
+        rockBossButton.GetComponentInChildren<Text>().text = "Add Rock Boss (" + GameManager.instance.getBossCosts() + ")";
+        paperBossButton.GetComponentInChildren<Text>().text = "Add Paper Boss (" + GameManager.instance.getBossCosts() + ")";
+        scissorsBossButton.GetComponentInChildren<Text>().text = "Add Scissors Boss (" + GameManager.instance.getBossCosts() + ")";
+
         if (GameManager.instance.selectedBoss != null)
         {
-            button3.GetComponentInChildren<Text>().text = "Upgrade Boss (" + GameManager.instance.getUpgradeCosts() + ")";
+            upgradeBossButton.GetComponentInChildren<Text>().text = "Upgrade Boss (" + GameManager.instance.getUpgradeCosts() + ")";
         }
         updateCoins();
         updateBossInfo();
+        updatePotionInfo();
         showUpgradeMenu();
         updateHeroInfo();
     }
@@ -80,7 +91,7 @@ public class UIManager : MonoBehaviour {
         {
             bossInfo.enabled = true;
             Boss boss = GameManager.instance.selectedBoss;
-            bossInfo.text = "Current Boss Stats: Level: " + boss.level + " HP: " + boss.hp + " Strength: " + boss.strength + " AttackSpeed: " + boss.attSpeed;
+            bossInfo.text = "Current Boss Stats: Level: " + boss.level + " HP: " + boss.hp + " Strength: " + boss.strength + " AttackSpeed: " + boss.attSpeed + " Attribute: " + GameManager.instance.attrToString(boss.attribute);
         }
         else
             bossInfo.enabled = false;
@@ -88,27 +99,44 @@ public class UIManager : MonoBehaviour {
 
     public void updateHeroInfo()
     {
-        Hero hero = GameManager.instance.hero;
-        heroInfo.text = "Hero Stats: HP: " + hero.hp + " Strength: " + hero.strength + " AttackSpeed: " + hero.attSpeed;
+        if (GameManager.instance.hero != null)
+        {
+            Hero hero = GameManager.instance.hero;
+            heroInfo.text = "Hero Stats: HP: " + hero.hp + " Strength: " + hero.strength + " AttackSpeed: " + hero.attSpeed + " Attribute: " + GameManager.instance.attrToString(hero.attribute);
+        }
+    }
+
+    public void updatePotionInfo()
+    {
+        if (GameManager.instance.newPotion != null)
+        {
+            Potion potion = GameManager.instance.newPotion.GetComponent<Potion>();
+            potionInfo.text = "Current potion: " + potion.typeToString();
+        }
+        else
+        {
+            potionInfo.text = "Current potion: None";
+        }
     }
 
     public void showBuyMenu()
     {
-        button1.SetActive(true);
-        button2.SetActive(true);
-
+        buyPhaseButton.SetActive(true);
+        rockBossButton.SetActive(true);
+        paperBossButton.SetActive(true);
+        scissorsBossButton.SetActive(true);
     }
 
     public void showUpgradeMenu()
     {
-        if (GameManager.instance.selectedBoss != null)
+        if (GameManager.instance.selectedBoss != null && GameManager.instance.buyPhase)
         {
-            button3.SetActive(true);
+            upgradeBossButton.SetActive(true);
 
         }
         else
         {
-            button3.SetActive(false);
+            upgradeBossButton.SetActive(false);
         }
     }
 }
