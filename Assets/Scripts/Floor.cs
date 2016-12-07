@@ -19,17 +19,29 @@ public class Floor : MonoBehaviour {
     //potion that is on this tile
     public GameObject potionOnTile;
 
+    //all other tiles
+    public Grid grid;
+
+
     void OnMouseDown()
     {
+        grid = GameManager.instance.grid;
         Debug.Log(this.transform.localPosition);
-        if (GameManager.instance.bossGrabbed && type==1 && bossOnTile == null && potionOnTile == null) { 
-            GameManager.instance.newBoss.transform.position = this.transform.position;
-            GameManager.instance.bossGrabbed = false;
-            GameManager.instance.coins -= GameManager.instance.getBossCosts();
-            GameManager.instance.bossCount += 1;
-            bossOnTile=GameManager.instance.newBoss;
-            Physics2D.IgnoreCollision(bossOnTile.GetComponent<Collider2D>(), GameManager.instance.hero.GetComponent<Collider2D>(), false);
-        }
+        if (GameManager.instance.bossGrabbed && type == 1 && bossOnTile == null && potionOnTile == null &&
+            grid.getTile(layoutPosX + 1, layoutPosY).bossOnTile == null &&
+            grid.getTile(layoutPosX - 1, layoutPosY).bossOnTile == null &&
+            grid.getTile(layoutPosX, layoutPosY + 1).bossOnTile == null &&
+            grid.getTile(layoutPosX, layoutPosY - 1).bossOnTile == null
+            )
+            {
+                GameManager.instance.newBoss.transform.position = this.transform.position;
+                GameManager.instance.bossGrabbed = false;
+                GameManager.instance.coins -= GameManager.instance.getBossCosts();
+                GameManager.instance.bossCount += 1;
+                bossOnTile = GameManager.instance.newBoss;
+                Physics2D.IgnoreCollision(bossOnTile.GetComponent<Collider2D>(), GameManager.instance.hero.GetComponent<Collider2D>(), false);
+            }
+        
 
         else if (GameManager.instance.potionGrabbed && bossOnTile == null && potionOnTile == null)
         {

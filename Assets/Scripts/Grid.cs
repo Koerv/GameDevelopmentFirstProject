@@ -269,5 +269,13 @@ public class Grid : MonoBehaviour {
             }
         }
     }
+
+    public Floor getTile(int x, int y)
+    {
+        if (floorTiles[x, y] == null)
+            return new Floor();
+        else
+            return floorTiles[x, y];
+    }
    
 }
