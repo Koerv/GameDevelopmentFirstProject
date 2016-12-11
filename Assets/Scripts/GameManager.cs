@@ -41,6 +41,8 @@ public class GameManager : MonoBehaviour
 
     public float attributeModifier = 1.5f;
 
+    private string[] heroNames = { "Strong", "Smart", "Greedy" };
+
     //Awake is always called before any Start functions
 
     void Awake()
@@ -69,10 +71,15 @@ public class GameManager : MonoBehaviour
         uiManager.updateCoins();
         bossCount = 0;
         grid.startInstantiation();
-        hero = (Instantiate(Resources.Load("Strong"), heroInitialPosition, Quaternion.identity) as GameObject).GetComponent<Hero>();
+        hero = (Instantiate(LoadRandomHero(), heroInitialPosition, Quaternion.identity) as GameObject).GetComponent<Hero>();
         hero.transform.position = heroInitialPosition;
         hero.layoutPosition = heroInitialLayoutPosition; 
         StartBuyPhase();
+    }
+
+    private Object LoadRandomHero()
+    {
+        return Resources.Load(heroNames[Random.Range(0,3)]);
     }
 
     public void gameOver()
@@ -90,7 +97,7 @@ public class GameManager : MonoBehaviour
         coins += (int)(hero.level * 100 + hero.hp * 5 + hero.strength * 10 + hero.attSpeed * 10);
         uiManager.updateCoins();
         Destroy(hero.gameObject,hero.GetComponent<AudioSource>().clip.length);
-        hero = (Instantiate(Resources.Load("Strong"), new Vector3(0.4899998f, 3.4f, 0), Quaternion.identity) as GameObject).GetComponent<Hero>();
+        hero = (Instantiate(LoadRandomHero(), new Vector3(0.4899998f, 3.4f, 0), Quaternion.identity) as GameObject).GetComponent<Hero>();
         //reset posisiton of the hero to the entrance
         hero.layoutPosition = heroInitialLayoutPosition;
         hero.transform.position = heroInitialPosition;
@@ -271,6 +278,7 @@ public class GameManager : MonoBehaviour
             //walk north
             int northTileXCoord = (int)hero.layoutPosition.x - 1;
             int northTileYCoord = (int)hero.layoutPosition.y;
+            
             if (grid.layout[northTileXCoord, northTileYCoord] != 0)
             {
                 wayEast = wayWest = false;
@@ -299,6 +307,8 @@ public class GameManager : MonoBehaviour
     {
         float statsEast = grid.floorTiles[(int)hero.layoutPosition.x, (int)hero.layoutPosition.y].sumOfStatsEast;
         float statsWest = grid.floorTiles[(int)hero.layoutPosition.x, (int)hero.layoutPosition.y].sumOfStatsWest;
+        int potionsEast = grid.floorTiles[(int)hero.layoutPosition.x, (int)hero.layoutPosition.y].sumOfPotionsEast;
+        int potionsWest = grid.floorTiles[(int)hero.layoutPosition.x, (int)hero.layoutPosition.y].sumOfPotionsWest;
 
         //walk east if more stats on east
         int EastTileXCoord = (int)hero.layoutPosition.x;
@@ -331,33 +341,9 @@ public class GameManager : MonoBehaviour
         //walk east if more stats on east
         if (!(wayEast || wayWest))
         {
-            Debug.Log("Sum of stats east: " +grid.floorTiles[(int)hero.layoutPosition.x, (int)hero.layoutPosition.y].sumOfStatsEast + " Sum of stats west: " + grid.floorTiles[(int)hero.layoutPosition.x, (int)hero.layoutPosition.y].sumOfStatsWest);
-            if (statsEast > statsWest)
-            {
-                wayEast = true;
-                hero.moveDirection = new Vector3(hero.movSpeed, 0f, 0f);
-            }
-            else if(statsEast < statsWest)
-            {
-                wayWest = true;
-                hero.moveDirection = new Vector3(-hero.movSpeed, 0f, 0f);
-            }
-            //if both values are equal
-            else
-            {
-
-
-                if (Random.Range(0,2) == 1)
-                {
-                    wayWest = true;
-                    hero.moveDirection = new Vector3(-hero.movSpeed, 0f, 0f);
-                }
-                else
-                {
-                    wayEast = true;
-                    hero.moveDirection = new Vector3(hero.movSpeed, 0f, 0f);
-                }
-            }
+            //choose path dependand on the hero type and the boss stats/potions along the way
+            hero.chooseYourPath(statsEast, statsWest, potionsEast, potionsWest, grid);
+            
         }
         if (wayEast)
         {

@@ -1,10 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class StrongAndStupid : Hero
-{
+public class SmartAndSneaky : Hero {
 
-    public StrongAndStupid()
+    public SmartAndSneaky()
     {
 
     }
@@ -33,12 +32,12 @@ public class StrongAndStupid : Hero
     public override void chooseYourPath(float statsEast, float statsWest, int potionsEast, int potionsWest, Grid grid)
     {
         Debug.Log("Sum of stats east: " + grid.floorTiles[(int)layoutPosition.x, (int)layoutPosition.y].sumOfStatsEast + " Sum of stats west: " + grid.floorTiles[(int)layoutPosition.x, (int)layoutPosition.y].sumOfStatsWest);
-        if (statsEast > statsWest)
+        if (statsEast < statsWest)
         {
             GameManager.instance.wayEast = true;
             moveDirection = new Vector3(movSpeed, 0f, 0f);
         }
-        else if (statsEast < statsWest)
+        else if (statsEast > statsWest)
         {
             GameManager.instance.wayWest = true;
             moveDirection = new Vector3(-movSpeed, 0f, 0f);
@@ -63,8 +62,6 @@ public class StrongAndStupid : Hero
 
     public override string getName()
     {
-        return "Strong and Stupid";
+        return "Smart and Sneaky";
     }
-
-
 }

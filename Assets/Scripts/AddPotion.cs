@@ -10,6 +10,7 @@ public class AddPotion : MonoBehaviour {
     {
         potion = Instantiate(Resources.Load("Potion"), new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity) as GameObject;
         potion.GetComponent<Potion>().type = type;
+        potion.GetComponent<SpriteRenderer>().sprite = potion.GetComponent<Potion>().sprites[potion.GetComponent<Potion>().type];
         Debug.Log("Potion type: " + potion.GetComponent<Potion>().typeToString());
         GameManager.instance.newPotion = potion;
         Physics2D.IgnoreCollision(potion.GetComponent<Collider2D>(), GameManager.instance.hero.GetComponent<Collider2D>());

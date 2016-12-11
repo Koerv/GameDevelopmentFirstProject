@@ -20,14 +20,12 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000013705165640}
   - 212: {fileID: 212000010063628218}
-  - 114: {fileID: 114000013225877060}
   - 50: {fileID: 50000014058328826}
   - 61: {fileID: 61000010506484744}
-  - 114: {fileID: 114000011287402752}
   - 82: {fileID: 82000010344983316}
-  - 114: {fileID: 114000010833871594}
+  - 114: {fileID: 114000012366053332}
   m_Layer: 0
-  m_Name: Hero
+  m_Name: Greedy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -151,7 +149,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!114 &114000010833871594
+--- !u!114 &114000012366053332
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -159,57 +157,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1000011537252032}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae761b4e30ee89e45b717319a8a72e86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  level: 0
-  hp: 0
-  strength: 0
-  attSpeed: 0
-  movSpeed: 0
-  fightingSound: {fileID: 0}
-  attribute: 0
-  layoutPosition: {x: 0, y: 0}
-  layoutStartPosition: {x: 0, y: 0}
-  initialPosition: {x: 0, y: 0, z: 0}
-  isFighting: 0
-  isStealthed: 0
-  isPoisoned: 0
-  moveDirection: {x: 0, y: 0, z: 0}
---- !u!114 &114000011287402752
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000011537252032}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae761b4e30ee89e45b717319a8a72e86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  level: 0
-  hp: 0
-  strength: 0
-  attSpeed: 0
-  movSpeed: 0
-  fightingSound: {fileID: 0}
-  attribute: 0
-  layoutPosition: {x: 0, y: 0}
-  layoutStartPosition: {x: 0, y: 0}
-  initialPosition: {x: 0, y: 0, z: 0}
-  isFighting: 0
-  isStealthed: 0
-  isPoisoned: 0
-  moveDirection: {x: 0, y: 0, z: 0}
---- !u!114 &114000013225877060
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000011537252032}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4e41df3b4e96d94895de0fc240160de, type: 3}
+  m_Script: {fileID: 11500000, guid: cc42c28105fdbd143aa7218d85c954b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   level: 0
@@ -254,7 +202,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 100
   m_Sprite: {fileID: 21300042, guid: 7f3c4ed4464210b40a8d671457f87966, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

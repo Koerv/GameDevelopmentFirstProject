@@ -9,6 +9,9 @@ public class Floor : MonoBehaviour {
     public float sumOfStatsEast = 0f;
     public float sumOfStatsWest = 0f;
 
+    public int sumOfPotionsEast = 0;
+    public int sumOfPotionsWest = 0;
+
     //position of the tile on layout
     public int layoutPosX;
     public int layoutPosY;

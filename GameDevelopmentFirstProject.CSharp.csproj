@@ -65,14 +65,18 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\AddBoss.cs" />
     <Compile Include="Assets\Scripts\AddBossButton.cs" />
+    <Compile Include="Assets\Scripts\AddPotion.cs" />
     <Compile Include="Assets\Scripts\BoardManager.cs" />
     <Compile Include="Assets\Scripts\Boss.cs" />
     <Compile Include="Assets\Scripts\Floor.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\GreedyAndGeeky.cs" />
     <Compile Include="Assets\Scripts\Grid.cs" />
     <Compile Include="Assets\Scripts\Hero.cs" />
     <Compile Include="Assets\Scripts\Loader.cs" />
+    <Compile Include="Assets\Scripts\Potion.cs" />
     <Compile Include="Assets\Scripts\Princess.cs" />
+    <Compile Include="Assets\Scripts\SmartAndSneaky.cs" />
     <Compile Include="Assets\Scripts\StrongAndStupid.cs" />
     <Compile Include="Assets\Scripts\TurningPoint.cs" />
     <Compile Include="Assets\Scripts\UIManager.cs" />

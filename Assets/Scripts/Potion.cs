@@ -8,6 +8,8 @@ public class Potion : MonoBehaviour {
     public const int STEALTH = 2;
     public const int POISON = 3;
 
+    public Sprite[] sprites;
+
     public int type;
 
     public void activate(Hero hero)

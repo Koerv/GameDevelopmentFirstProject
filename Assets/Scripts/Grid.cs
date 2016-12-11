@@ -243,25 +243,41 @@ public class Grid : MonoBehaviour {
                 floorTile.sumOfStatsEast = 0;
                 floorTile.sumOfStatsWest = 0;
 
+                //reset sumOfPotions
+                floorTile.sumOfPotionsEast = 0;
+                floorTile.sumOfPotionsWest = 0;
+
                 int eastTileXCoord = floorTile.layoutPosX;
                 int eastTileYCoord = floorTile.layoutPosY + 1;
                 while (layout[eastTileXCoord, eastTileYCoord] != 0 && eastTileYCoord < gridSizeY)
                 {
+                    //increase total stats if a boss is on this floor
                     if(floorTiles[eastTileXCoord,eastTileYCoord].bossOnTile !=null) {
                         Boss tileBoss = floorTiles[eastTileXCoord, eastTileYCoord].bossOnTile.GetComponent<Boss>();
                         floorTile.sumOfStatsEast += tileBoss.hp+tileBoss.strength*3+tileBoss.attSpeed*3;
 
                     }
+
+                    //increase counter if potion is on this floor
+                    if(floorTiles[eastTileXCoord,eastTileYCoord].potionOnTile != null)
+                    {
+                        floorTile.sumOfPotionsEast++;
+                    }
                     eastTileYCoord++;
                 }
                 int westTileXCoord = floorTile.layoutPosX;
                 int westTileYCoord = floorTile.layoutPosY - 1;
+
                 while (layout[westTileXCoord, westTileYCoord] != 0 && westTileYCoord >= 0)
                 {
                     if (floorTiles[westTileXCoord, westTileYCoord].bossOnTile != null)
                     {
                         Boss tileBoss = floorTiles[westTileXCoord, westTileYCoord].bossOnTile.GetComponent<Boss>();
                         floorTile.sumOfStatsWest += tileBoss.hp + tileBoss.strength * 3 + tileBoss.attSpeed * 3;
+                    }
+                    if (floorTiles[westTileXCoord, westTileYCoord].potionOnTile != null)
+                    {
+                        floorTile.sumOfPotionsWest++;
                     }
                     westTileYCoord--;
                 }

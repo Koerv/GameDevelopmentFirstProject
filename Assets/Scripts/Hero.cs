@@ -175,6 +175,10 @@ public class Hero : MonoBehaviour
         if (poisonCounter >= 4)
         {
             hp--;
+            if (hp <= 0)
+            {
+                Defeated();
+            }
             poisonCounter = 0;
         }
     }
@@ -183,6 +187,17 @@ public class Hero : MonoBehaviour
     {
         isStealthed = false;
         isPoisoned = false;
+    }
+
+    public virtual void chooseYourPath(float statsEast, float statsWest, int potionsEast, int potionsWest, Grid grid)
+    {
+        Debug.LogError("You did not specify the hero type!");
+    }
+
+    public virtual string getName()
+    {
+        Debug.LogError("You did not specify the hero type!");
+        return "Hero";
     }
 
     

@@ -102,7 +102,7 @@ public class UIManager : MonoBehaviour {
         if (GameManager.instance.hero != null)
         {
             Hero hero = GameManager.instance.hero;
-            heroInfo.text = "Hero Stats: HP: " + hero.hp + " Strength: " + hero.strength + " AttackSpeed: " + hero.attSpeed + " Attribute: " + GameManager.instance.attrToString(hero.attribute);
+            heroInfo.text = "Hero Type: " + hero.getName() + ", Stats: HP: " + hero.hp + " Strength: " + hero.strength + " AttackSpeed: " + hero.attSpeed + " Attribute: " + GameManager.instance.attrToString(hero.attribute);
         }
     }
 

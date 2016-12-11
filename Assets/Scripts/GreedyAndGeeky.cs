@@ -1,10 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class StrongAndStupid : Hero
-{
+public class GreedyAndGeeky : Hero {
 
-    public StrongAndStupid()
+    public GreedyAndGeeky()
     {
 
     }
@@ -12,7 +11,6 @@ public class StrongAndStupid : Hero
     void Start()
     {
         level = GameManager.instance.stage;
-        //RerollStats();
 
         deathSound = GetComponent<AudioSource>();
         RerollStats();
@@ -21,7 +19,7 @@ public class StrongAndStupid : Hero
     {
         attribute = UnityEngine.Random.Range(0, 3);
 
-        hp = (int)(15 + level * 3 + Mathf.Round(UnityEngine.Random.Range(0f, level)));
+        hp = (int)(15 + level * 2 + Mathf.Round(UnityEngine.Random.Range(0f, level)));
         strength = (int)(1 + level + Mathf.Round(UnityEngine.Random.Range(0f, level)));
         attSpeed = (1.0f + level + Mathf.Round(UnityEngine.Random.Range(0f, level))) * 0.8f;
         movSpeed = 0.015f;
@@ -32,13 +30,13 @@ public class StrongAndStupid : Hero
 
     public override void chooseYourPath(float statsEast, float statsWest, int potionsEast, int potionsWest, Grid grid)
     {
-        Debug.Log("Sum of stats east: " + grid.floorTiles[(int)layoutPosition.x, (int)layoutPosition.y].sumOfStatsEast + " Sum of stats west: " + grid.floorTiles[(int)layoutPosition.x, (int)layoutPosition.y].sumOfStatsWest);
-        if (statsEast > statsWest)
+        Debug.Log("Sum of potions east: " + grid.floorTiles[(int)layoutPosition.x, (int)layoutPosition.y].sumOfPotionsEast + " Sum of potions west: " + grid.floorTiles[(int)layoutPosition.x, (int)layoutPosition.y].sumOfPotionsWest);
+        if (potionsEast > potionsWest)
         {
             GameManager.instance.wayEast = true;
             moveDirection = new Vector3(movSpeed, 0f, 0f);
         }
-        else if (statsEast < statsWest)
+        else if (potionsEast < potionsWest)
         {
             GameManager.instance.wayWest = true;
             moveDirection = new Vector3(-movSpeed, 0f, 0f);
@@ -63,8 +61,6 @@ public class StrongAndStupid : Hero
 
     public override string getName()
     {
-        return "Strong and Stupid";
+        return "Greedy and Geeky";
     }
-
-
 }
