@@ -1,0 +1,37 @@
+Story:
+Du bist der böse Dungeon Master und hast die Prinzessing entführt. Helden kommen und wollen sie befreien. Halte sie ab! Das wars.
+
+Gameplay:
+Es gibt drei Helden Archetypen:
+Strong and Stupid: Läuft immer da entlang, wo es die meisten und stärksten Bosse gibt
+Smart and Sneaky: Läuft immer da entlang, wo es die schwächsten Bosse gibt.
+Greedy: Läuft immer da entlang, wo er sich einen Trank holen könnte.
+
+Die Helden sehen immer nur bis zur nächsten Ecke, so kannst du beeinflussen wo sie hinlaufen.
+
+Außerdem hat jeder Boss und Held Stärken und Schwächen, sind relativ selbsterklärend(STein, Schere, Papier)
+
+Alle zwei Runden musst du einen Trank platzieren. Es gibt noch einen Bug, dass du es umgehen kannst, mach es bitte nicht ;-)
+HP: Gibt mehr HP
+Strength: Gibt mehr Strength
+Poison: Fügt alle paar Schritte Schaden zu
+Stealth: Der Held geht einem Boss aus dem Weg.
+
+Du kannst nur immer einen Trank oder Boss auf ein Feld setzen. Zwischen Bossen muss immer ein Feld Abstand sein.
+
+Bosse kannst du rechts auswählen. Einfach auf den Button klicken und dann im Dungeon platzieren. Wenn du fertig bist, auf "End Buy Phase" klicken, dann läuft der Held los
+Wenn sie gesetzt sind kansnt du sie durch Mausklick auswählen, dann werden Infos angezeigt und du kannst sie rechts upgraden.
+
+Upgrades werden immer teurer, abhängig vom Boss-Level. Die Kosten pro Boss sind abhängig von der aktuellen Anzahl an Bossen.
+
+Links sind Informationen zu dem aktuell ausgewählten Boss und zum aktuellen Helden und ausgewählten Boss. Unbedingt anschauen, sonst weißt du die Stärken/Schwächen nicht und wie die Helden laufen.
+
+Wenn der Held unten ankommt kannst du nochmal Bosse setzen. Und er muss wieder hoch laufen.
+
+Sound ist wichtig, sonst hörst du den tollen Todes-Sound nicht ;-)
+
+Einschränkungen/Bugs:
+Bitte nur einmal auf "Add Boss" klicken und dann platzieren, sonst passiert was doofes
+Bitte erst Trank setzen und dann Boss, sonst passiert was doofes
+Wenn du verloren hast gibt es noch einen kleinen Bug, dass das Spiel nicht automatisch aufhört, sondern du mit Alt + F4 beenden musst.
+Und es ist viel zu schwer im Moment.

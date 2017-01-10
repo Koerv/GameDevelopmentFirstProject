@@ -15,6 +15,7 @@ public class AddBoss : MonoBehaviour {
             boss.GetComponent<Boss>().attribute = attribute; 
             GameManager.instance.newBoss = boss;
             Physics2D.IgnoreCollision(boss.GetComponent<Collider2D>(), GameManager.instance.hero.GetComponent<Collider2D>());
+            GameManager.instance.uiManager.hideBuyMenu();
         }
     }
 

@@ -43,7 +43,8 @@ public class Floor : MonoBehaviour {
                 GameManager.instance.bossCount += 1;
                 bossOnTile = GameManager.instance.newBoss;
                 Physics2D.IgnoreCollision(bossOnTile.GetComponent<Collider2D>(), GameManager.instance.hero.GetComponent<Collider2D>(), false);
-            }
+                GameManager.instance.uiManager.showBuyMenu();
+        }
         
 
         else if (GameManager.instance.potionGrabbed && bossOnTile == null && potionOnTile == null)
@@ -52,6 +53,7 @@ public class Floor : MonoBehaviour {
             GameManager.instance.potionGrabbed = false;
             potionOnTile = GameManager.instance.newPotion;
             Physics2D.IgnoreCollision(potionOnTile.GetComponent<Collider2D>(), GameManager.instance.hero.GetComponent<Collider2D>(), false);
+            GameManager.instance.uiManager.showBuyMenu();
         }
     }
 }

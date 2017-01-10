@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -60,9 +61,14 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
 
         //Sets this to not be destroyed when reloading scene
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
         //Call the InitGame function to initialize the first level 
         InitGame();
+    }
+
+    public void StartGame()
+    {
+        SceneManager.LoadScene("MainScene");
     }
 
     //Initializes the game for each level.
@@ -76,6 +82,8 @@ public class GameManager : MonoBehaviour
         hero.layoutPosition = heroInitialLayoutPosition; 
         StartBuyPhase();
     }
+
+    
 
     private Object LoadRandomHero()
     {
@@ -115,6 +123,7 @@ public class GameManager : MonoBehaviour
         {
             potionGrabbed = true;
             GetComponent<AddPotion>().addPotion(Random.Range(0,4));
+            uiManager.hideBuyMenu();
         }
         else
         {

@@ -29,6 +29,7 @@ public class UIManager : MonoBehaviour {
     }
     public void hideBuyMenu()
     {
+        Debug.Log("Buy menu hidden");
         buyPhaseButton.SetActive(false);
         rockBossButton.SetActive(false);
         paperBossButton.SetActive(false);
