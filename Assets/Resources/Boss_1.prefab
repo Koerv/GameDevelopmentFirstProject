@@ -148,6 +148,8 @@ MonoBehaviour:
   attSpeed: 0
   standardSprite: {fileID: 21300004, guid: 1b84c06d9ec3daf4a9ca8b5d5e001d9f, type: 3}
   selectedSprite: {fileID: 21300000, guid: 4468a9efdff5ce743928a42edbbf0b19, type: 3}
+  attributeModifier: 0
+  attribute: 0
   hero: {fileID: 0}
   isFighting: 0
 --- !u!212 &212000011496387568
