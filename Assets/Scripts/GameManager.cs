@@ -87,7 +87,11 @@ public class GameManager : MonoBehaviour
 
     private Object LoadRandomHero()
     {
-        return Resources.Load(heroNames[Random.Range(0,3)]);
+        if (stage % 2 == 0)
+        {
+            return Resources.Load(heroNames[Random.Range(0, 3)]);
+        }
+        else return Resources.Load(heroNames[Random.Range(0,2)]);
     }
 
     public void gameOver()
@@ -117,13 +121,14 @@ public class GameManager : MonoBehaviour
 
         //reset princess back into her cage
         grid.princess.transform.position = grid.princess.initialPosition;
+        StartBuyPhase();
 
         //every second stage: add potion to place in the dungeon
-        if(stage %2 == 0)
+        if (stage %2 == 0)
         {
             potionGrabbed = true;
             GetComponent<AddPotion>().addPotion(Random.Range(0,4));
-            uiManager.hideBuyMenu();
+            
         }
         else
         {

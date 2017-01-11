@@ -72,8 +72,8 @@ public class Boss : MonoBehaviour
                     isFighting=false;
                     hero.Defeated();
                     //Destroy(hero.gameObject);
+                    
                     GameManager.instance.stageClear();
-                    GameManager.instance.StartBuyPhase();
                 }
                 //reset Attack Time
                 bTimeLeft = bAttackTime;
@@ -108,9 +108,9 @@ public class Boss : MonoBehaviour
     public void upgradeBoss()
     {
         level += 1;
-        hp = (int)(hp + level + Mathf.Round(Random.Range(0f, level)));
-        strength = (int)(strength + Mathf.Round(Random.Range(0f, level)));
-        attSpeed= attSpeed + Mathf.Round(Random.Range(0f, level))*0.8f;
+        hp = (int)(hp + level*3 + Mathf.Round(Random.Range(0f, level)));
+        strength = (int)(strength + Mathf.Round(Random.Range(0f, level * 0.8f)));
+        attSpeed= attSpeed + Mathf.Round(Random.Range(0f, level))*0.3f;
         bAttackTime = 1 - this.attSpeed * 0.1f;
         Debug.Log("Boss Stats: Level: " + level + ", HP: " + hp + ", STR: " + strength + ", SPD: " + attSpeed + ", attribute: " + GameManager.instance.attrToString(attribute));
     }

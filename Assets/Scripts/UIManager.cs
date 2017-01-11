@@ -17,12 +17,14 @@ public class UIManager : MonoBehaviour {
     public Text heroInfo;
     public Text potionInfo;
     public Text finalWinScreen;
+    public Canvas tutorialCanvas;
 
     void Awake()
     {
         loseScreen.enabled = false;
         winScreen.enabled = false;
         finalWinScreen.enabled = false;
+        tutorialCanvas.GetComponent<Canvas>().enabled = false;
 
         stageNr.text = ("Stage 1");
         coins.text = ("Coins: " + coins);
@@ -139,5 +141,14 @@ public class UIManager : MonoBehaviour {
         {
             upgradeBossButton.SetActive(false);
         }
+    }
+
+    public void showHideTutorial()
+    {
+        if (tutorialCanvas.GetComponent<Canvas>().enabled == false)
+        {
+            tutorialCanvas.GetComponent<Canvas>().enabled = true;
+        }
+        else tutorialCanvas.GetComponent<Canvas>().enabled = false;
     }
 }

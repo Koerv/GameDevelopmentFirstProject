@@ -14,6 +14,7 @@ public class AddPotion : MonoBehaviour {
         Debug.Log("Potion type: " + potion.GetComponent<Potion>().typeToString());
         GameManager.instance.newPotion = potion;
         Physics2D.IgnoreCollision(potion.GetComponent<Collider2D>(), GameManager.instance.hero.GetComponent<Collider2D>());
+        GameManager.instance.uiManager.hideBuyMenu();
     }
 
     // Update is called once per frame
