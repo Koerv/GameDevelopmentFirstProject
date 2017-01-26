@@ -79,7 +79,8 @@ public class GameManager : MonoBehaviour
         grid.startInstantiation();
         hero = (Instantiate(LoadRandomHero(), heroInitialPosition, Quaternion.identity) as GameObject).GetComponent<Hero>();
         hero.transform.position = heroInitialPosition;
-        hero.layoutPosition = heroInitialLayoutPosition; 
+        hero.layoutPosition = heroInitialLayoutPosition;
+        hero.layoutStartPosition = heroInitialLayoutPosition;
         StartBuyPhase();
     }
 
@@ -284,7 +285,7 @@ public class GameManager : MonoBehaviour
             }
             else
             {
-                westOrEast();
+                chooseNewDirection();
             }
         }
         else
@@ -300,6 +301,9 @@ public class GameManager : MonoBehaviour
                 hero.transform.position = Vector3.MoveTowards(hero.transform.position, grid.floorTiles[northTileXCoord, northTileYCoord].transform.position, hero.movSpeed);
                 if (hero.transform.position == grid.floorTiles[northTileXCoord, northTileYCoord].transform.position)
                 {
+                    Debug.Log("Game Ends NOW!");
+                    Debug.Log("hero layout pos: " + hero.layoutPosition.x + ", " + hero.layoutPosition.y);
+                    Debug.Log("hero layoutStart pos: " + hero.layoutStartPosition.x + ", " + hero.layoutStartPosition.y);
                     hero.layoutPosition = new Vector2(northTileXCoord, northTileYCoord);
                     if (hero.layoutPosition == hero.layoutStartPosition)
                     {
@@ -310,14 +314,14 @@ public class GameManager : MonoBehaviour
             }
             else
             {
-                westOrEast();
+                chooseNewDirection();
             }
         }
 
     }
 
     //makes decision if hero should move to the left or to the right
-    void westOrEast()
+    void chooseNewDirection()
     {
         float statsEast = grid.floorTiles[(int)hero.layoutPosition.x, (int)hero.layoutPosition.y].sumOfStatsEast;
         float statsWest = grid.floorTiles[(int)hero.layoutPosition.x, (int)hero.layoutPosition.y].sumOfStatsWest;
@@ -389,9 +393,6 @@ public class GameManager : MonoBehaviour
 
         //ignore next boss if hero is stealthed
         ignoreBossIfStealthed(EastTileXCoord, EastTileYCoord);
-
-
-
     }
 
     void walkWest()
@@ -399,8 +400,9 @@ public class GameManager : MonoBehaviour
         int WestTileYCoord = (int)hero.layoutPosition.y - 1;
         int WestTileXCoord = (int)hero.layoutPosition.x;
 
-      
-        hero.transform.position = Vector3.MoveTowards(hero.transform.position, grid.floorTiles[WestTileXCoord, WestTileYCoord].transform.position, hero.movSpeed);
+        if (grid.layout[WestTileXCoord, WestTileYCoord] != 0)
+        {
+            hero.transform.position = Vector3.MoveTowards(hero.transform.position, grid.floorTiles[WestTileXCoord, WestTileYCoord].transform.position, hero.movSpeed);
 
         if (hero.transform.position == grid.floorTiles[WestTileXCoord, WestTileYCoord].transform.position)
         {
@@ -414,6 +416,7 @@ public class GameManager : MonoBehaviour
         }
         //ignore next boss if hero is stealthed
         ignoreBossIfStealthed(WestTileXCoord, WestTileYCoord);
+        }
     }
 
     public void ignoreBossIfStealthed(int nextTileX, int nextTileY)

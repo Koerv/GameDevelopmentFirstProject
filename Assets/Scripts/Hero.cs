@@ -121,26 +121,26 @@ public class Hero : MonoBehaviour
         throw new NotImplementedException();
     }
 
-    public void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.name.Contains("Floor"))
-        {
-            //move to a new direction (chosen Randomly)
-            turningPoint = collision.GetComponent<TurningPoint>();
-            Debug.Log("dirChange starts");
-            dirChange = true;
+    //public void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.name.Contains("Floor"))
+    //    {
+    //        //move to a new direction (chosen Randomly)
+    //        turningPoint = collision.GetComponent<TurningPoint>();
+    //        Debug.Log("dirChange starts");
+    //        dirChange = true;
 
-            //yield return new WaitForSeconds(movSpeed * 5);
-            //moveDirection = turningPoint.newDirection() * movSpeed;
-        }
-        if (collision.name.Contains("Entrance") && !GameManager.instance.wayDown)
-        {
-            this.movSpeed = 0.0f;
-            moveDirection = new Vector3(0, -movSpeed, 0);
-            GameManager.instance.gameOver();
-        }
+    //        //yield return new WaitForSeconds(movSpeed * 5);
+    //        //moveDirection = turningPoint.newDirection() * movSpeed;
+    //    }
+    //    if (collision.name.Contains("Entrance") && !GameManager.instance.wayDown)
+    //    {
+    //        this.movSpeed = 0.0f;
+    //        moveDirection = new Vector3(0, -movSpeed, 0);
+    //        GameManager.instance.gameOver();
+    //    }
 
-    }
+    //}
 
     public void Defeated()
     {

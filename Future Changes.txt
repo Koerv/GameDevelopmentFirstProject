@@ -1,0 +1,30 @@
+By priority:
+- Fix pathfinding to work even on downwards/upwards intersections
+- add hp bars
+- apply poison all 3 tiles instead of 4
+- It would make more sense if bosses have more strength/less aspd, currently it is the other way around
+- add error handling (bosses can't be places there etc)
+- Add different Map types
+- add Title Screen/Main Menu
+- improve look of Buttons, Gui
+- make gui elements anchor at corners instead of moving dependent on screen size
+- Undo adding a boss while he is selected
+- improve visual information for hero, boss etc (popups, icons instead of text)
+- paths open at certain stage(s)
+__________________________________________________________________________________________until CVTag
+- Add achievements
+- Find new names for RPS (or leave it be)
+- Add playable Tutorial
+- Use own Sprites
+- add intro
+- add Avatar (=dungeon master), look changeable through ingame purchase, makes comments about pesky heroes etc
+- new hero/boss skins, buyable through in game purchase
+- new hero type: fast and furious? (always goes down/up if possible)
+- make game android-friendly
+
+Test if this makes the game better:
+- Healing bosses
+- Adding potions every level?
+- changing number of stages?
+- Change Boss/hero stats to depend on a base level
+- Player gets info about where the hero walks beforehand and can see if its protected enough
