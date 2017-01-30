@@ -99,8 +99,6 @@ public class Boss : MonoBehaviour
 
     void OnMouseDown()
     {
-        //test purpose only
-        //upgradeBoss();
         GameManager.instance.upgradeBoss(this);
 
     }

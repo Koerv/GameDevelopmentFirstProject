@@ -167,7 +167,10 @@ public class GameManager : MonoBehaviour
         }
 
         selectedBoss = boss;
-        selectedBoss.GetComponent<SpriteRenderer>().sprite = selectedBoss.selectedSprite;
+        //show that boss is selected by moving pointer over him
+        uiManager.movePointer(boss.transform.position);
+        //change boss color to show that he's selected
+        //selectedBoss.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0.5f);
     }
 
     public string attrToString(int attribute)

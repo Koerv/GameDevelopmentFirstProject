@@ -48,13 +48,6 @@ public class Hero : MonoBehaviour
     void Start()
     {
         Debug.Log("Start wird aufgerufen");
-        /*
-        level = GameManager.instance.stage;
-        //RerollStats();
-
-        hAttackTime = 1 - this.attSpeed * 0.1f;
-        deathSound = GetComponent<AudioSource>();
-        */
     }
 
 
@@ -62,15 +55,7 @@ public class Hero : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (!GameManager.instance.buyPhase && !isFighting)
-        //{ 
-        //    transform.Translate(moveDirection);
-        //}
-
-        //if (dirChange)
-        //{
-        //    waitAndChangeDir();
-        //}
+       
         if (isFighting)
         {
 
@@ -103,6 +88,10 @@ public class Hero : MonoBehaviour
                     {
                         GameManager.instance.selectedBoss = null;
                     }
+                    //hide the pointer if the defeated boss was also selected
+                    //if (currentBoss.Equals(GameManager.instance.selectedBoss)) {
+                    //    GameManager.instance.uiManager.pointer.GetComponent<SpriteRenderer>().enabled = false;
+                    //}
                     Destroy(currentBoss.gameObject);
                     GameManager.instance.bossCount -= 1;
 
@@ -120,27 +109,6 @@ public class Hero : MonoBehaviour
     {
         throw new NotImplementedException();
     }
-
-    //public void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    if (collision.name.Contains("Floor"))
-    //    {
-    //        //move to a new direction (chosen Randomly)
-    //        turningPoint = collision.GetComponent<TurningPoint>();
-    //        Debug.Log("dirChange starts");
-    //        dirChange = true;
-
-    //        //yield return new WaitForSeconds(movSpeed * 5);
-    //        //moveDirection = turningPoint.newDirection() * movSpeed;
-    //    }
-    //    if (collision.name.Contains("Entrance") && !GameManager.instance.wayDown)
-    //    {
-    //        this.movSpeed = 0.0f;
-    //        moveDirection = new Vector3(0, -movSpeed, 0);
-    //        GameManager.instance.gameOver();
-    //    }
-
-    //}
 
     public void Defeated()
     {
@@ -172,7 +140,7 @@ public class Hero : MonoBehaviour
     public void applyPoison()
     {
         poisonCounter++;
-        if (poisonCounter >= 4)
+        if (poisonCounter >= 3)
         {
             hp--;
             if (hp <= 0)

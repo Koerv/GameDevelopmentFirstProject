@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System;
 
 public class UIManager : MonoBehaviour {
 
@@ -9,6 +10,7 @@ public class UIManager : MonoBehaviour {
     public GameObject paperBossButton;
     public GameObject scissorsBossButton;
     public GameObject upgradeBossButton;
+    public GameObject pointer;
     public Text loseScreen;
     public Text winScreen;
     public Text stageNr;
@@ -25,7 +27,9 @@ public class UIManager : MonoBehaviour {
         winScreen.enabled = false;
         finalWinScreen.enabled = false;
         tutorialCanvas.GetComponent<Canvas>().enabled = false;
-
+        pointer.GetComponent<SpriteRenderer>().enabled = false;
+        pointer.transform.position = new Vector2(0f, 0f);
+   
         stageNr.text = ("Stage 1");
         coins.text = ("Coins: " + coins);
     }
@@ -132,7 +136,7 @@ public class UIManager : MonoBehaviour {
 
     public void showUpgradeMenu()
     {
-        if (GameManager.instance.selectedBoss != null && GameManager.instance.buyPhase)
+        if (GameManager.instance.selectedBoss != null && GameManager.instance.buyPhase && !GameManager.instance.bossGrabbed && !GameManager.instance.potionGrabbed)
         {
             upgradeBossButton.SetActive(true);
 
@@ -150,5 +154,11 @@ public class UIManager : MonoBehaviour {
             tutorialCanvas.GetComponent<Canvas>().enabled = true;
         }
         else tutorialCanvas.GetComponent<Canvas>().enabled = false;
+    }
+
+    public void movePointer(Vector3 bossPos)
+    {
+        pointer.GetComponent<SpriteRenderer>().enabled = true;
+        pointer.transform.position = new Vector2(bossPos.x, bossPos.y+0.5f);
     }
 }

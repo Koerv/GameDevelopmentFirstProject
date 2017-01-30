@@ -7,6 +7,7 @@ By priority:
 - Add different Map types
 - add Title Screen/Main Menu
 - improve look of Buttons, Gui
+- add audios
 - make gui elements anchor at corners instead of moving dependent on screen size
 - Undo adding a boss while he is selected
 - improve visual information for hero, boss etc (popups, icons instead of text)
@@ -28,3 +29,5 @@ Test if this makes the game better:
 - changing number of stages?
 - Change Boss/hero stats to depend on a base level
 - Player gets info about where the hero walks beforehand and can see if its protected enough
+- When hero reaches princess: Enter "Emergency mode" where player can place bosses as the hero leaves the dungeon
+- maybe have a special hero/special conditions at entering last stage?
