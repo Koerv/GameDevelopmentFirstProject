@@ -18,6 +18,7 @@ public class Potion : MonoBehaviour {
         {
             case HP:
                 hero.hp += hero.level * 2;
+                hero.maxHP += hero.level * 2;
                 break;
             case STRENGTH:
                 hero.strength += hero.level;

@@ -1,7 +1,7 @@
 By priority:
 - Fix pathfinding to work even on downwards/upwards intersections
-- add hp bars
-- make gui elements anchor at corners instead of moving dependent on screen size
+//CURRENTLY IN PROGRESS add hp bars
+//I THINK ITS DONE make gui elements anchor at corners instead of moving dependent on screen size
 //DONE- apply poison all 3 tiles instead of 4
 - Undo adding a boss while he is selected
 - add error handling (bosses can't be places there etc)

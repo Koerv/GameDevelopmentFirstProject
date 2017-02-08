@@ -20,6 +20,7 @@ public class GreedyAndGeeky : Hero {
         attribute = UnityEngine.Random.Range(0, 3);
 
         hp = (int)(15 + level * 3 + Mathf.Round(UnityEngine.Random.Range(0f, level)));
+        maxHP = hp;
         strength = (int)(1 + level + Mathf.Round(UnityEngine.Random.Range(0f, level*0.7f)));
         attSpeed = (1.0f + level*0.3f + Mathf.Round(UnityEngine.Random.Range(0f, level*0.3f))) * 0.7f;
         movSpeed = 0.015f;

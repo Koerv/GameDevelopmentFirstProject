@@ -7,6 +7,8 @@ public class Hero : MonoBehaviour
 
     public int level;
     public int hp;
+    //TODO boss needs this also for health bar
+    public int maxHP;
     public int strength;
     public float attSpeed;
     public float movSpeed;
