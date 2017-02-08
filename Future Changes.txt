@@ -1,15 +1,15 @@
 By priority:
 - Fix pathfinding to work even on downwards/upwards intersections
 - add hp bars
-- apply poison all 3 tiles instead of 4
-- It would make more sense if bosses have more strength/less aspd, currently it is the other way around
-- add error handling (bosses can't be places there etc)
-- Add different Map types
-- add Title Screen/Main Menu
-- improve look of Buttons, Gui
-- add audios
 - make gui elements anchor at corners instead of moving dependent on screen size
+//DONE- apply poison all 3 tiles instead of 4
 - Undo adding a boss while he is selected
+- add error handling (bosses can't be places there etc)
+- It would make more sense if bosses have more strength/less aspd, currently it is the other way around
+- improve look of Buttons, Gui
+- Add different Map types
+- add audios
+- add Title Screen/Main Menu
 - improve visual information for hero, boss etc (popups, icons instead of text)
 - paths open at certain stage(s)
 __________________________________________________________________________________________until CVTag
@@ -31,3 +31,4 @@ Test if this makes the game better:
 - Player gets info about where the hero walks beforehand and can see if its protected enough
 - When hero reaches princess: Enter "Emergency mode" where player can place bosses as the hero leaves the dungeon
 - maybe have a special hero/special conditions at entering last stage?
+- remove additional cost for each boss?

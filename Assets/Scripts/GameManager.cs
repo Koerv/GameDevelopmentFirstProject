@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
     bool stopMovement = false;
     public UIManager uiManager;
     public Hero hero;
-    public Boss selectedBoss;
+    public Boss selectedBoss = null;
     public int bossCosts;
     public int bossCount;
     public int stage = 1;
@@ -166,6 +166,7 @@ public class GameManager : MonoBehaviour
             selectedBoss.GetComponent<SpriteRenderer>().sprite = selectedBoss.standardSprite;
         }
 
+       
         selectedBoss = boss;
         //show that boss is selected by moving pointer over him
         uiManager.movePointer(boss.transform.position);
