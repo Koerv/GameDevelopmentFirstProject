@@ -44,6 +44,8 @@ public class GameManager : MonoBehaviour
 
     private string[] heroNames = { "Strong", "Smart", "Greedy" };
 
+
+
     //Awake is always called before any Start functions
 
     void Awake()
@@ -440,6 +442,11 @@ public class GameManager : MonoBehaviour
             Physics2D.IgnoreCollision(evadedBoss.GetComponent<Collider2D>(), hero.GetComponent<Collider2D>(), false);
             evadedBoss = null;
         
+    }
+
+    public void changeFastMode()
+    {
+        hero.changeFastMode();
     }
 
 

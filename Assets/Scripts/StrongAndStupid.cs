@@ -25,7 +25,7 @@ public class StrongAndStupid : Hero
         maxHP = hp;
         strength = (int)(2 + level + Mathf.Round(UnityEngine.Random.Range(0f, level*0.8f)));
         attSpeed = (1.0f + level*0.3f + Mathf.Round(UnityEngine.Random.Range(0f, level*0.3f))) * 0.8f;
-        movSpeed = 0.015f;
+        //movSpeed = 0.015f;
         Debug.Log("New Heros Stats: Level: " + level + ", HP: " + hp + ", STR: " + strength + ", SPD: " + attSpeed + ", attribute: " + GameManager.instance.attrToString(attribute));
         moveDirection = new Vector3(0, -movSpeed, 0);
         hAttackTime = 1 - this.attSpeed * 0.1f;

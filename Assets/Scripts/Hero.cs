@@ -11,7 +11,7 @@ public class Hero : MonoBehaviour
     public int maxHP;
     public int strength;
     public float attSpeed;
-    public float movSpeed;
+    public float movSpeed = 0.015f;
     public AudioClip fightingSound;
     public int attribute;
 
@@ -45,6 +45,11 @@ public class Hero : MonoBehaviour
     //access Turning Points
     TurningPoint turningPoint;
 
+    //Hero walks faster
+    public bool fastMode = false;
+    public float movSpeedBasic = 0.015f;
+    public float movSpeedSpeedy = 0.15f;
+
 
     // Use this for initialization
     void Start()
@@ -57,6 +62,8 @@ public class Hero : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+       
        
         if (isFighting)
         {
@@ -71,7 +78,7 @@ public class Hero : MonoBehaviour
             //for moving back
             else
             {
-                transform.position = (transform.position - moveDirection * hTimeLeft);
+                transform.position = (transform.position - (moveDirection * movSpeed) * hTimeLeft);
             }
 
             if (hTimeLeft <= 0)
@@ -100,6 +107,7 @@ public class Hero : MonoBehaviour
 
                     //currentBoss.transform.position = new Vector3(4.5f, 0.8f);
                     Debug.Log("Stirb!");
+                    movSpeed = movSpeedBasic;
                 }
                 //reset Attack Time
                 hTimeLeft = hAttackTime;
@@ -179,7 +187,8 @@ public class Hero : MonoBehaviour
             isFighting = true;
             //store position so that after attacking the hero is at the same place he used to be before
             preFightPosition = transform.position;
-            currentBoss = collision.collider.GetComponentInParent<Boss>();          
+            currentBoss = collision.collider.GetComponentInParent<Boss>();
+            changeFastMode();
         }
         if (collision.collider.name.Contains("Potion"))
         {
@@ -197,6 +206,31 @@ public class Hero : MonoBehaviour
             //    GameManager.instance.coins += GameManager.instance.getBossCosts();
             //}
             moveDirection = new Vector3(0, movSpeed, 0);
+
+        }
+    }
+
+    public void changeFastMode()
+    {
+        Debug.Log("isFighting: " + isFighting + "; movSpeed: " + movSpeed);
+        if (isFighting && movSpeed == movSpeedSpeedy)
+        {
+
+            fastMode = false;
+            movSpeed = movSpeed / 10.0f;
+        }
+        else
+        {
+            if (movSpeed == movSpeedSpeedy)
+            {
+                movSpeed = movSpeedBasic;
+                fastMode = false;
+            }
+            else
+            {
+                movSpeed = movSpeedSpeedy;
+                fastMode = true;
+            }
         }
     }
 

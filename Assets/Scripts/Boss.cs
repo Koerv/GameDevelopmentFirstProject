@@ -89,7 +89,7 @@ public class Boss : MonoBehaviour
             Debug.Log("Kämpf!");
             //needed to assign Hero to runtime-generated bosses
             hero = collision.collider.GetComponentInParent<Hero>();
-
+            hero.changeFastMode();
             isFighting = true;
             attributeModifier = GameManager.instance.checkWeaknesses(this, hero);
             Debug.Log("attribute Modifier: " + attributeModifier);
