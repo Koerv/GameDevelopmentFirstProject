@@ -20,6 +20,7 @@ public class UIManager : MonoBehaviour {
     public Text potionInfo;
     public Text finalWinScreen;
     public Canvas tutorialCanvas;
+    public GameObject speedModeButton;
 
     void Awake()
     {
@@ -42,6 +43,16 @@ public class UIManager : MonoBehaviour {
         scissorsBossButton.SetActive(false);
         upgradeBossButton.SetActive(false);
 
+    }
+
+    public void hideSpeedButton()
+    {
+        speedModeButton.SetActive(false);
+    }
+
+    public void showSpeedButton()
+    {
+        speedModeButton.SetActive(true);
     }
 
     public void showLoseScreen()

@@ -143,6 +143,7 @@ public class GameManager : MonoBehaviour
     public void EndBuyPhase()
     {
 
+        uiManager.showSpeedButton();
         buyPhase = false;
         hero.movSpeed = 0.015f;
         grid.calcSumOfStats();
@@ -152,6 +153,7 @@ public class GameManager : MonoBehaviour
     public void StartBuyPhase()
     {
         buyPhase = true;
+        uiManager.hideSpeedButton();
 
         //if a boss was evaded, he should be made visible again to the hero
         if (evadedBoss != null)
