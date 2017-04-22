@@ -25,11 +25,17 @@ public class Floor : MonoBehaviour {
     //all other tiles
     public Grid grid;
 
+    private void Update()
+    {
+
+    }
+
+
 
     void OnMouseDown()
     {
         grid = GameManager.instance.grid;
-        Debug.Log(this.transform.localPosition);
+        /*
         if (GameManager.instance.bossGrabbed && type == 1 && bossOnTile == null && potionOnTile == null &&
             grid.getTile(layoutPosX + 1, layoutPosY).bossOnTile == null &&
             grid.getTile(layoutPosX - 1, layoutPosY).bossOnTile == null &&
@@ -47,7 +53,7 @@ public class Floor : MonoBehaviour {
         }
         
 
-        else if (GameManager.instance.potionGrabbed && bossOnTile == null && potionOnTile == null)
+        else */if (GameManager.instance.potionGrabbed && bossOnTile == null && potionOnTile == null)
         {
             GameManager.instance.newPotion.transform.position = this.transform.position;
             GameManager.instance.potionGrabbed = false;
@@ -56,4 +62,45 @@ public class Floor : MonoBehaviour {
             GameManager.instance.uiManager.showBuyMenu();
         }
     }
+
+    /*
+    void OnMouseUp()
+    {
+        Debug.Log("On Tile");
+        grid = GameManager.instance.grid;
+        if (GameManager.instance.bossGrabbed && type == 1 && bossOnTile == null && potionOnTile == null &&
+            grid.getTile(layoutPosX + 1, layoutPosY).bossOnTile == null &&
+            grid.getTile(layoutPosX - 1, layoutPosY).bossOnTile == null &&
+            grid.getTile(layoutPosX, layoutPosY + 1).bossOnTile == null &&
+            grid.getTile(layoutPosX, layoutPosY - 1).bossOnTile == null
+            )
+        {
+
+            GameManager.instance.mouseOnTile = true;
+            /*
+            GameManager.instance.newBoss.transform.position = this.transform.position;
+            GameManager.instance.bossGrabbed = false;
+            GameManager.instance.coins -= GameManager.instance.getBossCosts();
+            GameManager.instance.bossCount += 1;
+            bossOnTile = GameManager.instance.newBoss;
+            Physics2D.IgnoreCollision(bossOnTile.GetComponent<Collider2D>(), GameManager.instance.hero.GetComponent<Collider2D>(), false);
+            GameManager.instance.uiManager.showBuyMenu();
+            GameManager.instance.mouseOnTile = false;
+        }
+    }
+    */
+    private void OnMouseEnter()
+    {
+
+            GameManager.instance.mouseOnTile = true;
+            GameManager.instance.selectedTile = this;
+
+    }
+
+    private void OnMouseExit()
+    {
+        GameManager.instance.mouseOnTile = false;
+        GameManager.instance.selectedTile = null;
+    }
+
 }

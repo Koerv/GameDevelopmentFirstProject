@@ -44,6 +44,9 @@ public class GameManager : MonoBehaviour
 
     private string[] heroNames = { "Strong", "Smart", "Greedy" };
 
+    public bool mouseOnTile = false;
+    public Floor selectedTile;
+
 
 
     //Awake is always called before any Start functions
@@ -451,6 +454,13 @@ public class GameManager : MonoBehaviour
         hero.changeFastMode();
     }
 
+
+    public bool getMouseOnTile()
+    {
+
+        Debug.Log("Get Mouse Status " + mouseOnTile);
+        return mouseOnTile;
+    }
 
 
 
